@@ -1,0 +1,52 @@
+---
+import { getLocaleFromUrl, useTranslations } from '../../utils/i18n';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer no-print w-full border-t border-border-hairline bg-surface-1 py-8 mt-auto text-xs text-content-tertiary transition-colors">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+      <span>© {year} Angsagan Islyamgaliyev. {t('footer.rights')}</span>
+      <span class="hidden sm:inline text-border-default" aria-hidden="true">•</span>
+      <span class="font-mono text-[11px] text-content-tertiary">{t('footer.atsCompliant')}</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a
+        href="https://github.com/ansaganie"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-content-primary transition-colors focus-visible:outline-2 focus-visible:outline-border-focus"
+      >
+        GitHub
+      </a>
+      <a
+        href="https://linkedin.com/in/ansaganie"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-content-primary transition-colors focus-visible:outline-2 focus-visible:outline-border-focus"
+      >
+        LinkedIn
+      </a>
+      <button
+        type="button"
+        id="back-to-top"
+        class="hover:text-content-primary transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-border-focus"
+      >
+        ↑ {t('cta.backToTop')}
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+  const backToTopBtn = document.getElementById('back-to-top');
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>

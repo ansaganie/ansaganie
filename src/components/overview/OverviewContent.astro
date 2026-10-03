@@ -1,0 +1,275 @@
+---
+import type { CandidateProfile } from '../../schemas/cv';
+import { getLocalizedPath, useTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  profile: CandidateProfile;
+  locale: Locale;
+}
+
+const { profile, locale } = Astro.props;
+const t = useTranslations(locale);
+const cvPath = getLocalizedPath('/cv', locale);
+---
+
+<div class="space-y-12">
+  <!-- Hero Section -->
+  <section class="card-container" aria-labelledby="hero-title">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left Column: Bio & Value Proposition -->
+      <div class="lg:col-span-8 space-y-4">
+        <div class="space-y-1.5">
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-status-success-bg text-status-success border border-status-success/30">
+            <span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+            <span>{profile.contact.availability}</span>
+          </div>
+          <h1 id="hero-title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-content-primary">
+            {profile.name}
+          </h1>
+          <p class="text-lg sm:text-xl font-medium text-brand">
+            {profile.title}
+          </p>
+        </div>
+
+        <p class="text-base text-content-secondary leading-relaxed max-w-2xl">
+          {profile.elevatorPitch}
+        </p>
+
+        <p class="print-hide text-sm text-content-tertiary leading-relaxed max-w-2xl">
+          {profile.summary}
+        </p>
+
+        <!-- Actions -->
+        <div class="flex flex-wrap items-center gap-3 pt-2 no-print">
+          <a
+            href={cvPath}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded font-medium text-sm bg-brand text-content-inverse hover:brightness-110 transition shadow-xs focus-visible:outline-2 focus-visible:outline-border-focus"
+          >
+            <span>{t('cta.viewTimeline')}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href={`mailto:${profile.contact.email}`}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded font-medium text-sm bg-surface-2 hover:bg-surface-3 text-content-primary border border-border-subtle transition focus-visible:outline-2 focus-visible:outline-border-focus"
+          >
+            <span>{t('cta.contact')}</span>
+          </a>
+          <button
+            type="button"
+            data-print
+            class="inline-flex items-center gap-2 px-4 py-2 rounded font-medium text-sm bg-surface-2 hover:bg-surface-3 text-content-primary border border-border-subtle transition cursor-pointer focus-visible:outline-2 focus-visible:outline-border-focus"
+          >
+            <span>{t('cta.print')}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Quick Contact & Meta Channels -->
+      <div class="lg:col-span-4 p-5 rounded-lg bg-surface-1 border border-border-subtle space-y-4 shadow-xs">
+        <h2 class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-semibold border-b border-border-hairline pb-2">
+          {t('contact.title')}
+        </h2>
+        <ul class="space-y-2.5 text-xs">
+          <li class="flex items-center gap-2.5 text-content-secondary">
+            <span class="font-mono text-content-tertiary w-16 shrink-0">{t('contact.location')}</span>
+            <span class="text-content-primary font-medium">{profile.contact.location}</span>
+          </li>
+          <li class="flex items-center gap-2.5 text-content-secondary">
+            <span class="font-mono text-content-tertiary w-16 shrink-0">{t('contact.email')}</span>
+            <a href={`mailto:${profile.contact.email}`} class="text-brand hover:underline font-medium break-all">
+              {profile.contact.email}
+            </a>
+          </li>
+          <li class="flex items-center gap-2.5 text-content-secondary">
+            <span class="font-mono text-content-tertiary w-16 shrink-0">Telegram:</span>
+            <a href={profile.contact.telegram} target="_blank" rel="noopener noreferrer" class="text-brand hover:underline font-medium">
+              t.me/ansaganie
+            </a>
+          </li>
+          <li class="flex items-center gap-2.5 text-content-secondary">
+            <span class="font-mono text-content-tertiary w-16 shrink-0">LinkedIn:</span>
+            <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" class="text-brand hover:underline font-medium">
+              linkedin.com/in/ansaganie
+            </a>
+          </li>
+          <li class="flex items-center gap-2.5 text-content-secondary">
+            <span class="font-mono text-content-tertiary w-16 shrink-0">GitHub:</span>
+            <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" class="text-brand hover:underline font-medium">
+              github.com/ansaganie
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enterprise Impact Metrics (4 Cards) -->
+  <section aria-labelledby="metrics-title" class="space-y-4">
+    <div class="flex items-baseline justify-between border-b border-border-hairline pb-2">
+      <h2 id="metrics-title" class="text-sm font-mono uppercase tracking-wider text-content-tertiary font-bold">
+        {t('metrics.title')}
+      </h2>
+      <span class="text-xs font-mono text-content-tertiary">{t('metrics.subtitle')}</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {profile.metrics.map((metric) => (
+        <div class="metric-card p-4 rounded-lg bg-surface-1 border border-border-subtle flex flex-col justify-between space-y-3 hover:border-brand/40 transition-colors shadow-xs">
+          <div>
+            <div class="font-mono text-2xl font-bold tracking-tight text-brand">
+              {metric.headline}
+            </div>
+            <div class="text-xs font-bold uppercase tracking-wider text-content-primary mt-1">
+              {metric.label}
+            </div>
+            <div class="text-xs text-status-success font-semibold mt-0.5">
+              {metric.impact}
+            </div>
+          </div>
+          <div class="print-hide text-xs text-content-secondary leading-relaxed border-t border-border-hairline pt-2">
+            <div class="font-medium text-content-primary mb-1">{metric.project}</div>
+            <p class="text-content-tertiary">{metric.details}</p>
+          </div>
+          <div class="print-hide flex flex-wrap gap-1 pt-1">
+            {metric.technologies.slice(0, 3).map((tech) => (
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface-2 text-content-tertiary border border-border-hairline">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Architectural Competencies & Stack Matrix -->
+  <section aria-labelledby="competencies-title" class="print-hide space-y-4">
+    <div class="border-b border-border-hairline pb-2">
+      <h2 id="competencies-title" class="text-sm font-mono uppercase tracking-wider text-content-tertiary font-bold">
+        {t('skills.title')}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Backend & Cloud -->
+      <div class="p-5 rounded-lg bg-surface-1 border border-border-subtle space-y-3 shadow-xs">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-brand font-bold">
+          {t('skills.backend')}
+        </h3>
+        <ul class="space-y-1.5 text-xs text-content-secondary">
+          {profile.skills.backend.map((skill) => (
+            <li class="flex items-start gap-2">
+              <span class="text-brand shrink-0">•</span>
+              <span>{skill}</span>
+            </li>
+          ))}
+          {profile.skills.cloudDevops.map((skill) => (
+            <li class="flex items-start gap-2">
+              <span class="text-brand shrink-0">•</span>
+              <span>{skill}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Frontend & Visualization -->
+      <div class="p-5 rounded-lg bg-surface-1 border border-border-subtle space-y-3 shadow-xs">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-brand font-bold">
+          {t('skills.frontend')}
+        </h3>
+        <ul class="space-y-1.5 text-xs text-content-secondary">
+          {profile.skills.frontend.map((skill) => (
+            <li class="flex items-start gap-2">
+              <span class="text-brand shrink-0">•</span>
+              <span>{skill}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Architecture & Practices -->
+      <div class="p-5 rounded-lg bg-surface-1 border border-border-subtle space-y-3 shadow-xs">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-brand font-bold">
+          {t('skills.architecture')}
+        </h3>
+        <ul class="space-y-1.5 text-xs text-content-secondary">
+          {profile.skills.architecture.map((skill) => (
+            <li class="flex items-start gap-2">
+              <span class="text-brand shrink-0">•</span>
+              <span>{skill}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Engineering Projects -->
+  <section aria-labelledby="projects-title" class="space-y-4">
+    <div class="border-b border-border-hairline pb-2 flex items-baseline justify-between">
+      <h2 id="projects-title" class="text-sm font-mono uppercase tracking-wider text-content-tertiary font-bold">
+        {t('projects.title')}
+      </h2>
+      <span class="text-xs font-mono text-content-tertiary">{t('projects.subtitle')}</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {profile.projects.filter((p) => p.featured).map((proj) => (
+        <article class="project-card p-5 rounded-lg bg-surface-1 border border-border-subtle flex flex-col justify-between space-y-4 hover:border-brand/40 transition shadow-xs">
+          <div class="space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <h3 class="text-base font-bold text-content-primary">{proj.title}</h3>
+              {proj.projectType === 'enterprise' && (
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-bg text-brand font-semibold shrink-0">
+                  {t('projects.enterprise')}
+                </span>
+              )}
+            </div>
+            {proj.client && (
+              <p class="text-xs font-medium text-brand">{proj.client} • {proj.role}</p>
+            )}
+            <p class="text-xs text-content-secondary leading-relaxed">
+              {proj.summary}
+            </p>
+            {proj.impact && (
+              <div class="text-xs font-semibold text-status-success bg-status-success-bg px-2.5 py-1 rounded inline-block">
+                {t('projects.impact')} {proj.impact}
+              </div>
+            )}
+          </div>
+
+          <div class="print-hide space-y-3 pt-2 border-t border-border-hairline">
+            <div class="flex flex-wrap gap-1.5">
+              {proj.technologies.map((tech) => (
+                <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface-2 text-content-tertiary border border-border-hairline">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div class="flex items-center gap-3 text-xs font-medium no-print">
+              {proj.githubUrl && (
+                <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" class="text-brand hover:underline flex items-center gap-1">
+                  <span>{t('projects.github')}</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              )}
+              {proj.liveUrl && (
+                <a href={proj.liveUrl} target="_blank" rel="noopener noreferrer" class="text-brand hover:underline flex items-center gap-1">
+                  <span>{t('projects.live')}</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-print]').forEach((btn) => {
+    btn.addEventListener('click', () => window.print());
+  });
+</script>

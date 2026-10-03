@@ -1,1 +1,23 @@
-source
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs and environment
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project local artifacts
+scratch/
+.agents/
+source/

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import OverviewContent from '../../components/overview/OverviewContent.astro';
+import { getCandidateProfile } from '../../utils/data';
+
+const locale = 'kk';
+const profile = getCandidateProfile(locale);
+---
+
+<BaseLayout locale={locale} title={`${profile.name} — ${profile.title}`} description={profile.elevatorPitch}>
+  <OverviewContent profile={profile} locale={locale} />
+</BaseLayout>

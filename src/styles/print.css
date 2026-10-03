@@ -1,0 +1,371 @@
+/* ==========================================================================
+   PRODUCTION PRINT-TO-PDF ENGINE (ATS & HIGH-FIDELITY PHYSICAL EXPORT)
+   Target Page Budget: Page 1 (Overview) = 1 Page; Page 2 (CV) = 2 Pages Max
+   ========================================================================== */
+
+@page {
+  /* International standard A4 with calibrated margins */
+  size: A4 portrait;
+  margin: 12mm 15mm 12mm 15mm;
+
+  /* Suppress default browser header (URL) and footer (date/title) */
+  @top-left { content: normal; }
+  @top-center { content: normal; }
+  @top-right { content: normal; }
+  @bottom-left { content: normal; }
+  @bottom-right { content: normal; }
+  @bottom-center {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", monospace;
+    font-size: 7pt;
+    color: #64748b;
+  }
+}
+
+/* Tighter top margin on the first sheet for optimal vertical packing */
+@page :first {
+  margin-top: 10mm;
+}
+
+@media print {
+  /* 1. Global Reset & Color Accuracy */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html,
+  body {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #0f172a !important;
+    font-size: 9pt !important;
+    line-height: 1.3 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  /* 2. Interactive & Navigational Elements Suppression */
+  nav,
+  header.site-header,
+  footer.site-footer,
+  .site-nav,
+  .no-print,
+  .print-hide,
+  .theme-toggle,
+  .lang-switcher,
+  .print-button,
+  .interactive-filter,
+  .filter-bar,
+  .modal-backdrop,
+  .expand-indicator,
+  .floating-action,
+  input,
+  button {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 3. Reveal and Force-Expand All Hidden Disclosures */
+  details {
+    display: block !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 3mm !important;
+  }
+
+  details > summary {
+    display: none !important;
+  }
+
+  details[hidden],
+  div[hidden="until-found"],
+  .role-content,
+  .role-details {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    opacity: 1 !important;
+  }
+
+  /* 4. Strict Page Break & Isolation Controls */
+  .page-break,
+  .print-page-break {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  article,
+  .experience-entry,
+  .role-card,
+  .metric-card,
+  .project-card,
+  .education-entry,
+  .honor-card,
+  .cert-badge,
+  .recommendation-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 3.5mm !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    color: #0f172a !important;
+  }
+
+  p, li {
+    orphans: 3 !important;
+    widows: 3 !important;
+  }
+
+  /* 5. Typography & Section Scale Calibration */
+  h1.candidate-name,
+  header.candidate-header h1 {
+    font-size: 18pt !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1.5mm !important;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .role-title {
+    font-size: 11pt !important;
+    font-weight: 600 !important;
+    color: #1e3a8a !important;
+    margin-bottom: 2mm !important;
+  }
+
+  address.contact-info {
+    font-style: normal !important;
+    font-size: 8pt !important;
+    color: #475569 !important;
+    border-bottom: 0.5pt solid #cbd5e1 !important;
+    padding-bottom: 2.5mm !important;
+    margin-bottom: 4mm !important;
+    display: block !important;
+  }
+
+  h2 {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    border-bottom: 0.75pt solid #0f172a !important;
+    padding-bottom: 1mm !important;
+    margin-top: 4mm !important;
+    margin-bottom: 2.5mm !important;
+  }
+
+  h3 {
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.5mm !important;
+  }
+
+  .company-context {
+    font-size: 8.5pt !important;
+    font-weight: 600 !important;
+    color: #334155 !important;
+    margin-bottom: 1mm !important;
+  }
+
+  .date-range {
+    font-size: 8pt !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", monospace !important;
+  }
+
+  /* 6. High-Density List Formatting */
+  ul {
+    margin-top: 1mm !important;
+    margin-bottom: 2.5mm !important;
+    padding-left: 4.5mm !important;
+  }
+
+  li {
+    margin-bottom: 0.6mm !important;
+    font-size: 8.25pt !important;
+    line-height: 1.25 !important;
+  }
+
+  /* 7. Hyperlink Fidelity */
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  a.print-url::after,
+  .certs-list a::after,
+  .contact-info a:not([href^="tel:"]):not([href^="mailto:"])::after {
+    content: " (" attr(href) ")";
+    font-size: 7pt !important;
+    color: #64748b !important;
+    font-weight: normal !important;
+    word-break: break-all !important;
+  }
+
+  .contact-info a[href^="tel:"]::after,
+  .contact-info a[href^="mailto:"]::after,
+  a[href^="tel:"]::after,
+  a[href^="mailto:"]::after,
+  a[href^="#"]::after,
+  a[href^="/"]::after {
+    content: none !important;
+  }
+
+  /* 8. Grid Flattening & Compact Multi-Column Rules */
+  .grid,
+  .grid-cols-2,
+  .grid-cols-4 {
+    display: block !important;
+  }
+
+  .grid-cols-3 {
+    display: block !important;
+    margin-bottom: 2mm !important;
+  }
+
+  .grid-cols-3 > * {
+    display: inline-block !important;
+    width: 31.5% !important;
+    vertical-align: top !important;
+    margin-right: 2% !important;
+    margin-bottom: 1.5mm !important;
+    box-sizing: border-box !important;
+  }
+
+  .grid-cols-3 > *:last-child {
+    margin-right: 0 !important;
+  }
+
+  .metric-card,
+  .project-card,
+  .cert-badge {
+    display: inline-block !important;
+    width: 48.5% !important;
+    vertical-align: top !important;
+    border: 0.5pt solid #e2e8f0 !important;
+    border-radius: 2pt !important;
+    padding: 2mm !important;
+    margin-right: 1.5% !important;
+    margin-bottom: 2mm !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 9. Multilingual Cyrillic Print Scaling Override */
+  :lang(ru),
+  :lang(kk),
+  html[lang="ru"],
+  html[lang="kk"] {
+    font-size: 8.75pt !important;
+    line-height: 1.28 !important;
+  }
+
+  :lang(ru) article,
+  :lang(kk) article,
+  :lang(ru) .experience-entry,
+  :lang(kk) .experience-entry,
+  :lang(ru) .role-card,
+  :lang(kk) .role-card {
+    margin-bottom: 2mm !important;
+  }
+
+  :lang(ru) li,
+  :lang(kk) li {
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.6mm !important;
+  }
+
+  :lang(ru) ul,
+  :lang(kk) ul {
+    margin-top: 0.5mm !important;
+    margin-bottom: 1.5mm !important;
+  }
+
+  /* 10. Density pass: strip screen chrome (cards, padding, tall stacks) so
+     Overview fits 1 A4 sheet and the CV fits 2. */
+  .card-container,
+  .experience-entry,
+  .education-entry,
+  .honors-list > li,
+  .certs-list > li,
+  .metric-card,
+  .project-card,
+  main section > div > div {
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .experience-entry,
+  .education-entry,
+  .honors-list > li,
+  .certs-list > li {
+    border: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .space-y-12 > * + *,
+  .space-y-10 > * + *,
+  .space-y-6 > * + * {
+    margin-top: 2.5mm !important;
+  }
+
+  .space-y-4 > * + *,
+  .space-y-3 > * + * {
+    margin-top: 1.5mm !important;
+  }
+
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  /* 11. Cyrillic CV squeeze: +7% text expansion must still fit 2 sheets. */
+  :lang(ru) .space-y-10 > * + *,
+  :lang(kk) .space-y-10 > * + *,
+  :lang(ru) .space-y-6 > * + *,
+  :lang(kk) .space-y-6 > * + * {
+    margin-top: 1.5mm !important;
+  }
+
+  :lang(ru) h2,
+  :lang(kk) h2 {
+    margin-top: 2.5mm !important;
+    margin-bottom: 1.5mm !important;
+  }
+
+  :lang(ru) li,
+  :lang(kk) li,
+  :lang(ru) .role-overview,
+  :lang(kk) .role-overview {
+    font-size: 7.75pt !important;
+    line-height: 1.22 !important;
+  }
+
+  :lang(ru) .experience-entry,
+  :lang(kk) .experience-entry,
+  :lang(ru) .education-entry,
+  :lang(kk) .education-entry {
+    margin-bottom: 1mm !important;
+  }
+
+  :lang(ru) .role-tech,
+  :lang(kk) .role-tech {
+    display: none !important;
+  }
+}

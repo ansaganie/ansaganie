@@ -1,0 +1,50 @@
+---
+import { LOCALES, LOCALE_LABELS, LOCALE_NAMES, getLocaleFromUrl, getLocalizedPath } from '../../utils/i18n';
+
+const currentLocale = getLocaleFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="lang-switcher" aria-label="Language Selector">
+  {
+    LOCALES.map((loc, idx) => {
+      const isActive = loc === currentLocale;
+      const targetPath = getLocalizedPath(currentPath, loc);
+      return (
+        <>
+          <a
+            href={targetPath}
+            class:list={[
+              'lang-pill text-xs px-2 py-0.5 rounded font-mono font-medium transition-colors focus-visible:outline-2 focus-visible:outline-border-focus',
+              isActive
+                ? 'bg-surface-3 text-content-primary font-bold shadow-xs'
+                : 'text-content-tertiary hover:text-content-primary hover:bg-surface-2',
+            ]}
+            aria-current={isActive ? 'true' : undefined}
+            title={LOCALE_NAMES[loc]}
+            hreflang={loc}
+          >
+            {LOCALE_LABELS[loc]}
+          </a>
+          {idx < LOCALES.length - 1 && (
+            <span class="text-border-default select-none text-[10px]" aria-hidden="true">
+              |
+            </span>
+          )}
+        </>
+      );
+    })
+  }
+</nav>
+
+<style>
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.15rem 0.35rem;
+    background-color: var(--color-surface-2);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 9999px;
+  }
+</style>

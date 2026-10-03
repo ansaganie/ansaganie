@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CvContent from '../components/cv/CvContent.astro';
+import { getCandidateProfile } from '../utils/data';
+
+const locale = 'en';
+const profile = getCandidateProfile(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${profile.name} — Curriculum Vitae & Career Timeline`}
+  description={profile.summary}
+>
+  <CvContent profile={profile} locale={locale} />
+</BaseLayout>

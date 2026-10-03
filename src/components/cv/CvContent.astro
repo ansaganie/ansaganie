@@ -1,0 +1,238 @@
+---
+import type { CandidateProfile } from '../../schemas/cv';
+import { useTranslations, type Locale } from '../../utils/i18n';
+
+interface Props {
+  profile: CandidateProfile;
+  locale: Locale;
+}
+
+const { profile, locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<div class="space-y-10 max-w-4xl mx-auto">
+  <!-- ATS & Screen Candidate Header -->
+  <header class="candidate-header border-b border-border-hairline pb-6 space-y-3" role="banner">
+    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+      <div>
+        <h1 class="candidate-name text-3xl sm:text-4xl font-extrabold tracking-tight text-content-primary" itemprop="name">
+          {profile.name}
+        </h1>
+        <p class="role-title text-base sm:text-lg font-semibold text-brand mt-0.5" itemprop="jobTitle">
+          {profile.title}
+        </p>
+      </div>
+
+      <!-- PDF Download Button (Hidden in Print) -->
+      <button
+        type="button"
+        onclick="window.print()"
+        class="no-print self-start inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded border border-border-control bg-surface-2 hover:bg-surface-3 hover:border-brand text-content-primary transition shadow-xs cursor-pointer focus-visible:outline-2 focus-visible:outline-border-focus"
+      >
+        <svg class="w-3.5 h-3.5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+        <span>{t('cta.print')}</span>
+      </button>
+    </div>
+
+    <!-- Contact Info (Linearized for ATS Scrapers) -->
+    <address class="contact-info text-xs text-content-tertiary not-italic flex flex-wrap items-center gap-x-3 gap-y-1">
+      <span itemprop="address">{profile.contact.location}</span>
+      <span class="text-border-default" aria-hidden="true">|</span>
+      <span>
+        {t('contact.phone')} <a href={`tel:${profile.contact.phone}`} itemprop="telephone" class="text-content-secondary hover:text-brand">{profile.contact.phone}</a>
+      </span>
+      <span class="text-border-default" aria-hidden="true">|</span>
+      <span>
+        {t('contact.email')} <a href={`mailto:${profile.contact.email}`} itemprop="email" class="text-content-secondary hover:text-brand">{profile.contact.email}</a>
+      </span>
+      <span class="text-border-default" aria-hidden="true">|</span>
+      <span>
+        LinkedIn: <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" class="text-content-secondary hover:text-brand">linkedin.com/in/ansaganie</a>
+      </span>
+      <span class="text-border-default" aria-hidden="true">|</span>
+      <span>
+        GitHub: <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" class="text-content-secondary hover:text-brand">github.com/ansaganie</a>
+      </span>
+    </address>
+  </header>
+
+  <!-- Professional Summary -->
+  <section class="resume-section space-y-2" aria-labelledby="summary-heading">
+    <h2 id="summary-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+      {t('cv.summary')}
+    </h2>
+    <p class="text-sm text-content-secondary leading-relaxed" itemprop="description">
+      {profile.summary}
+    </p>
+  </section>
+
+  <!-- Technical Skills (Categorized List, Zero Tables) -->
+  <section class="resume-section space-y-2" aria-labelledby="skills-heading">
+    <h2 id="skills-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+      {t('cv.skills')}
+    </h2>
+    <ul class="skills-list space-y-1.5 text-xs text-content-secondary">
+      <li>
+        <strong class="text-content-primary">{t('cv.skillsPrimary')}</strong> {profile.skills.primary.join(', ')}
+      </li>
+      <li>
+        <strong class="text-content-primary">{t('cv.skillsFrontend')}</strong> {profile.skills.frontend.join(', ')}
+      </li>
+      <li>
+        <strong class="text-content-primary">{t('cv.skillsBackend')}</strong> {[...profile.skills.backend, ...profile.skills.cloudDevops].join(', ')}
+      </li>
+      <li>
+        <strong class="text-content-primary">{t('cv.skillsArchitecture')}</strong> {profile.skills.architecture.join(', ')}
+      </li>
+    </ul>
+  </section>
+
+  <!-- Work Experience Timeline -->
+  <section class="resume-section space-y-6" aria-labelledby="experience-heading">
+    <h2 id="experience-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+      {t('cv.experience')}
+    </h2>
+
+    <div class="space-y-6">
+      {profile.experience.map((role) => (
+        <article class="experience-entry p-4 sm:p-5 rounded-lg bg-surface-1 border border-border-subtle space-y-3" itemscope itemtype="https://schema.org/OrganizationRole">
+          <header class="entry-header flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-border-hairline pb-2">
+            <div>
+              <h3 class="text-base font-bold text-content-primary" itemprop="roleName">
+                {role.roleTitle}
+              </h3>
+              <p class="company-context text-xs font-medium text-brand">
+                <span itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
+                  <span itemprop="name">{role.company}</span>
+                </span>
+                {role.client && <span class="text-content-tertiary font-normal"> ({role.client})</span>}
+                <span class="text-content-tertiary font-normal"> — {role.location}</span>
+              </p>
+            </div>
+            <p class="date-range text-xs font-mono text-content-tertiary shrink-0">
+              <time datetime={role.period.start} itemprop="startDate">{role.period.display}</time>
+            </p>
+          </header>
+
+          <details class="role-details" open>
+            <summary class="no-print text-xs font-mono text-content-tertiary cursor-pointer hover:text-brand mb-2 select-none">
+              {t('cv.details')}
+            </summary>
+            <div class="role-content space-y-3 text-xs text-content-secondary leading-relaxed">
+              <p class="role-overview text-content-secondary font-medium">
+                {role.summary}
+              </p>
+              <ul class="achievement-bullets space-y-1.5 list-disc pl-4">
+                {role.achievements.map((ach) => (
+                  <li>{ach}</li>
+                ))}
+              </ul>
+              <div class="role-tech flex flex-wrap gap-1 pt-2">
+                {role.technologies.map((tech) => (
+                  <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface-2 text-content-tertiary border border-border-hairline">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </details>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Honors & Corporate Awards -->
+  <section class="resume-section space-y-3" aria-labelledby="honors-heading">
+    <h2 id="honors-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+      {t('cv.honors')}
+    </h2>
+    <ul class="honors-list space-y-2 text-xs text-content-secondary">
+      {profile.honors.map((honor) => (
+        <li class="p-3 rounded bg-surface-1 border border-border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <div>
+            <strong class="text-content-primary font-semibold">{honor.title}</strong>
+            <span class="text-content-tertiary"> ({honor.organization})</span>
+            <p class="text-content-secondary mt-0.5">{honor.citation}</p>
+          </div>
+          <span class="font-mono text-content-tertiary shrink-0">{honor.year}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Industry Certifications -->
+  <section class="resume-section space-y-3" aria-labelledby="certs-heading">
+    <h2 id="certs-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+      {t('cv.certs')}
+    </h2>
+    <ul class="certs-list space-y-2 text-xs text-content-secondary">
+      {profile.certifications.map((cert) => (
+        <li class="p-3 rounded bg-surface-1 border border-border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <div>
+            <strong class="text-content-primary font-semibold">{cert.title}</strong>
+            <span class="text-content-tertiary"> — {cert.issuer}</span>
+            {cert.credentialId && (
+              <span class="font-mono text-[11px] text-content-tertiary block mt-0.5">ID: {cert.credentialId}</span>
+            )}
+          </div>
+          <div class="flex items-center gap-3 shrink-0">
+            <span class="font-mono text-content-tertiary">{cert.issueDate}</span>
+            <a
+              href={cert.verificationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-brand hover:underline font-mono text-[11px] flex items-center gap-0.5"
+            >
+              <span>{t('cv.verify')}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Education -->
+  <section class="resume-section space-y-3" aria-labelledby="education-heading">
+    <h2 id="education-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+      {t('cv.education')}
+    </h2>
+    <div class="space-y-3">
+      {profile.education.map((edu) => (
+        <article class="education-entry p-3 rounded bg-surface-1 border border-border-subtle space-y-1" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+          <header class="entry-header flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <div>
+              <h3 class="text-sm font-bold text-content-primary" itemprop="credentialCategory">
+                {edu.degree} — {edu.field}
+              </h3>
+              <p class="text-xs text-brand font-medium" itemprop="recognizedBy">
+                {edu.institution} <span class="text-content-tertiary font-normal">({edu.location})</span>
+              </p>
+            </div>
+            <p class="text-xs font-mono text-content-tertiary shrink-0">
+              {edu.period}
+            </p>
+          </header>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="resume-section space-y-2" aria-labelledby="languages-heading">
+    <h2 id="languages-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+      {t('cv.languages')}
+    </h2>
+    <div class="flex flex-wrap gap-4 text-xs text-content-secondary">
+      {profile.languages.map((lang) => (
+        <div class="flex items-center gap-1.5">
+          <strong class="text-content-primary">{lang.language}:</strong>
+          <span class="text-content-tertiary">{lang.proficiency}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</div>
