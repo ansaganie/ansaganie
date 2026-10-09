@@ -247,7 +247,6 @@
   }
 
   a.print-url::after,
-  .certs-list a::after,
   .contact-info a:not([href^="tel:"]):not([href^="mailto:"])::after {
     content: " (" attr(href) ")";
     font-size: 7pt !important;

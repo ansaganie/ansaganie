@@ -1,53 +1,54 @@
 {
   "locale": "ru",
-  "name": "Аңсаған Ислямғалиев",
+  "name": "Ансаган Исламгалиев",
   "title": "Ведущий Full-Stack инженер (.NET, React)",
-  "elevatorPitch": "Специализируюсь на модернизации устаревших корпоративных систем в высокопроизводительные приложения на ASP.NET Core и React.",
-  "summary": "Ведущий Full-Stack инженер-разработчик с 4+ годами коммерческого опыта в корпоративной разработке и 6+ годами практической работы в энергетическом секторе. Специализируюсь на ASP.NET Core, .NET 8, React и Microsoft Azure, модернизируя критически важные корпоративные системы для Chevron и Tengizchevroil. Практический опыт устранения узких мест производительности: сокращение времени загрузки страниц с 30 минут до 1.5 секунд, миграция устаревших хранилищ на автономные PWA с IndexedDB и ускорение CI/CD-пайплайнов в 6 раз.",
+  "elevatorPitch": "Модернизирую устаревшие корпоративные приложения в быстрые и поддерживаемые системы на .NET и React, в настоящее время для Chevron и Тенгизшевройл.",
+  "summary": "Старший full-stack разработчик с 4+ годами создания корпоративного ПО на C#, .NET 8, ASP.NET Core, React и Azure, в настоящее время для Chevron и Тенгизшевройл. Модернизирую устаревшие приложения: перевод сервисов с .NET Framework на .NET 8, оптимизация медленных экранов, обеспечение надежной офлайн-работы веб-приложений для 500+ полевых сотрудников и ускорение релизных пайплайнов. До IT 6 лет работал на промысле в нефтегазовой отрасли.",
+  "updatedAt": "Октябрь 2026",
   "contact": {
     "email": "ansaganie@hotmail.com",
     "phone": "+77001002400",
     "telegram": "https://t.me/ansaganie",
     "linkedin": "https://linkedin.com/in/ansaganie",
     "github": "https://github.com/ansaganie",
-    "location": "Астана / Атырау, Казахстан",
-    "availability": "Открыт к долгосрочным контрактам и удаленной работе"
+    "location": "Астана, Казахстан",
+    "availability": "В поиске долгосрочной удаленной позиции в международной команде · UTC+5"
   },
   "metrics": [
     {
       "id": "page-load-optimization",
-      "headline": "30м ➔ 1.5с",
-      "label": "Оптимизация загрузки критических страниц",
-      "impact": "Ускорение в 1200 раз",
+      "headline": "Производительность",
+      "label": "Экраны для полевых команд",
+      "impact": "Ускорение медленных экранов",
       "project": "TA Pro & TO Notes (Капитальный ремонт Chevron)",
-      "details": "Сократил время загрузки ключевых производственных экранов с ~30 минут до 1.5 секунд для команд капитального ремонта за счет оптимизации запросов EF Core 8 и кэширования в IndexedDB.",
+      "details": "Оптимизировал запросы .NET 8 / EF Core 8 и внедрил кэширование в IndexedDB для команд капремонта.",
       "technologies": [".NET 8", "EF Core 8", "IndexedDB", "Dexie.js", "React"]
     },
     {
       "id": "cicd-acceleration",
-      "headline": "90м ➔ 15м",
-      "label": "Ускорение CI/CD сборки и развертывания",
-      "impact": "Ускорение пайплайна в 6 раз",
+      "headline": "Поставка",
+      "label": "Пайплайны релизов",
+      "impact": "Быстрые и надежные релизы",
       "project": "TEA-RECS (Wombat / TCO)",
-      "details": "Оптимизировал процессы сборки и развертывания в Azure DevOps и автоматизировал PR-тестирование, сократив окно релиза с 90 до ~15 минут.",
+      "details": "Сократил длительность пайплайнов релизов в Azure DevOps, автоматизировал валидацию PR и сканирование в SonarQube.",
       "technologies": ["Azure DevOps", "Docker", "SonarQube", "CI/CD Pipelines"]
     },
     {
       "id": "erp-sync-acceleration",
-      "headline": "1–3ч ➔ минуты",
-      "label": "Корпоративная интеграция с Primavera ERP",
-      "impact": "Синхронизация почти в реальном времени",
+      "headline": "Интеграция",
+      "label": "Синхронизация с Oracle Primavera",
+      "impact": "Асинхронный обмен сообщениями",
       "project": "Цифровизация капремонта (Chevron / TCO)",
-      "details": "Переработал архитектуру интеграции с Oracle Primavera с использованием Azure Service Bus, Logic Apps и WebJobs, сократив задержку обмена данными с 1–3 часов до считанных минут.",
+      "details": "Переработал интеграцию с Primavera на базе Azure Service Bus, Logic Apps и WebJobs.",
       "technologies": ["Azure Service Bus", "Logic Apps", "Azure WebJobs", "Oracle Primavera"]
     },
     {
       "id": "offline-pwa-storage",
-      "headline": "WebSQL ➔ Dexie",
-      "label": "Модернизация автономного хранилища",
-      "impact": "Нулевая потеря данных в офлайне",
+      "headline": "Автономность",
+      "label": "WebSQL → IndexedDB",
+      "impact": "500+ полевых сотрудников",
       "project": "TA Pro Mobile & Web PWA",
-      "details": "Перевел критическое браузерное хранилище с устаревшего WebSQL на IndexedDB с помощью Dexie.js для 500+ полевых инженеров, обеспечив полную сохранность данных в автономном режиме.",
+      "details": "Перевел хранилище PWA с устаревшего WebSQL на IndexedDB (Dexie.js) для надежной работы приложения без подключения к сети.",
       "technologies": ["IndexedDB", "Dexie.js", "PWA", "TypeScript", "Service Workers"]
     }
   ],
@@ -61,7 +62,7 @@
   "experience": [
     {
       "id": "tco-senior-developer",
-      "roleTitle": "Ведущий разработчик программного обеспечения",
+      "roleTitle": "Старший Full-Stack разработчик",
       "company": "Тенгизшевройл / ТОО «АтырауТехИнвест»",
       "department": "Цифровой департамент ТШО",
       "client": "Центральная Agile-команда Chevron",
@@ -74,16 +75,15 @@
       "roleType": "fullstack",
       "summary": "Ключевой разработчик центральной Agile-команды Chevron, отвечающий за цифровизацию процессов капитального ремонта (TA Pro и TO Notes) на базе веб-, мобильных PWA и BFF-микросервисов.",
       "keyMetrics": [
-        "Снижение задержки загрузки страниц с 30м до 1.5с",
-        "Синхронизация с Primavera сокращена с 1–3ч до минут",
-        "100% сохранность данных при миграции с WebSQL на IndexedDB"
+        "500+ полевых сотрудников на автономном PWA",
+        "Миграция с .NET Framework 4.8 на .NET 8",
+        "Интеграция с Oracle Primavera на Azure Service Bus"
       ],
       "achievements": [
-        "Оптимизировал задержку загрузки критических рабочих экранов с ~30 минут до 1.5 секунд для команд капитального ремонта путем настройки запросов в .NET 8 / EF Core 8 и кэширования в IndexedDB.",
-        "Разработал архитектуру автономного прогрессивного веб-приложения (PWA) и выполнил бесшовную миграцию с устаревшего WebSQL на IndexedDB (Dexie.js) для 500+ пользователей без потери данных.",
+        "Оптимизировал наиболее медленные производственные экраны для команд капремонта за счет настройки запросов .NET 8 / EF Core 8 и кэширования данных в IndexedDB на стороне клиента.",
+        "Внедрил поддержку автономного режима в полевое PWA и перевел хранилище с устаревшего WebSQL на IndexedDB (Dexie.js) для 500+ полевых сотрудников.",
         "Модернизировал серверные сервисы Web API с ASP.NET Framework 4.8 / EF6 на .NET 8 / EF Core 8, внедрив гибкую авторизацию на базе политик через Azure App Registration и MSAL.",
-        "Спроектировал интеграцию с корпоративной системой управления проектами Oracle Primavera через Azure Service Bus, Logic Apps и WebJobs, снизив время синхронизации с 1–3 часов до нескольких минут.",
-        "Внес вклад в развитие внутренних библиотек аутентификации Chevron TypeScript MSAL и инструментария для разработчиков."
+        "Переработал интеграцию с Oracle Primavera на базе Azure Service Bus, Logic Apps и WebJobs, заменив пакетную синхронизацию обменом сообщениями."
       ],
       "technologies": [".NET 8", "ASP.NET Core Web API", "C#", "React", "TypeScript", "IndexedDB", "Dexie.js", "Entity Framework Core 8", "Azure Service Bus", "Azure Logic Apps", "Azure WebJobs", "MSAL", "Tailwind CSS"],
       "defaultExpanded": true
@@ -100,18 +100,17 @@
         "end": "2024-01",
         "display": "Сентябрь 2022 — Январь 2024"
       },
-      "roleType": "frontend",
+      "roleType": "fullstack",
       "summary": "Full-stack frontend разработчик и специалист по визуализации данных в корпоративных проектах TEA-RECS (Wombat), VISI (визуальный контроль остановленных скважин) и Whitespace Dashboard (WSD).",
       "keyMetrics": [
-        "Ускорение развертывания CI/CD с 90 до 15 минут",
         "Награда ТШО за внедрение ключевого инструмента интегрированного бизнес-планирования (IBP)"
       ],
       "achievements": [
         "Разработал динамические инструменты экономической оценки для системы TEA-RECS (Wombat), признанной руководством ТШО ключевым инструментом интегрированного бизнес-планирования (IBP).",
         "Спроектировал высокопроизводительные двухосевые виртуализированные таблицы на TanStack Table и React Window с распределением состояния через React Context API.",
         "Создал интерактивные графики телеметрии на базе Airbnb Visx и интерактивные схемы технологических потоков завода на React Flow с режимом редактирования.",
-        "Ускорил CI/CD пайплайны развертывания .NET WebApp в Azure DevOps, сократив длительность релизного цикла с ~90 до ~15 минут.",
-        "Оптимизировал алгоритмы резервного копирования данных моделирования месторождения, существенно сократив расходы на Azure Blob Storage.",
+        "Ускорил пайплайны развертывания веб-приложений .NET в Azure DevOps и автоматизировал валидацию PR.",
+        "Оптимизировал алгоритмы резервного копирования данных моделирования месторождения, снизив расходы на Azure Blob Storage.",
         "Внедрил пайплайны статического анализа кода и поиска уязвимостей SonarQube SAST в процесс проверки PR."
       ],
       "technologies": ["React", "TypeScript", ".NET 6", "C#", "Visx", "TanStack Table", "React Window", "React Flow", "Redux Toolkit", "Material UI", "Azure DevOps", "Docker", "SonarQube"],
@@ -123,16 +122,15 @@
       "company": "Aviata.kz",
       "location": "Алматы, Казахстан",
       "period": {
-        "start": "2022-02",
+        "start": "2022-01",
         "end": "2022-09",
-        "display": "Февраль 2022 — Сентябрь 2022"
+        "display": "Январь 2022 — Сентябрь 2022"
       },
       "roleType": "frontend",
       "summary": "Frontend-разработчик крупнейшего тревел-сервиса Казахстана (Aviata / Chocotravel).",
       "achievements": [
         "Осуществил поэтапную миграцию клиентских сценариев бронирования авиа- и ж/д билетов chocotravel.com с монолита на PHP в Single Page Application (SPA) на Vue.js.",
-        "Разработал адаптивные компоненты для мобильного web-view и компоненты дизайн-системы с использованием Vue 3, Pinia и Tailwind CSS.",
-        "Участвовал в выработке архитектурных решений, профилировании производительности и модульной структуризации клиентского кода."
+        "Разработал адаптивные компоненты для мобильного web-view и компоненты дизайн-системы с использованием Vue 3, Pinia и Tailwind CSS."
       ],
       "technologies": ["Vue.js", "TypeScript", "Pinia", "Vue Router", "Tailwind CSS", "Vue Test Utils", "REST APIs"],
       "defaultExpanded": false
@@ -151,8 +149,7 @@
       "summary": "Специалист геодинамического мониторинга, управлявший сетью полевых наблюдательных станций и верификацией промышленной телеметрии.",
       "achievements": [
         "Координировал геодинамический мониторинг на сети сейсмологических станций и наблюдательных скважин для контроля техногенных газов и грунтовых вод.",
-        "Оценивал риски деформации рельефа месторождения и анализировал большие массивы сейсмологических данных для обеспечения промышленной безопасности.",
-        "Сформировал строгие навыки системного анализа данных, управления рисками и верификации телеметрии, ставшие прочной базой для надежной программной инженерии."
+        "Оценивал риски деформации рельефа месторождения и анализировал большие массивы сейсмологических данных для обеспечения промышленной безопасности."
       ],
       "technologies": ["Геодинамический мониторинг", "Анализ телеметрии", "Верификация сейсмических данных", "Оценка рисков"],
       "defaultExpanded": false
@@ -183,24 +180,24 @@
       "id": "project-turnaround",
       "title": "Цифровизация капитального ремонта: TA Pro и TO Notes",
       "summary": "Корпоративный комплекс прогрессивных веб-приложений и микросервисов BFF для управления процессами капитального ремонта заводов Chevron и Тенгизшевройл.",
-      "role": "Ведущий инженер-разработчик",
+      "role": "Старший Full-Stack разработчик",
       "client": "Chevron / Тенгизшевройл",
       "projectType": "enterprise",
       "featured": true,
-      "impact": "Ускорение запросов в 1200 раз, работа в офлайне без потери данных",
-      "metrics": ["С 30м до 1.5с загрузка", "С 1–3ч до минут интеграция с ERP", "500+ полевых инженеров"],
+      "impact": "Офлайн-PWA для 500+ полевых сотрудников; медаль Chevron SDP Challenge Coin",
+      "metrics": ["500+ полевых сотрудников", "Миграция на .NET 8", "Офлайн-PWA"],
       "technologies": [".NET 8", "ASP.NET Core", "React", "Dexie.js", "IndexedDB", "Azure Service Bus", "Logic Apps", "MSAL"]
     },
     {
       "id": "project-tea-recs",
       "title": "TEA-RECS и VISI (Экономическая оценка и визуальный контроль)",
       "summary": "Платформа экспресс-оценки экономической эффективности и инструмент визуального мониторинга остановленных скважин с моделированием схемы технологических линий.",
-      "role": "Full-Stack разработчик",
+      "role": "Разработчик программного обеспечения",
       "client": "Тенгизшевройл",
       "projectType": "enterprise",
       "featured": true,
       "impact": "Отмечен наградой ТШО как ключевой инструмент интегрированного бизнес-планирования (IBP)",
-      "metrics": ["Ускорение CI/CD с 90 до 15 минут", "Двухосевые виртуализированные таблицы"],
+      "metrics": ["Двухосевые виртуализированные таблицы"],
       "technologies": ["React", "TypeScript", "Visx", "TanStack Table", "React Flow", ".NET 6", "Azure DevOps", "Docker"]
     },
     {
@@ -218,7 +215,7 @@
       "id": "project-geo-exp",
       "title": "Платформа GeoExploration",
       "summary": "Высокопроизводительный корпоративный веб-сайт на Next.js 15 с трехъязычной маршрутизацией (ru/kk/en) и автоматизированным развертыванием в Vercel и Plesk.",
-      "role": "Frontend-архитектор и Full-Stack разработчик",
+      "role": "Единственный разработчик",
       "projectType": "commercial",
       "featured": true,
       "impact": "Автономный бандл Next.js 15 в продакшене с резервным контуром на Plesk",
@@ -241,36 +238,47 @@
   "certifications": [
     {
       "id": "cert-safe-6",
-      "title": "Сертифицированный специалист SAFe® 6 Practitioner",
-      "issuer": "Scaled Agile, Inc.",
-      "issueDate": "2023-05",
-      "credentialId": "SAFE-883921",
-      "verificationUrl": "https://www.credly.com/",
+      "title": "SAFe 6 Practitioner",
+      "issuer": "Scaled Agile",
+      "issueDate": "2024-07",
+      "credentialId": "49406639-9646",
+      "verificationUrl": "https://community.scaledagile.com/apex/PrintAchievement?aid=a0t6T00000O8QH2QAN&aaid=a0rQo00000xibl3IAA",
       "iconName": "safe"
     },
     {
+      "id": "cert-hackerrank-react",
+      "title": "Frontend Developer (React)",
+      "issuer": "HackerRank",
+      "issueDate": "2023-11",
+      "verificationUrl": "https://www.hackerrank.com/certificates/1f868b72177c",
+      "iconName": "hackerrank"
+    },
+    {
+      "id": "cert-hackerrank-js-intermediate",
+      "title": "JavaScript (Intermediate)",
+      "issuer": "HackerRank",
+      "issueDate": "2023-12",
+      "credentialId": "dd99e082ab79",
+      "verificationUrl": "https://www.hackerrank.com/certificates/dd99e082ab79",
+      "iconName": "hackerrank"
+    },
+    {
       "id": "cert-html-academy-react",
-      "title": "Профессия «React-разработчик»",
+      "title": "React. Разработка сложных клиентских приложений",
       "issuer": "HTML Academy",
-      "issueDate": "2022-05",
-      "verificationUrl": "https://htmlacademy.ru/",
+      "issueDate": "2021-09",
+      "credentialId": "1637434380",
+      "verificationUrl": "https://assets.htmlacademy.ru/certificates/intensive/217/1704573.pdf?1637434380",
       "iconName": "react"
     },
     {
       "id": "cert-html-academy-js-arch",
       "title": "JavaScript. Архитектура клиентских приложений",
       "issuer": "HTML Academy",
-      "issueDate": "2021-12",
-      "verificationUrl": "https://htmlacademy.ru/",
+      "issueDate": "2021-07",
+      "credentialId": "1631417950",
+      "verificationUrl": "https://assets.htmlacademy.ru/certificates/intensive/211/1704573.pdf?1631417950",
       "iconName": "javascript"
-    },
-    {
-      "id": "cert-hackerrank-problem-solving",
-      "title": "Problem Solving (Advanced) и сертификация C#",
-      "issuer": "HackerRank",
-      "issueDate": "2023-08",
-      "verificationUrl": "https://www.hackerrank.com/certificates/",
-      "iconName": "hackerrank"
     }
   ],
   "honors": [

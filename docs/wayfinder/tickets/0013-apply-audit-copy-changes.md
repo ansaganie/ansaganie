@@ -3,8 +3,8 @@
 Part of [Wayfinder Map](../MAP.md)
 
 - **Type**: wayfinder:task (AFK)
-- **Status**: open
-- **Assignee**: unassigned
+- **Status**: completed
+- **Assignee**: agent:wayfinder
 - **Blocked by**: none
 
 ## Question
@@ -23,3 +23,19 @@ Apply the low-effort recommendations from the [portfolio audit](../../research/p
 `en` is written first. `ru` and `kk` get the same edits and the owner reviews them.
 
 Done when `npm run check` and the build pass, none of the time figures or removed claims remain in any locale, and the print budget (1 page Overview, 2 pages CV) still holds.
+ 
+## Resolution
+ 
+Applied all low-effort copy and content changes across EN, RU, and KK profiles adhering strictly to audit decisions D1–D14 and recommendations R-L2 to R-L17:
+- **Canonical Name**: Updated to "Ansagan Islamgaliev" (EN), "Ансаган Исламгалиев" (RU), "Аңсаған Исламғалиев" (KK) across `cv-*.json`, `src/utils/i18n.ts`, `README.md`, and `LICENSE` (R-L17, D4, D8).
+- **Pitch & CTAs**: First-person elevator pitch without marketese; removed summary from Overview hero (R-L3); set primary CTA "Download PDF CV", secondary "Email me", text link "Full CV →", and nav label "CV" (R-L4).
+- **Highlights & Claims**: Replaced metric cards with 4 Highlights cards per audit §4.1; removed time figures (1200x, 30m, 90m, 1-3h) and unprovable claims ("zero data loss", "100% data fidelity", "atsCompliant") across all locales (R-L6, R-L8, R-L13).
+- **Titles & Roles**: Aligned Tengizchevroil / AtyrauTechInvest to "Senior Full-Stack Developer", Norsec Delta to "Software Developer" (`roleType: fullstack`), Aviata start date to Jan 2022, GeoExploration role to "Sole developer" (R-L5, D7, D13, D14).
+- **Certifications**: Replaced `certifications[*]` across all 3 locales with the 5 LinkedIn entries approved in D12 (SAFe 6 Practitioner, HackerRank React, HackerRank JS Intermediate, HTML Academy React, HTML Academy JS Architecture) including exact credential IDs and verification URLs (R-L16).
+- **Consistency & Footer**: Used "500+ field staff" consistently everywhere (R-L14); unified availability to "Looking for a long-term remote role with an international team · UTC+5" and location "Astana, Kazakhstan" (R-L11, D6, D10); added visible `Updated [Month YYYY]` in footer backed by schema `updatedAt` (R-L15); set concise meta descriptions for CV pages (R-L7).
+- **Print Budget & Verification**:
+  - `npm run check`: 0 errors, 0 warnings.
+  - `npm run build`: 6 pages built successfully.
+  - Suppressed `.certs-list a::after` URL expansion in `print.css` to prevent certificate link overflow.
+  - Verified print budget with headless Chrome: Overview fits 1 page and CV fits 2 pages across all three locales (`en`, `ru`, `kk`).
+

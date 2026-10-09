@@ -1,21 +1,21 @@
-# Angsagan Islyamgaliyev
+# Ansagan Islamgaliev
 
-**Senior Full-Stack .NET & React Engineer** at Tengizchevroil / Chevron · Atyrau & Astana, Kazakhstan
+**Senior Full-Stack Developer** at Tengizchevroil / Chevron · Astana, Kazakhstan
 
-I modernize legacy enterprise systems into high-performance ASP.NET Core and React applications.
+I turn legacy enterprise applications into fast, maintainable .NET and React systems, currently for Chevron and Tengizchevroil.
 
 [![Live CV](https://img.shields.io/badge/Live_CV-EN-2563eb?style=for-the-badge)](https://ansaganie.github.io/cv)
 [![Live CV RU](https://img.shields.io/badge/Live_CV-RU-2563eb?style=for-the-badge)](https://ansaganie.github.io/ru/cv)
 [![Live CV KK](https://img.shields.io/badge/Live_CV-KK-2563eb?style=for-the-badge)](https://ansaganie.github.io/kk/cv)
 
-Website: <https://ansaganie.github.io> (English, Russian, Kazakh; PDF export from the CV page)
+Website: <https://ansaganie.github.io> (English, Russian, Kazakh; downloadable PDF CV)
 
 ## What I do
 
-- **30 min → 1.5 s**: cut critical screen load time for Chevron turnaround field teams (.NET 8, EF Core 8, IndexedDB caching).
-- **90 min → 15 min**: sped up Azure DevOps CI/CD deployments for TEA-RECS.
-- **1-3 h → minutes**: re-engineered Oracle Primavera sync with Azure Service Bus, Logic Apps and WebJobs.
-- **WebSQL → IndexedDB (Dexie.js)**: offline-first PWA storage migration for 500+ field engineers.
+- **Screen Performance**: Fixed the slowest operational screens used by turnaround field teams (.NET 8, EF Core 8, IndexedDB caching).
+- **Release Delivery**: Sped up .NET web app release pipelines on Azure DevOps and automated PR validation.
+- **Enterprise Integration**: Rebuilt Oracle Primavera integration on Azure Service Bus, Logic Apps, and WebJobs.
+- **Offline PWA**: Added offline support and migrated browser storage to IndexedDB (Dexie.js) for 500+ field staff.
 
 ## Featured projects
 
@@ -45,4 +45,4 @@ Website: <https://ansaganie.github.io> (English, Russian, Kazakh; PDF export fro
 [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/ansaganie)
 [![Email](https://img.shields.io/badge/Email-0078D4?logo=microsoftoutlook&logoColor=white)](mailto:ansaganie@hotmail.com)
 
-Open to long-term contract engagements and remote roles.
+Looking for a long-term remote role with an international team · UTC+5.
