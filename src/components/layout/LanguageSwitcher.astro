@@ -23,6 +23,7 @@ const currentPath = Astro.url.pathname;
             aria-current={isActive ? 'true' : undefined}
             title={LOCALE_NAMES[loc]}
             hreflang={loc}
+            lang={loc}
           >
             {LOCALE_LABELS[loc]}
           </a>

@@ -85,7 +85,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang={currentLocale} class="scroll-smooth">
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -125,26 +125,38 @@ const jsonLd = {
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-    <!-- Inline Dark Mode Init to prevent flash of wrong theme -->
+    <!-- Inline theme init to prevent a flash of the wrong theme. Sets exactly one of
+         .dark / .light so the OS-preference fallback in global.css (:root:not(.light))
+         only applies when scripts are off. Also marks .js for JS-only controls. -->
     <script is:inline>
       (function () {
-        const storedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+        const root = document.documentElement;
+        let storedTheme = null;
+        try {
+          storedTheme = localStorage.getItem('theme');
+        } catch (e) {}
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
+        const isDark = storedTheme === 'dark' || (storedTheme !== 'light' && prefersDark);
+        root.classList.toggle('dark', isDark);
+        root.classList.toggle('light', !isDark);
+        root.classList.add('js');
       })();
     </script>
   </head>
 
   <body itemscope itemtype="https://schema.org/Person" class="min-h-screen flex flex-col bg-canvas text-content-primary">
+    <a
+      href="#main"
+      class="no-print sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:rounded focus:bg-surface-1 focus:text-content-primary focus:border focus:border-border-focus focus:text-sm focus:font-medium"
+    >
+      {t('a11y.skipToContent')}
+    </a>
+
     <!-- Header Navigation -->
     <Header />
 
     <!-- Main Content Area -->
-    <main role="main" class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main id="main" tabindex="-1" class="flex-1 focus:outline-none w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
       <slot />
     </main>
 

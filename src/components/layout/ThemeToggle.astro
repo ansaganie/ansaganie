@@ -8,8 +8,9 @@ const t = useTranslations(locale);
 <button
   type="button"
   id="theme-toggle"
-  class="inline-flex items-center justify-center p-1.5 rounded border border-border-control hover:border-brand text-content-secondary hover:text-content-primary bg-surface-2 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-border-focus"
-  aria-label={t('theme.toggle')}
+  class="js-only inline-flex items-center justify-center p-1.5 rounded border border-border-control hover:border-brand text-content-secondary hover:text-content-primary bg-surface-2 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-border-focus"
+  aria-label={t('theme.darkMode')}
+  aria-pressed="false"
   title={t('theme.toggle')}
 >
   <!-- Sun Icon (shown in dark mode) -->
@@ -47,11 +48,19 @@ const t = useTranslations(locale);
 </button>
 
 <script is:inline>
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
+  (function () {
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) return;
+    themeToggle.setAttribute('aria-pressed', String(root.classList.contains('dark')));
     themeToggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      const isDark = !root.classList.contains('dark');
+      root.classList.toggle('dark', isDark);
+      root.classList.toggle('light', !isDark);
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      try {
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
     });
-  }
+  })();
 </script>

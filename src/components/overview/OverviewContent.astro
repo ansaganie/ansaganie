@@ -20,7 +20,7 @@ const cvPath = getLocalizedPath('/cv', locale);
       <div class="lg:col-span-8 space-y-4">
         <div class="space-y-1.5">
           <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-status-success-bg text-status-success border border-status-success/30">
-            <span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+            <span class="w-2 h-2 rounded-full bg-status-success motion-safe:animate-pulse"></span>
             <span>{profile.contact.availability}</span>
           </div>
           <h1 id="hero-title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-content-primary">
@@ -57,7 +57,7 @@ const cvPath = getLocalizedPath('/cv', locale);
           <button
             type="button"
             data-print
-            class="inline-flex items-center gap-2 px-4 py-2 rounded font-medium text-sm bg-surface-2 hover:bg-surface-3 text-content-primary border border-border-subtle transition cursor-pointer focus-visible:outline-2 focus-visible:outline-border-focus"
+            class="js-only inline-flex items-center gap-2 px-4 py-2 rounded font-medium text-sm bg-surface-2 hover:bg-surface-3 text-content-primary border border-border-subtle transition cursor-pointer focus-visible:outline-2 focus-visible:outline-border-focus"
           >
             <span>{t('cta.print')}</span>
           </button>

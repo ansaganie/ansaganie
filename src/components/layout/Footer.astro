@@ -31,22 +31,12 @@ const year = new Date().getFullYear();
       >
         LinkedIn
       </a>
-      <button
-        type="button"
-        id="back-to-top"
-        class="hover:text-content-primary transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-border-focus"
+      <a
+        href="#top"
+        class="hover:text-content-primary transition-colors focus-visible:outline-2 focus-visible:outline-border-focus"
       >
-        ↑ {t('cta.backToTop')}
-      </button>
+        <span aria-hidden="true">↑</span> {t('cta.backToTop')}
+      </a>
     </div>
   </div>
 </footer>
-
-<script is:inline>
-  const backToTopBtn = document.getElementById('back-to-top');
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-</script>

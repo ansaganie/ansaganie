@@ -21,3 +21,4 @@ Thumbs.db
 scratch/
 .agents/
 source/
+.playwright-mcp

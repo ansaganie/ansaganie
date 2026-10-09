@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config '../../tailwind.config.mjs';
+
+/* Hand-written base and component rules below sit in Tailwind's cascade layers
+   so utility classes still override them, as in Tailwind 3. Unlayered CSS would
+   beat every utility. */
 
 /* ==========================================================================
    DESIGN TOKENS & SURFACE ELEVATION (WCAG 2.1 AAA / AA CERTIFIED)
@@ -47,7 +50,7 @@
 
   /* Fonts */
   --font-sans: 'Inter', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-serif: 'Source Serif 4', Georgia, serif;
 
   /* Typography metrics */
@@ -55,7 +58,12 @@
   --tracking-normal: -0.011em;
 }
 
+html.light {
+  color-scheme: light;
+}
+
 html.dark {
+  color-scheme: dark;
   --color-bg-canvas: #0b0f19;
   --color-surface-1: #111622;
   --color-surface-2: #1a2233;
@@ -127,94 +135,127 @@ html.dark {
    BASE & RESET STYLES
    ========================================================================== */
 
-html {
-  font-family: var(--font-sans);
-  background-color: var(--color-bg-canvas);
-  color: var(--color-text-primary);
-  font-size-adjust: from-font;
-  scroll-behavior: smooth;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  /* Tailwind 3 preflight defaults that Tailwind 4 dropped: a grey default
+     border colour (v4 uses currentColor) and a pointer cursor on buttons. */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    font-size-adjust: from-font;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-canvas);
+    color: var(--color-text-secondary);
+    line-height: var(--lh-body);
+    letter-spacing: var(--tracking-normal);
+  }
+
+  /* Focus indicator */
+  :focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  /* ==========================================================================
+     LOCALE MICRO-TYPOGRAPHY OPTICAL COMPENSATION
+     ========================================================================== */
+
+  :lang(ru),
+  :lang(kk),
+  html[lang='ru'],
+  html[lang='kk'] {
+    --lh-body: 1.62;
+    --tracking-normal: 0.005em;
+    hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+  }
+
+  :lang(kk) .tag-pill,
+  :lang(kk) .badge,
+  :lang(kk) .btn {
+    padding-block-end: calc(0.25rem + 1.5px);
+  }
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-bg-canvas);
-  color: var(--color-text-secondary);
-  line-height: var(--lh-body);
-  letter-spacing: var(--tracking-normal);
-}
-
-/* ==========================================================================
-   LOCALE MICRO-TYPOGRAPHY OPTICAL COMPENSATION
-   ========================================================================== */
-
-:lang(ru), :lang(kk), html[lang="ru"], html[lang="kk"] {
-  --lh-body: 1.62;
-  --tracking-normal: 0.005em;
-  hyphens: auto;
-  hyphenate-limit-chars: 6 3 3;
-}
-
-:lang(kk) .tag-pill,
-:lang(kk) .badge,
-:lang(kk) .btn {
-  padding-block-end: calc(0.25rem + 1.5px);
+/* Controls that only work with scripts (print, theme toggle) stay hidden
+   until the theme init script in BaseLayout marks <html class="js">. */
+html:not(.js) .js-only {
+  display: none !important;
 }
 
 /* ==========================================================================
    6-TIER CSS LAYOUT ELASTICITY RULES
    ========================================================================== */
 
-.elastic-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 1rem;
-  align-items: stretch;
-}
-
-.metric-card-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 1rem;
-}
-
-.elastic-flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.5rem 1rem;
-}
-
-.elastic-flex-item-title {
-  flex: 1 1 260px;
-  min-inline-size: 0;
-}
-
-.elastic-flex-item-meta {
-  flex: 0 0 auto;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
-.card-container {
-  container-type: inline-size;
-  container-name: cv-card;
-}
-
-@container cv-card (inline-size < 340px) {
-  .elastic-flex-row {
-    flex-direction: column;
-    align-items: flex-start;
+@layer components {
+  .elastic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1rem;
+    align-items: stretch;
   }
-}
 
-/* Focus indicator */
-:focus-visible {
-  outline: 2px solid var(--color-border-focus);
-  outline-offset: 2px;
+  .metric-card-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 1rem;
+  }
+
+  .elastic-flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+  }
+
+  .elastic-flex-item-title {
+    flex: 1 1 260px;
+    min-inline-size: 0;
+  }
+
+  .elastic-flex-item-meta {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card-container {
+    container-type: inline-size;
+    container-name: cv-card;
+  }
+
+  @container cv-card (inline-size < 340px) {
+    .elastic-flex-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 }
