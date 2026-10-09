@@ -2,6 +2,7 @@
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { getLocaleFromUrl, getLocalizedPath, useTranslations, getPdfCvFilename, getPdfCvPath } from '../../utils/i18n';
+import { getCandidateProfile } from '../../utils/data';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
@@ -11,6 +12,7 @@ const homePath = getLocalizedPath('/', locale);
 const cvPath = getLocalizedPath('/cv', locale);
 const pdfFilename = getPdfCvFilename(locale);
 const pdfHref = getPdfCvPath(locale);
+const availability = getCandidateProfile(locale).contact.availability;
 
 const isHome = currentPath === homePath || currentPath === `${homePath}/`;
 const isCv = currentPath === cvPath || currentPath === `${cvPath}/`;
@@ -23,7 +25,7 @@ const isCv = currentPath === cvPath || currentPath === `${cvPath}/`;
       href={homePath}
       class="flex items-center gap-2 group text-content-primary font-semibold text-sm tracking-tight focus-visible:outline-2 focus-visible:outline-border-focus"
     >
-      <span class="w-2.5 h-2.5 rounded-full bg-status-success motion-safe:animate-pulse" title={t('meta.availability')}></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-status-success motion-safe:animate-pulse" title={availability}></span>
       <span class="group-hover:text-brand transition-colors">{t('site.name')}</span>
     </a>
 

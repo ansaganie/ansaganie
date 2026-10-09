@@ -3,7 +3,7 @@
 Part of [Wayfinder Map](../MAP.md)
 
 - **Type**: wayfinder:task (AFK)
-- **Status**: open
+- **Status**: in progress
 - **Assignee**: unassigned
 - **Blocked by**: #0013
 
@@ -20,3 +20,18 @@ Apply the audit's [R-M3](../../research/portfolio-ux-seo-audit.md#medium-effort-
 Absolute URLs come from `Astro.site`, so this does not wait for hosting.
 
 Done when the Rich Results Test (code input) shows one Person and a valid ProfilePage for each locale.
+
+## Progress
+
+These parts are done as the #0013 review follow-up, in `BaseLayout.astro`:
+
+- `Person.name` comes from the `en` profile, which gives "Ansagan Islamgaliev".
+- `alternateName` holds the five D8 spellings.
+- `jobTitle` is localized from `profile.title`.
+- `email`, `telephone`, `sameAs` and `address` come from `contact`. The address resolves to Astana, Kazakhstan.
+
+Still to do:
+
+- `ProfilePage.mainEntity` and `dateModified`.
+- The `<body>` microdata.
+- The Rich Results Test check.

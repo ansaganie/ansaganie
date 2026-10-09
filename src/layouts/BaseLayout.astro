@@ -2,6 +2,7 @@
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import { LOCALES, DEFAULT_LOCALE, getLocaleFromUrl, getLocalizedPath, useTranslations, type Locale } from '../utils/i18n';
+import { getCandidateProfile } from '../utils/data';
 import '../styles/global.css';
 import '../styles/print.css';
 
@@ -16,6 +17,12 @@ const t = useTranslations(currentLocale);
 
 const pageTitle = Astro.props.title || t('site.title');
 const pageDescription = Astro.props.description || t('site.description');
+
+// Identity comes from the CV data so metadata can't drift from the visible page.
+// The Latin name is canonical on every locale (D4); jobTitle follows the page locale.
+const profile = getCandidateProfile(currentLocale);
+const canonical = getCandidateProfile(DEFAULT_LOCALE);
+const [addressLocality, addressCountry] = canonical.contact.location.split(', ');
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://ansaganie.github.io';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
@@ -33,21 +40,24 @@ const jsonLd = {
     {
       '@type': 'Person',
       '@id': `${siteUrl}/#person`,
-      name: 'Angsagan Islyamgaliyev',
-      alternateName: 'Аңсаған Ислямғалиев',
-      jobTitle: 'Senior Full-Stack .NET & React Engineer',
-      url: siteUrl,
-      email: 'mailto:ansaganie@hotmail.com',
-      telephone: '+77001002400',
-      sameAs: [
-        'https://github.com/ansaganie',
-        'https://linkedin.com/in/ansaganie',
-        'https://t.me/ansaganie',
+      name: canonical.name,
+      // Former and Cyrillic spellings (D4, D8)
+      alternateName: [
+        'Angsagan Islyamgaliyev',
+        'Ansagan Islamgali',
+        'Ансаган Исламгалиев',
+        'Аңсаған Исламғалиев',
+        'Аңсаған Ислямғалиев',
       ],
+      jobTitle: profile.title,
+      url: siteUrl,
+      email: `mailto:${canonical.contact.email}`,
+      telephone: canonical.contact.phone,
+      sameAs: [canonical.contact.github, canonical.contact.linkedin, canonical.contact.telegram],
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Atyrau',
-        addressCountry: 'Kazakhstan',
+        addressLocality,
+        addressCountry,
       },
       knowsLanguage: ['en', 'ru', 'kk'],
       alumniOf: [
@@ -61,7 +71,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
-      name: 'Angsagan Islyamgaliyev Portfolio & Live CV',
+      name: `${canonical.name} — Portfolio & Live CV`,
       publisher: {
         '@id': `${siteUrl}/#person`,
       },
@@ -94,7 +104,7 @@ const jsonLd = {
     <!-- SEO & Metadata -->
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <meta name="author" content="Angsagan Islyamgaliyev" />
+    <meta name="author" content={canonical.name} />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Multilingual Hreflang alternates -->
@@ -106,7 +116,7 @@ const jsonLd = {
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:site_name" content="Angsagan Islyamgaliyev Live CV" />
+    <meta property="og:site_name" content={t('site.name')} />
     <meta property="og:locale" content={currentLocale === 'en' ? 'en_US' : currentLocale === 'ru' ? 'ru_RU' : 'kk_KZ'} />
 
     <!-- Twitter Card -->

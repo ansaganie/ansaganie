@@ -39,3 +39,16 @@ Applied all low-effort copy and content changes across EN, RU, and KK profiles a
   - Suppressed `.certs-list a::after` URL expansion in `print.css` to prevent certificate link overflow.
   - Verified print budget with headless Chrome: Overview fits 1 page and CV fits 2 pages across all three locales (`en`, `ru`, `kk`).
 
+
+## Review follow-up (2026-10-10)
+
+The ultrareview of this ticket's commit found three gaps:
+
+- Stale PDFs. #0014 already fixed this.
+- The old name and Atyrau were still hardcoded in `BaseLayout.astro`.
+- `meta.availability` in `i18n.ts` repeated `contact.availability`.
+
+Fixed:
+
+- JSON-LD `Person` (name, contact, address), `WebSite.name`, `meta[name=author]` and `og:site_name` now come from `getCandidateProfile()`. The rest of the JSON-LD rebuild stays in #0015.
+- The header status-dot tooltip reads `profile.contact.availability`. The duplicate UI strings are deleted.
