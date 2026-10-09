@@ -54,6 +54,7 @@ const jsonLd = {
       email: `mailto:${canonical.contact.email}`,
       telephone: canonical.contact.phone,
       sameAs: [canonical.contact.github, canonical.contact.linkedin, canonical.contact.telegram],
+      knowsAbout: profile.skills.primary,
       address: {
         '@type': 'PostalAddress',
         addressLocality,
@@ -85,9 +86,10 @@ const jsonLd = {
       isPartOf: {
         '@id': `${siteUrl}/#website`,
       },
-      about: {
+      mainEntity: {
         '@id': `${siteUrl}/#person`,
       },
+      dateModified: '2026-10-10',
       inLanguage: currentLocale,
     },
   ],
@@ -154,7 +156,7 @@ const jsonLd = {
     </script>
   </head>
 
-  <body itemscope itemtype="https://schema.org/Person" class="min-h-screen flex flex-col bg-canvas text-content-primary">
+  <body class="min-h-screen flex flex-col bg-canvas text-content-primary">
     <a
       href="#main"
       class="no-print sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:rounded focus:bg-surface-1 focus:text-content-primary focus:border focus:border-border-focus focus:text-sm focus:font-medium"
