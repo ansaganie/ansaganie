@@ -31,6 +31,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [Make a clean `npm ci` pass](tickets/0010-fix-clean-install.md): migrated to Tailwind 4 via `@tailwindcss/vite` (the deprecated integration is gone). A clean `npm ci`, check and build pass with no flags, and `npm audit` reports 0 vulnerabilities. Print layout is identical and screen within 2 px of Tailwind 3, apart from three classes that now work as authored.
 - [Apply audit copy changes](tickets/0013-apply-audit-copy-changes.md): Applied recommendations R-L2 through R-L17 and owner decisions D1–D14 across EN, RU, and KK profiles and UI strings. Canonical spelling "Ansagan Islamgaliev" set everywhere; time/speed claims removed; metrics renamed to Highlights; titles aligned to "Senior Full-Stack Developer"; real LinkedIn credential IDs and verification URLs linked; single canonical availability string and Astana location set; footer updated with profile date; print budget verified at 1 page Overview and 2 pages CV per locale. Review follow-up: head metadata (JSON-LD `Person`, author, `og:site_name`) and the header availability tooltip now read from `getCandidateProfile()` instead of hardcoded copies.
 - [Build the PDF CV](tickets/0014-build-pdf-cv.md): Prebuilt static ATS-compliant 2-page A4 PDFs generated into `public/cv/` with canonical spelling (`Ansagan_Islamgaliev_CV*.pdf`) via Headless Chrome print emulation (`npm run generate:pdf`); header download action enabled on mobile below 640 px; direct `<a download>` links active across Header, Overview, and CV; legacy PDFs removed.
+- [Overview visual pass](tickets/0016-overview-visual-pass.md): Overview reordered to Hero -> Projects -> Highlights -> Tech stack with `id="projects"` and Header nav link; pulsing dots and template badges/chips removed; competencies compressed to one line per group; typography upgraded to 14px body, 12px tags, and primary-weight section headings; verified no horizontal scroll at 320/375/1440px and print budget preserved (1 page Overview, 2 pages CV).
 
 ## Tickets
 
@@ -49,7 +50,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Apply audit copy changes](tickets/0013-apply-audit-copy-changes.md) (`wayfinder:task`, AFK)
 - [x] [Build the PDF CV](tickets/0014-build-pdf-cv.md) (`wayfinder:task`, AFK)
 - [ ] [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md) (`wayfinder:task`, AFK). **Frontier** (in progress: `Person` fields done; `mainEntity`, `dateModified`, microdata left)
-- [ ] [Overview visual pass](tickets/0016-overview-visual-pass.md) (`wayfinder:task`, AFK). **Frontier**
+- [x] [Overview visual pass](tickets/0016-overview-visual-pass.md) (`wayfinder:task`, AFK)
 - [ ] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL). Blocked by: Set up deployment workflow, SEO launch basics
 - [ ] [New content grilling](tickets/0018-content-grilling.md) (`wayfinder:grilling`, HITL). Deferred (audit D5)
 
