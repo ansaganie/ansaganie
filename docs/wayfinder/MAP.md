@@ -29,8 +29,8 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [Portfolio audit](../research/portfolio-ux-seo-audit.md) (2026-10-10), plus the owner decisions D1–D11 recorded in it: the audience is foreign employers in any industry, for remote roles only. The name is "Ansagan Islamgaliev", with no time figures in claims, Credential Links from LinkedIn, the phone number kept and the location set to Astana. Case studies are deferred.
 - [Confirm published personal data](tickets/0009-confirm-published-personal-data.md): all three items are answered by the audit decisions.
 - [Make a clean `npm ci` pass](tickets/0010-fix-clean-install.md): migrated to Tailwind 4 via `@tailwindcss/vite` (the deprecated integration is gone). A clean `npm ci`, check and build pass with no flags, and `npm audit` reports 0 vulnerabilities. Print layout is identical and screen within 2 px of Tailwind 3, apart from three classes that now work as authored.
-- [Prebuilt static PDF CV](../adr/0001-prebuilt-static-pdf-cv.md): Replaced `window.print()` print buttons across Header, Overview, and CV page with direct `<a download>` links delivering prebuilt, ATS-compliant 2-page A4 PDFs in `public/cv/` (`Ansagan_Islyamgaliyev_CV*.pdf`) generated via headless Chrome (`npm run generate:pdf`).
 - [Apply audit copy changes](tickets/0013-apply-audit-copy-changes.md): Applied recommendations R-L2 through R-L17 and owner decisions D1–D14 across EN, RU, and KK profiles and UI strings. Canonical spelling "Ansagan Islamgaliev" set everywhere; time/speed claims removed; metrics renamed to Highlights; titles aligned to "Senior Full-Stack Developer"; real LinkedIn credential IDs and verification URLs linked; single canonical availability string and Astana location set; footer updated with profile date; print budget verified at 1 page Overview and 2 pages CV per locale.
+- [Build the PDF CV](tickets/0014-build-pdf-cv.md): Prebuilt static ATS-compliant 2-page A4 PDFs generated into `public/cv/` with canonical spelling (`Ansagan_Islamgaliev_CV*.pdf`) via Headless Chrome print emulation (`npm run generate:pdf`); header download action enabled on mobile below 640 px; direct `<a download>` links active across Header, Overview, and CV; legacy PDFs removed.
 
 ## Tickets
 
@@ -47,7 +47,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Pre-launch UI fixes](tickets/0011-prelaunch-ui-fixes.md) (`wayfinder:task`, AFK)
 - [ ] [SEO launch basics](tickets/0012-seo-launch-basics.md) (`wayfinder:task`, AFK). Blocked by: Hosting topology
 - [x] [Apply audit copy changes](tickets/0013-apply-audit-copy-changes.md) (`wayfinder:task`, AFK)
-- [ ] [Build the PDF CV](tickets/0014-build-pdf-cv.md) (`wayfinder:task`, AFK). **Frontier**
+- [x] [Build the PDF CV](tickets/0014-build-pdf-cv.md) (`wayfinder:task`, AFK)
 - [ ] [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md) (`wayfinder:task`, AFK). **Frontier**
 - [ ] [Overview visual pass](tickets/0016-overview-visual-pass.md) (`wayfinder:task`, AFK). **Frontier**
 - [ ] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL). Blocked by: Set up deployment workflow, SEO launch basics

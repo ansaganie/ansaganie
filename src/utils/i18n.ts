@@ -221,9 +221,9 @@ export function useTranslations(locale: Locale) {
  * Returns canonical PDF CV filename per locale
  */
 export function getPdfCvFilename(locale: Locale): string {
-  if (locale === 'ru') return 'Ansagan_Islyamgaliyev_CV_RU.pdf';
-  if (locale === 'kk') return 'Ansagan_Islyamgaliyev_CV_KK.pdf';
-  return 'Ansagan_Islyamgaliyev_CV.pdf';
+  if (locale === 'ru') return 'Ansagan_Islamgaliev_CV_RU.pdf';
+  if (locale === 'kk') return 'Ansagan_Islamgaliev_CV_KK.pdf';
+  return 'Ansagan_Islamgaliev_CV.pdf';
 }
 
 /**

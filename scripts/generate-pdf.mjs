@@ -58,15 +58,15 @@ function generatePdfs() {
   const targets = [
     {
       sourceHtml: path.join(distDir, 'cv', 'index.html'),
-      pdfName: 'Ansagan_Islyamgaliyev_CV.pdf',
+      pdfName: 'Ansagan_Islamgaliev_CV.pdf',
     },
     {
       sourceHtml: path.join(distDir, 'ru', 'cv', 'index.html'),
-      pdfName: 'Ansagan_Islyamgaliyev_CV_RU.pdf',
+      pdfName: 'Ansagan_Islamgaliev_CV_RU.pdf',
     },
     {
       sourceHtml: path.join(distDir, 'kk', 'cv', 'index.html'),
-      pdfName: 'Ansagan_Islyamgaliyev_CV_KK.pdf',
+      pdfName: 'Ansagan_Islamgaliev_CV_KK.pdf',
     },
   ];
 
