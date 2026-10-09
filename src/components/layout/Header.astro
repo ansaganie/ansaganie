@@ -42,7 +42,7 @@ const isCv = currentPath === cvPath || currentPath === `${cvPath}/`;
           {t('nav.overview')}
         </a>
         <a
-          href={`${homePath}#projects`}
+          href={isHome ? '#projects' : `${homePath}#projects`}
           class="px-2.5 py-1 rounded transition-colors text-content-secondary hover:text-content-primary hover:bg-surface-2"
         >
           {t('nav.projects')}

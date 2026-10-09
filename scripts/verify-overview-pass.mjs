@@ -56,12 +56,12 @@ test('Overview sections order is Hero -> Projects -> Highlights -> Tech stack', 
   // Find relative positions of sections in OverviewContent.astro
   const heroIndex = overviewContent.indexOf('hero-title');
   const projectsIndex = overviewContent.indexOf('projects-title');
-  const metricsIndex = overviewContent.indexOf('metrics-title');
+  const highlightsIndex = overviewContent.indexOf('highlights-title');
   const competenciesIndex = overviewContent.indexOf('competencies-title');
 
   assert(heroIndex !== -1, 'Hero section not found');
   assert(projectsIndex !== -1, 'Projects section not found');
-  assert(metricsIndex !== -1, 'Metrics/Highlights section not found');
+  assert(highlightsIndex !== -1, 'Highlights section not found');
   assert(competenciesIndex !== -1, 'Competencies/Tech stack section not found');
 
   assert(
@@ -69,12 +69,12 @@ test('Overview sections order is Hero -> Projects -> Highlights -> Tech stack', 
     `Hero (idx ${heroIndex}) must precede Projects (idx ${projectsIndex})`
   );
   assert(
-    projectsIndex < metricsIndex,
-    `Projects (idx ${projectsIndex}) must precede Highlights (idx ${metricsIndex})`
+    projectsIndex < highlightsIndex,
+    `Projects (idx ${projectsIndex}) must precede Highlights (idx ${highlightsIndex})`
   );
   assert(
-    metricsIndex < competenciesIndex,
-    `Highlights (idx ${metricsIndex}) must precede Tech stack (idx ${competenciesIndex})`
+    highlightsIndex < competenciesIndex,
+    `Highlights (idx ${highlightsIndex}) must precede Tech stack (idx ${competenciesIndex})`
   );
 });
 
@@ -179,7 +179,7 @@ if (fs.existsSync(distIndexPath)) {
   test('[Built HTML] Section order is Hero -> Projects -> Highlights -> Tech stack', () => {
     const heroPos = html.indexOf('hero-title');
     const projPos = html.indexOf('projects-title');
-    const highlightsPos = html.indexOf('metrics-title');
+    const highlightsPos = html.indexOf('highlights-title');
     const techPos = html.indexOf('competencies-title');
 
     assert(heroPos !== -1 && projPos !== -1 && highlightsPos !== -1 && techPos !== -1, 'Sections not found in built HTML');

@@ -161,16 +161,16 @@ const pdfHref = getPdfCvPath(locale);
   </section>
 
   <!-- Highlights (4 Cards) -->
-  <section aria-labelledby="metrics-title" class="space-y-4">
+  <section aria-labelledby="highlights-title" class="space-y-4">
     <div class="border-b border-border-hairline pb-2">
-      <h2 id="metrics-title" class="text-base font-semibold text-content-primary">
+      <h2 id="highlights-title" class="text-base font-semibold text-content-primary">
         {t('metrics.title')}
       </h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {profile.metrics.map((metric) => (
-        <div class="metric-card p-4 rounded-lg bg-surface-1 border border-border-subtle flex flex-col justify-between space-y-3 hover:border-brand/40 transition-colors shadow-xs">
+        <div class="highlight-card p-4 rounded-lg bg-surface-1 border border-border-subtle flex flex-col justify-between space-y-3 hover:border-brand/40 transition-colors shadow-xs">
           <div>
             <div class="text-base font-semibold text-content-primary">
               {metric.headline}

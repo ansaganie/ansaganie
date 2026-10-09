@@ -63,7 +63,7 @@ const pdfHref = getPdfCvPath(locale);
 
   <!-- Professional Summary -->
   <section class="resume-section space-y-2" aria-labelledby="summary-heading">
-    <h2 id="summary-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+    <h2 id="summary-heading" class="text-base font-semibold text-content-primary border-b border-border-hairline pb-1">
       {t('cv.summary')}
     </h2>
     <p class="text-sm text-content-secondary leading-relaxed" itemprop="description">
@@ -73,7 +73,7 @@ const pdfHref = getPdfCvPath(locale);
 
   <!-- Technical Skills (Categorized List, Zero Tables) -->
   <section class="resume-section space-y-2" aria-labelledby="skills-heading">
-    <h2 id="skills-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+    <h2 id="skills-heading" class="text-base font-semibold text-content-primary border-b border-border-hairline pb-1">
       {t('cv.skills')}
     </h2>
     <ul class="skills-list space-y-1.5 text-xs text-content-secondary">
@@ -94,7 +94,7 @@ const pdfHref = getPdfCvPath(locale);
 
   <!-- Work Experience Timeline -->
   <section class="resume-section space-y-6" aria-labelledby="experience-heading">
-    <h2 id="experience-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+    <h2 id="experience-heading" class="text-base font-semibold text-content-primary border-b border-border-hairline pb-1">
       {t('cv.experience')}
     </h2>
 
@@ -123,18 +123,18 @@ const pdfHref = getPdfCvPath(locale);
             <summary class="no-print text-xs font-mono text-content-tertiary cursor-pointer hover:text-brand mb-2 select-none">
               {t('cv.details')}
             </summary>
-            <div class="role-content space-y-3 text-xs text-content-secondary leading-relaxed">
+            <div class="role-content space-y-3 text-sm text-content-secondary leading-relaxed">
               <p class="role-overview text-content-secondary font-medium">
                 {role.summary}
               </p>
-              <ul class="achievement-bullets space-y-1.5 list-disc pl-4">
+              <ul class="achievement-bullets space-y-1.5 list-disc pl-4 text-sm text-content-secondary">
                 {role.achievements.map((ach) => (
                   <li>{ach}</li>
                 ))}
               </ul>
               <div class="role-tech flex flex-wrap gap-1 pt-2">
                 {role.technologies.map((tech) => (
-                  <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface-2 text-content-tertiary border border-border-hairline">
+                  <span class="text-xs font-mono px-1.5 py-0.5 rounded bg-surface-2 text-content-tertiary border border-border-hairline">
                     {tech}
                   </span>
                 ))}
@@ -148,7 +148,7 @@ const pdfHref = getPdfCvPath(locale);
 
   <!-- Honors & Corporate Awards -->
   <section class="resume-section space-y-3" aria-labelledby="honors-heading">
-    <h2 id="honors-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+    <h2 id="honors-heading" class="text-base font-semibold text-content-primary border-b border-border-hairline pb-1">
       {t('cv.honors')}
     </h2>
     <ul class="honors-list space-y-2 text-xs text-content-secondary">
@@ -167,7 +167,7 @@ const pdfHref = getPdfCvPath(locale);
 
   <!-- Industry Certifications -->
   <section class="resume-section space-y-3" aria-labelledby="certs-heading">
-    <h2 id="certs-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+    <h2 id="certs-heading" class="text-base font-semibold text-content-primary border-b border-border-hairline pb-1">
       {t('cv.certs')}
     </h2>
     <ul class="certs-list space-y-2 text-xs text-content-secondary">
@@ -199,7 +199,7 @@ const pdfHref = getPdfCvPath(locale);
 
   <!-- Education -->
   <section class="resume-section space-y-3" aria-labelledby="education-heading">
-    <h2 id="education-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+    <h2 id="education-heading" class="text-base font-semibold text-content-primary border-b border-border-hairline pb-1">
       {t('cv.education')}
     </h2>
     <div class="space-y-3">
@@ -225,7 +225,7 @@ const pdfHref = getPdfCvPath(locale);
 
   <!-- Languages -->
   <section class="resume-section space-y-2" aria-labelledby="languages-heading">
-    <h2 id="languages-heading" class="text-xs font-mono uppercase tracking-wider text-content-tertiary font-bold border-b border-border-hairline pb-1">
+    <h2 id="languages-heading" class="text-base font-semibold text-content-primary border-b border-border-hairline pb-1">
       {t('cv.languages')}
     </h2>
     <div class="flex flex-wrap gap-4 text-xs text-content-secondary">

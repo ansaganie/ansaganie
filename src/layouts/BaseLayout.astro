@@ -49,6 +49,7 @@ const jsonLd = {
         'Аңсаған Исламғалиев',
         'Аңсаған Ислямғалиев',
       ],
+      description: profile.summary,
       jobTitle: profile.title,
       url: siteUrl,
       email: `mailto:${canonical.contact.email}`,
@@ -72,7 +73,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
-      name: `${canonical.name} — Portfolio & Live CV`,
+      name: `${canonical.name} — Live CV`,
       publisher: {
         '@id': `${siteUrl}/#person`,
       },
@@ -89,7 +90,7 @@ const jsonLd = {
       mainEntity: {
         '@id': `${siteUrl}/#person`,
       },
-      dateModified: '2026-10-10',
+      dateModified: profile.updatedAt || '2026-10-10',
       inLanguage: currentLocale,
     },
   ],
