@@ -1,6 +1,6 @@
 ---
 import type { CandidateProfile } from '../../schemas/cv';
-import { useTranslations, type Locale } from '../../utils/i18n';
+import { useTranslations, type Locale, getPdfCvFilename, getPdfCvPath } from '../../utils/i18n';
 
 interface Props {
   profile: CandidateProfile;
@@ -9,6 +9,8 @@ interface Props {
 
 const { profile, locale } = Astro.props;
 const t = useTranslations(locale);
+const pdfFilename = getPdfCvFilename(locale);
+const pdfHref = getPdfCvPath(locale);
 ---
 
 <div class="space-y-10 max-w-4xl mx-auto">
@@ -24,17 +26,17 @@ const t = useTranslations(locale);
         </p>
       </div>
 
-      <!-- PDF Download Button (Hidden in Print) -->
-      <button
-        type="button"
-        onclick="window.print()"
-        class="no-print js-only self-start inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded border border-border-control bg-surface-2 hover:bg-surface-3 hover:border-brand text-content-primary transition shadow-xs cursor-pointer focus-visible:outline-2 focus-visible:outline-border-focus"
+      <!-- PDF Download Action (Hidden in Print) -->
+      <a
+        href={pdfHref}
+        download={pdfFilename}
+        class="no-print self-start inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded border border-border-control bg-surface-2 hover:bg-surface-3 hover:border-brand text-content-primary transition shadow-xs focus-visible:outline-2 focus-visible:outline-border-focus"
       >
         <svg class="w-3.5 h-3.5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
-        <span>{t('cta.print')}</span>
-      </button>
+        <span>{t('cta.downloadPdf')}</span>
+      </a>
     </div>
 
     <!-- Contact Info (Linearized for ATS Scrapers) -->

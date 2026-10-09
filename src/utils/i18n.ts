@@ -222,3 +222,20 @@ export function useTranslations(locale: Locale) {
     return dict[key] || UI_TRANSLATIONS[DEFAULT_LOCALE][key] || key;
   };
 }
+
+/**
+ * Returns canonical PDF CV filename per locale
+ */
+export function getPdfCvFilename(locale: Locale): string {
+  if (locale === 'ru') return 'Ansagan_Islyamgaliyev_CV_RU.pdf';
+  if (locale === 'kk') return 'Ansagan_Islyamgaliyev_CV_KK.pdf';
+  return 'Ansagan_Islyamgaliyev_CV.pdf';
+}
+
+/**
+ * Returns the public root-relative URL to the prebuilt PDF CV
+ */
+export function getPdfCvPath(locale: Locale): string {
+  return `/cv/${getPdfCvFilename(locale)}`;
+}
+
