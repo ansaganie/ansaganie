@@ -34,7 +34,9 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md): Completed R-M3 (§3.2 steps 3–4) in `BaseLayout.astro`. `ProfilePage` now links `mainEntity` to `#person` and includes `dateModified`. `Person` includes canonical name, 5 alternate names, localized title, Astana locality, phone, and `knowsAbout` skills. Removed legacy `itemscope` microdata from `<body>` so there is only one Person entity in structured data.
 - [Overview visual pass](tickets/0016-overview-visual-pass.md): Overview reordered to Hero -> Projects -> Highlights -> Tech stack with `id="projects"` and Header nav link; pulsing dots and template badges/chips removed; competencies compressed to one line per group; typography upgraded to 14px body, 12px tags, and primary-weight section headings; verified no horizontal scroll at 320/375/1440px and print budget preserved (1 page Overview, 2 pages CV).
 - [Hosting topology](tickets/0008-hosting-topology.md): Vercel only, at `ansaganie.vercel.app`, with no `base` and no GitHub Pages. GitHub Actions run all deploys: production on merge to `main` or manual dispatch, protected previews on PRs. Vercel's Git auto-deploy is off. [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md).
-- [Deno toolchain](../adr/0003-deno-toolchain.md) (ADR 0003): Deno replaces Node for install, check, build, dev, `generate:pdf` and the Vercel CLI in CI. `package.json` stays the manifest, `deno.lock` is the lockfile, and `.dvmrc` pins the version.
+- [Deno toolchain](../adr/0003-deno-toolchain.md) (ADR 0003): Deno replaces Node for install, check, build, dev and `generate:pdf`. `package.json` stays the manifest, `deno.lock` is the lockfile, and `.dvmrc` pins the version. The Vercel CLI runs on Node 24 in CI, because `vercel deploy` hung under Deno.
+- [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md): live at `https://ansaganie.vercel.app` since 2026-10-10 (PR #2). `.github/workflows/deploy.yml` checks and builds with Deno, deploys with the Vercel CLI, posts a preview comment on PRs and deploys production on push to `main`. A manual run deploys only from `main`, and the job times out after 15 minutes. Vercel assigned the project's first deployment, a PR build, to production. All six pages, the README links and the PDFs passed a Playwright check on production.
+- [SEO launch basics](tickets/0012-seo-launch-basics.md): every URL ends in a slash (`trailingSlash` in Astro and Vercel), and nav, switcher, canonical, hreflang and the sitemap come from one `astro:i18n`-based helper. Added `@astrojs/sitemap` with i18n, `robots.txt`, a trilingual noindex 404, favicon SVG/ICO/touch icon, and a 1200×630 English `og:image` with `summary_large_image` and `og:locale:alternate`, rendered by `deno task generate:images`. On branch `feat/0012-seo-launch-basics`; production check after merge.
 
 ## Tickets
 
@@ -44,17 +46,17 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Scaffold Astro project](tickets/0004-scaffold-astro-project.md) (`wayfinder:task`, AFK)
 - [x] [Implement pages and PDF](tickets/0005-implement-pages-and-pdf.md) (`wayfinder:task`, AFK)
 - [x] [Update GitHub profile README](tickets/0006-update-github-profile-readme.md) (`wayfinder:task`, AFK)
-- [ ] [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md) (`wayfinder:task`, HITL account steps + AFK workflow). **Claimed**: workflow built and secrets set, waiting on a test PR and the first merge to `main`
+- [x] [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md) (`wayfinder:task`, HITL account steps + AFK workflow)
 - [x] [Hosting topology](tickets/0008-hosting-topology.md) (`wayfinder:grilling`, HITL)
 - [x] [Confirm published personal data](tickets/0009-confirm-published-personal-data.md) (`wayfinder:grilling`, HITL)
 - [x] [Make a clean `npm ci` pass](tickets/0010-fix-clean-install.md) (`wayfinder:task`, AFK)
 - [x] [Pre-launch UI fixes](tickets/0011-prelaunch-ui-fixes.md) (`wayfinder:task`, AFK)
-- [ ] [SEO launch basics](tickets/0012-seo-launch-basics.md) (`wayfinder:task`, AFK). **Frontier**
+- [x] [SEO launch basics](tickets/0012-seo-launch-basics.md) (`wayfinder:task`, AFK)
 - [x] [Apply audit copy changes](tickets/0013-apply-audit-copy-changes.md) (`wayfinder:task`, AFK)
 - [x] [Build the PDF CV](tickets/0014-build-pdf-cv.md) (`wayfinder:task`, AFK)
 - [x] [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md) (`wayfinder:task`, AFK)
 - [x] [Overview visual pass](tickets/0016-overview-visual-pass.md) (`wayfinder:task`, AFK)
-- [ ] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL). Blocked by: Set up deployment workflow, SEO launch basics
+- [ ] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL). **Frontier** (once the SEO launch basics branch is live on production)
 - [ ] [New content grilling](tickets/0018-content-grilling.md) (`wayfinder:grilling`, HITL). Deferred (audit D5)
 
 ## Not yet specified

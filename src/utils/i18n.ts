@@ -1,3 +1,5 @@
+import { getAbsoluteLocaleUrl, getRelativeLocaleUrl } from 'astro:i18n';
+
 export const LOCALES = ['en', 'ru', 'kk'] as const;
 export type Locale = (typeof LOCALES)[number];
 
@@ -64,6 +66,8 @@ export const UI_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     'cv.verify': 'Verify',
     'cv.education': 'Education & Formal Qualifications',
     'cv.languages': 'Languages',
+    'notFound.title': 'Page not found',
+    'notFound.body': 'This page does not exist or has moved.',
   },
   ru: {
     'site.title': 'Ансаган Исламгалиев — Ведущий Full-Stack разработчик (.NET / React)',
@@ -113,6 +117,8 @@ export const UI_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     'cv.verify': 'Проверить',
     'cv.education': 'Образование и квалификации',
     'cv.languages': 'Языки',
+    'notFound.title': 'Страница не найдена',
+    'notFound.body': 'Такой страницы нет, или она была перемещена.',
   },
   kk: {
     'site.title': 'Аңсаған Исламғалиев — Жоғары санатты Full-Stack әзірлеуші (.NET / React)',
@@ -162,6 +168,8 @@ export const UI_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     'cv.verify': 'Тексеру',
     'cv.education': 'Білім және біліктіліктер',
     'cv.languages': 'Тілдер',
+    'notFound.title': 'Бет табылмады',
+    'notFound.body': 'Мұндай бет жоқ немесе басқа мекенжайға көшірілген.',
   },
 };
 
@@ -178,33 +186,35 @@ export function getLocaleFromUrl(url: URL | string): Locale {
 }
 
 /**
- * Strips locale prefix from a pathname
- * e.g., "/ru/cv" -> "/cv", "/kk" -> "/"
+ * Strips the base and locale prefix from a pathname, leaving the page path
+ * e.g., "/ru/cv/" -> "cv", "/kk/" -> "", "/cv/" -> "cv"
  */
-export function stripLocaleFromPath(pathname: string): string {
-  const segments = pathname.split('/').filter(Boolean);
+function getPagePath(pathname: string): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const withoutBase = base && pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
+  const segments = withoutBase.split('/').filter(Boolean);
   if (segments.length > 0 && (LOCALES as readonly string[]).includes(segments[0])) {
     segments.shift();
   }
-  const clean = '/' + segments.join('/');
-  return clean === '' ? '/' : clean;
+  return segments.join('/');
 }
 
 /**
- * Formats route-preserving localized path
- * e.g., getLocalizedPath("/cv", "ru") -> "/ru/cv"
- * getLocalizedPath("/ru/cv", "en") -> "/cv"
- * getLocalizedPath("/ru/cv", "kk") -> "/kk/cv"
+ * Route-preserving root-relative URL of the same page in another locale.
+ * Astro's i18n helper applies `base` and `trailingSlash`, so links match the canonical URL exactly.
+ * e.g., getLocalizedPath("/cv/", "ru") -> "/ru/cv/"
+ * getLocalizedPath("/ru/cv/", "en") -> "/cv/"
+ * getLocalizedPath("/kk/", "en") -> "/"
  */
 export function getLocalizedPath(pathname: string, targetLocale: Locale): string {
-  const cleanPath = stripLocaleFromPath(pathname);
-  if (targetLocale === DEFAULT_LOCALE) {
-    return cleanPath;
-  }
-  if (cleanPath === '/') {
-    return `/${targetLocale}`;
-  }
-  return `/${targetLocale}${cleanPath}`;
+  return getRelativeLocaleUrl(targetLocale, getPagePath(pathname));
+}
+
+/**
+ * Absolute form of getLocalizedPath on `site`, for canonical, hreflang and og:url.
+ */
+export function getLocalizedUrl(pathname: string, targetLocale: Locale): string {
+  return getAbsoluteLocaleUrl(targetLocale, getPagePath(pathname));
 }
 
 /**

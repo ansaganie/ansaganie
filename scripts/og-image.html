@@ -1,0 +1,94 @@
+<!doctype html>
+<!-- Source of public/og-image.png. scripts/generate-images.mjs fills the {{placeholders}} from src/data/cv-en.json. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=JetBrains+Mono:wght@500&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 72px 80px 64px;
+        background: #f8fafc;
+        border-left: 16px solid #0369a1;
+        color: #0f172a;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.011em;
+      }
+      .mark {
+        width: 64px;
+        height: 64px;
+      }
+      h1 {
+        font-size: 80px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+      .title {
+        margin-top: 16px;
+        font-size: 40px;
+        font-weight: 600;
+        color: #0369a1;
+      }
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 36px;
+      }
+      .stack span {
+        padding: 6px 12px;
+        border: 2px solid #cbd5e1;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #334155;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 32px;
+        font-size: 22px;
+        font-weight: 500;
+        color: #334155;
+        white-space: nowrap;
+      }
+      .url {
+        font-family: 'JetBrains Mono', monospace;
+        color: #0f172a;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img class="mark" src="{{favicon}}" alt="" />
+    </div>
+    <main>
+      <h1>{{name}}</h1>
+      <p class="title">{{title}}</p>
+      <div class="stack">{{stack}}</div>
+    </main>
+    <footer>
+      <span class="url">{{host}}</span>
+      <span>{{availability}}</span>
+    </footer>
+  </body>
+</html>

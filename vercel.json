@@ -3,6 +3,7 @@
   "framework": "astro",
   "installCommand": "deno install --frozen",
   "buildCommand": "deno task build",
+  "trailingSlash": true,
   "git": {
     "deploymentEnabled": false
   }
