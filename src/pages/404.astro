@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LOCALES, getLocalizedPath, useTranslations } from '../utils/i18n';
+
+// One 404.html serves every locale, so the message is shown in all three.
+const messages = LOCALES.map((locale) => {
+  const t = useTranslations(locale);
+  return {
+    locale,
+    title: t('notFound.title'),
+    body: t('notFound.body'),
+    links: [
+      { href: getLocalizedPath('/', locale), label: t('nav.overview') },
+      { href: getLocalizedPath('/cv', locale), label: t('nav.cv') },
+    ],
+  };
+});
+---
+
+<BaseLayout locale="en" title={`404 — ${messages[0].title}`} description={messages[0].body} notFound>
+  <section class="card-container max-w-2xl mx-auto space-y-8" aria-labelledby="not-found-title">
+    <p class="font-mono text-sm font-semibold text-brand">404</p>
+    {
+      messages.map((message, idx) => (
+        <div lang={message.locale} class="space-y-2">
+          {idx === 0 ? (
+            <h1 id="not-found-title" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-content-primary">
+              {message.title}
+            </h1>
+          ) : (
+            <h2 class="text-xl font-bold tracking-tight text-content-primary">{message.title}</h2>
+          )}
+          <p class="text-content-secondary">{message.body}</p>
+          <p class="flex flex-wrap gap-4 text-sm font-medium">
+            {message.links.map((link) => (
+              <a
+                href={link.href}
+                class="text-brand hover:underline focus-visible:outline-2 focus-visible:outline-border-focus"
+              >
+                {link.label}
+              </a>
+            ))}
+          </p>
+        </div>
+      ))
+    }
+  </section>
+</BaseLayout>

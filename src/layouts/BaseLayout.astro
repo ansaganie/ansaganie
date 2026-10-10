@@ -1,7 +1,7 @@
 ---
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import { LOCALES, DEFAULT_LOCALE, getLocaleFromUrl, getLocalizedPath, useTranslations, type Locale } from '../utils/i18n';
+import { LOCALES, DEFAULT_LOCALE, getLocaleFromUrl, getLocalizedUrl, useTranslations, type Locale } from '../utils/i18n';
 import { getCandidateProfile } from '../utils/data';
 import '../styles/global.css';
 import '../styles/print.css';
@@ -10,8 +10,11 @@ interface Props {
   title?: string;
   description?: string;
   locale?: Locale;
+  /** The 404 page: noindex, and no canonical, hreflang or structured data. */
+  notFound?: boolean;
 }
 
+const { notFound = false } = Astro.props;
 const currentLocale = Astro.props.locale || getLocaleFromUrl(Astro.url);
 const t = useTranslations(currentLocale);
 
@@ -25,14 +28,19 @@ const canonical = getCandidateProfile(DEFAULT_LOCALE);
 const [addressLocality, addressCountry] = canonical.contact.location.split(', ');
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://ansaganie.vercel.app';
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
-// Alternate hreflang links
+// Canonical, hreflang and og:url come from one helper, so they match exactly.
+const canonicalUrl = getLocalizedUrl(Astro.url.pathname, currentLocale);
 const alternateUrls = LOCALES.map((loc) => ({
   locale: loc,
-  href: new URL(getLocalizedPath(Astro.url.pathname, loc), siteUrl).toString(),
+  href: getLocalizedUrl(Astro.url.pathname, loc),
 }));
-const defaultHref = new URL(getLocalizedPath(Astro.url.pathname, DEFAULT_LOCALE), siteUrl).toString();
+const defaultHref = getLocalizedUrl(Astro.url.pathname, DEFAULT_LOCALE);
+
+const OG_LOCALES: Record<Locale, string> = { en: 'en_US', ru: 'ru_RU', kk: 'kk_KZ' };
+// One English share card for every locale; the Latin name is canonical everywhere (D4).
+const ogImageUrl = new URL('/og-image.png', siteUrl).toString();
+const ogImageAlt = `${canonical.name} — ${canonical.title}`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -108,24 +116,40 @@ const jsonLd = {
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta name="author" content={canonical.name} />
-    <link rel="canonical" href={canonicalUrl} />
+    {notFound && <meta name="robots" content="noindex" />}
+    {!notFound && <link rel="canonical" href={canonicalUrl} />}
 
     <!-- Multilingual Hreflang alternates -->
-    {alternateUrls.map((item) => <link rel="alternate" hreflang={item.locale} href={item.href} />)}
-    <link rel="alternate" hreflang="x-default" href={defaultHref} />
+    {!notFound && alternateUrls.map((item) => <link rel="alternate" hreflang={item.locale} href={item.href} />)}
+    {!notFound && <link rel="alternate" hreflang="x-default" href={defaultHref} />}
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="profile" />
-    <meta property="og:url" content={canonicalUrl} />
+    {!notFound && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:site_name" content={t('site.name')} />
-    <meta property="og:locale" content={currentLocale === 'en' ? 'en_US' : currentLocale === 'ru' ? 'ru_RU' : 'kk_KZ'} />
+    <meta property="og:locale" content={OG_LOCALES[currentLocale]} />
+    {LOCALES.filter((loc) => loc !== currentLocale).map((loc) => <meta property="og:locale:alternate" content={OG_LOCALES[loc]} />)}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <!-- Typography: Google Fonts with Mandatory cyrillic & cyrillic-ext Subsets -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -136,7 +160,7 @@ const jsonLd = {
     />
 
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {!notFound && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <!-- Inline theme init to prevent a flash of the wrong theme. Sets exactly one of
          .dark / .light so the OS-preference fallback in global.css (:root:not(.light))
@@ -166,7 +190,7 @@ const jsonLd = {
     </a>
 
     <!-- Header Navigation -->
-    <Header />
+    <Header notFound={notFound} />
 
     <!-- Main Content Area -->
     <main id="main" tabindex="-1" class="flex-1 focus:outline-none w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">

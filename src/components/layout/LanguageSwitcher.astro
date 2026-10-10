@@ -1,8 +1,13 @@
 ---
 import { LOCALES, LOCALE_LABELS, LOCALE_NAMES, getLocaleFromUrl, getLocalizedPath } from '../../utils/i18n';
 
+interface Props {
+  /** The page the switcher links between locales. The 404 page passes `/` so each locale links home. */
+  path?: string;
+}
+
 const currentLocale = getLocaleFromUrl(Astro.url);
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.props.path ?? Astro.url.pathname;
 ---
 
 <nav class="lang-switcher" aria-label="Language Selector">

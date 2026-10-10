@@ -3,6 +3,11 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { getLocaleFromUrl, getLocalizedPath, useTranslations, getPdfCvFilename, getPdfCvPath } from '../../utils/i18n';
 
+interface Props {
+  notFound?: boolean;
+}
+
+const { notFound = false } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
@@ -12,8 +17,8 @@ const cvPath = getLocalizedPath('/cv', locale);
 const pdfFilename = getPdfCvFilename(locale);
 const pdfHref = getPdfCvPath(locale);
 
-const isHome = currentPath === homePath || currentPath === `${homePath}/`;
-const isCv = currentPath === cvPath || currentPath === `${cvPath}/`;
+const isHome = currentPath === homePath;
+const isCv = currentPath === cvPath;
 ---
 
 <header class="site-header no-print sm:sticky top-0 z-40 w-full border-b border-border-hairline bg-canvas/90 backdrop-blur-md transition-colors">
@@ -78,7 +83,7 @@ const isCv = currentPath === cvPath || currentPath === `${cvPath}/`;
 
       <!-- Language selector and theme toggle wrap together on narrow screens -->
       <div class="flex items-center gap-2 sm:gap-4">
-        <LanguageSwitcher />
+        <LanguageSwitcher path={notFound ? '/' : currentPath} />
         <ThemeToggle />
       </div>
     </div>

@@ -3,7 +3,7 @@
 Part of [Wayfinder Map](../MAP.md)
 
 - **Type**: wayfinder:task (HITL for the account steps, AFK for the workflow)
-- **Status**: in progress
+- **Status**: completed
 - **Assignee**: Ansagan Islamgali (Claude session)
 - **Blocked by**: none (#0005, #0008, #0009, #0010 are closed)
 
@@ -48,7 +48,13 @@ Done:
 - [x] Pre-push review: the pinned actions (`checkout@v7`, `setup-deno@v2` with `deno-version-file`/`cache`, `github-script@v9`) and Deno 2.9.7 for Linux all exist. `deno.lock` has the linux-x64 native bindings, and a clean copy passes `deno install --frozen`. Running `npm:vercel@63` leaves the lockfile untouched, so the second frozen install inside `vercel build` passes too. Two fixes: a manual run now deploys only from `main`, not from any branch, and the production environment URL is `https://ansaganie.vercel.app`, because Standard Protection keeps the production deployment URL that `vercel deploy` prints private.
 - [x] First PR run ([38034478935](https://github.com/ansaganie/ansaganie/actions/runs/38034478935)): everything through the output check passed in about 20s, but `vercel deploy --prebuilt` under Deno hung for more than 15 minutes, and Vercel listed no deployments. The workflow now runs the Vercel CLI on Node 24 (`actions/setup-node`, `npx --yes vercel@63`). The project still installs and builds with Deno, and the job has a 15-minute timeout. ADR 0003 has an update recording this.
 
-Remaining (HITL, owner):
+- [x] Second PR run ([38035781719](https://github.com/ansaganie/ansaganie/actions/runs/38035781719)): green in 53s, and the PR comment has the deployment URL, which redirects to Vercel login. Vercel assigns a project's first deployment to production, so this PR build was aliased to `https://ansaganie.vercel.app`, which now returns 200 publicly. This was a one-time effect: the CLI says later deploys without `--prod` are previews.
 
-- [ ] Push the branch and open a PR. Check that the workflow posts a protected preview URL.
-- [ ] Merge to `main`. Check that `https://ansaganie.vercel.app` serves production publicly and that the README links resolve.
+- [x] Merged PR #2 (`0eb00b2`). The push run ([38036193357](https://github.com/ansaganie/ansaganie/actions/runs/38036193357)) passed in 44s and ran `vercel deploy --prebuilt --prod`. Vercel lists the new deployment as Production, aliased to `https://ansaganie.vercel.app`.
+- [x] Checked production with Playwright (2026-10-10):
+  - **Pages**: all six (`/`, `/cv/`, `/ru/`, `/ru/cv/`, `/kk/`, `/kk/cv/`) return 200 without login, with the right `lang`, localized title and `h1`, a canonical on `https://ansaganie.vercel.app/...`, hreflang en/ru/kk/x-default, valid JSON-LD, the CSS bundle applied, and no broken images.
+  - **Links**: every internal link returns 200. That includes the README links (`/`, `/cv/`, `/ru/cv/`, `/kk/cv/`) and the three PDFs, served as `application/pdf` at the same byte sizes as the committed files.
+  - **UI**: the theme toggle switches `.dark` and stores it in `localStorage`. The Overview renders at 1024 px and the RU CV at 390 px.
+  - **Console**: the only error is a 404 for `/favicon.ico`.
+- Follow-up: the first PR after this one should show a Vercel deploy listed as **Preview**, not Production (the first-deployment rule no longer applies).
+- Gaps seen on production that already belong to [SEO launch basics](0012-seo-launch-basics.md): no favicon, `robots.txt` and the sitemap return 404, unknown paths get Vercel's default 404 page, and both `/cv` and `/cv/` return 200 (nav and hreflang use the slashless form, canonical uses the slash).
