@@ -2,17 +2,17 @@
 
 ## Destination
 
-A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (Overview & CV) for Ansagan Islamgaliev, hosted on GitHub Pages and ready for a custom domain. It has a modern, compact, classic ATS-compliant semantic design, SEO metadata, a downloadable PDF CV, and an updated GitHub profile [README.md](../../README.md).
+A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (Overview & CV) for Ansagan Islamgaliev, hosted on Vercel at `ansaganie.vercel.app`, deployed by GitHub Actions, with nothing blocking a custom domain later. It has a modern, compact, classic ATS-compliant semantic design, SEO metadata, a downloadable PDF CV, and an updated GitHub profile [README.md](../../README.md).
 
 ## Notes
 
 - **Domain**: Personal portfolio, live curriculum vitae, and developer identity.
 - **Skills to consult**: `research`, `prototype`, `domain-modeling`, `modern-web-guidance`.
 - **Execution is in scope**: the destination is a deployed site, so `task` tickets build things rather than only decide them.
-- **Framework & Tech**: Astro (static-first, no JS runtime overhead, built-in i18n routing, Tailwind CSS).
+- **Framework & Tech**: Astro (static-first, no JS runtime overhead, built-in i18n routing, Tailwind CSS), run with Deno instead of Node ([ADR 0003](../adr/0003-deno-toolchain.md)).
 - **Target Locales**: English (`/`), Russian (`/ru`), Kazakh (`/kk`).
 - **Profile Repo Integration**: Keep the repo root [README.md](../../README.md) as the GitHub profile README. Website code goes in `src/` and assets in `public/`.
-- **Hosting Strategy**: GitHub Pages through a GitHub Actions workflow. The exact setup is decided in [Hosting topology](tickets/0008-hosting-topology.md).
+- **Hosting Strategy**: Vercel at `https://ansaganie.vercel.app`. GitHub Actions in this repo deploy to production on merge to `main` and make protected previews on PRs. See [Hosting topology](tickets/0008-hosting-topology.md) and [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md).
 - **Tracker**: the map is kept in local markdown because `gh` is not authenticated on this machine, even though `docs/agents/issue-tracker.md` names GitHub Issues.
 - **Pre-flight review**: [Deployment readiness review](../research/deployment-readiness-review.md) (2026-10-04) produced 27 recommendations: 4 × P0, 10 × P1, 13 × P2. The P0 items and most of the P1 items are tickets below.
 
@@ -33,6 +33,8 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [Build the PDF CV](tickets/0014-build-pdf-cv.md): Prebuilt static ATS-compliant 2-page A4 PDFs generated into `public/cv/` with canonical spelling (`Ansagan_Islamgaliev_CV*.pdf`) via Headless Chrome print emulation (`npm run generate:pdf`); header download action enabled on mobile below 640 px; direct `<a download>` links active across Header, Overview, and CV; legacy PDFs removed.
 - [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md): Completed R-M3 (§3.2 steps 3–4) in `BaseLayout.astro`. `ProfilePage` now links `mainEntity` to `#person` and includes `dateModified`. `Person` includes canonical name, 5 alternate names, localized title, Astana locality, phone, and `knowsAbout` skills. Removed legacy `itemscope` microdata from `<body>` so there is only one Person entity in structured data.
 - [Overview visual pass](tickets/0016-overview-visual-pass.md): Overview reordered to Hero -> Projects -> Highlights -> Tech stack with `id="projects"` and Header nav link; pulsing dots and template badges/chips removed; competencies compressed to one line per group; typography upgraded to 14px body, 12px tags, and primary-weight section headings; verified no horizontal scroll at 320/375/1440px and print budget preserved (1 page Overview, 2 pages CV).
+- [Hosting topology](tickets/0008-hosting-topology.md): Vercel only, at `ansaganie.vercel.app`, with no `base` and no GitHub Pages. GitHub Actions run all deploys: production on merge to `main` or manual dispatch, protected previews on PRs. Vercel's Git auto-deploy is off. [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md).
+- [Deno toolchain](../adr/0003-deno-toolchain.md) (ADR 0003): Deno replaces Node for install, check, build, dev, `generate:pdf` and the Vercel CLI in CI. `package.json` stays the manifest, `deno.lock` is the lockfile, and `.dvmrc` pins the version.
 
 ## Tickets
 
@@ -42,12 +44,12 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Scaffold Astro project](tickets/0004-scaffold-astro-project.md) (`wayfinder:task`, AFK)
 - [x] [Implement pages and PDF](tickets/0005-implement-pages-and-pdf.md) (`wayfinder:task`, AFK)
 - [x] [Update GitHub profile README](tickets/0006-update-github-profile-readme.md) (`wayfinder:task`, AFK)
-- [ ] [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md) (`wayfinder:task`, AFK). Blocked by: Hosting topology
-- [ ] [Hosting topology](tickets/0008-hosting-topology.md) (`wayfinder:grilling`, HITL). **Frontier** (owner working on it 2026-10-10; recommendation: option A, `ansagan.net`)
+- [ ] [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md) (`wayfinder:task`, HITL account steps + AFK workflow). **Claimed**: workflow built and secrets set, waiting on a test PR and the first merge to `main`
+- [x] [Hosting topology](tickets/0008-hosting-topology.md) (`wayfinder:grilling`, HITL)
 - [x] [Confirm published personal data](tickets/0009-confirm-published-personal-data.md) (`wayfinder:grilling`, HITL)
 - [x] [Make a clean `npm ci` pass](tickets/0010-fix-clean-install.md) (`wayfinder:task`, AFK)
 - [x] [Pre-launch UI fixes](tickets/0011-prelaunch-ui-fixes.md) (`wayfinder:task`, AFK)
-- [ ] [SEO launch basics](tickets/0012-seo-launch-basics.md) (`wayfinder:task`, AFK). Blocked by: Hosting topology
+- [ ] [SEO launch basics](tickets/0012-seo-launch-basics.md) (`wayfinder:task`, AFK). **Frontier**
 - [x] [Apply audit copy changes](tickets/0013-apply-audit-copy-changes.md) (`wayfinder:task`, AFK)
 - [x] [Build the PDF CV](tickets/0014-build-pdf-cv.md) (`wayfinder:task`, AFK)
 - [x] [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md) (`wayfinder:task`, AFK)
@@ -63,3 +65,4 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 
 - Dynamic backend / CMS server infrastructure (the site is static-first only).
 - Public blogging platform or commenting systems (scope is limited to the 2-page Live CV and Overview).
+- Buying and attaching a custom domain: launch is on `ansaganie.vercel.app`. A domain can go on the Vercel project in a later effort, using [Custom domain research](tickets/0001-custom-domain-research.md); see [Hosting topology](tickets/0008-hosting-topology.md).

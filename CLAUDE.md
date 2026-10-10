@@ -6,10 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- `npm run dev`: dev server (port 4321)
-- `npm run build`: static build to `dist/`
-- `npm run check`: `astro-check` type-check. Together with `build`, this is the only verification gate. There are no tests or linter.
-- `npm run generate:pdf`: runs `build`, then uses headless Chrome/Edge to print `dist/{,ru/,kk/}cv/index.html` into `public/cv/*.pdf`. If the browser isn't found, set `CHROME_PATH`.
+The toolchain is Deno, not Node (ADR 0003), pinned in `.dvmrc`. `package.json` is still the dependency manifest and script list; `deno.lock` is the lockfile. Don't use `npm`/`npx` or add a `package-lock.json`. The one exception is the Vercel CLI in the deploy workflow, which runs on Node via `npx` because `vercel deploy` hangs under Deno (ADR 0003).
+
+- `deno install`: installs `node_modules` from `package.json` (CI uses `--frozen`)
+- `deno task dev`: dev server (port 4321)
+- `deno task build`: static build to `dist/`
+- `deno task check`: `astro-check` type-check. Together with `build`, this is the only verification gate. There are no tests or linter.
+- `deno task generate:pdf`: runs `build`, then uses headless Chrome/Edge to print `dist/{,ru/,kk/}cv/index.html` into `public/cv/*.pdf`. If the browser isn't found, set `CHROME_PATH`.
 
 ## Architecture
 
@@ -33,4 +36,4 @@ Static Astro 7 site: two pages (**Overview Page** `/`, **CV Page** `/cv`) × thr
 - Work is tracked locally in `docs/wayfinder/MAP.md` and `docs/wayfinder/tickets/`, not in GitHub Issues, because `gh` is not authenticated on this machine. When you finish a ticket, update its status and the MAP's "Decisions so far".
 - `PROJECT.md` is the plan from the early design-research phase. For current state, use the MAP.
 - `scratch/`, `source/`, `.agents/` are gitignored local artifacts. Leave them out of the site.
-- Deployment (GitHub Pages workflow) is not set up yet: tickets 0007 and 0008.
+- Hosting is Vercel at `https://ansaganie.vercel.app`, deployed only by GitHub Actions (ADR 0002). The workflow isn't set up yet: ticket 0007.

@@ -1,0 +1,101 @@
+# Every deploy goes through GitHub Actions (ADR 0002); Vercel's Git auto-deploy is off in vercel.json.
+# PRs get a preview behind Vercel Authentication; a push to main or a manual run on main deploys production.
+name: Deploy
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  # The Vercel CLI runs on Node: under Deno, `vercel deploy` hung without creating a deployment (ADR 0003).
+  VERCEL: npx --yes vercel@63
+
+jobs:
+  deploy:
+    # Fork PRs get no secrets, so they can't deploy. A manual run on any branch but main would ship that branch to production.
+    if: >-
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
+      || (github.event_name != 'pull_request' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    # A full run takes under a minute; fail a hung step fast instead of after GitHub's 6-hour default.
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: write
+    environment:
+      name: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
+      # Standard Protection keeps production deployment URLs private; only the production domain is public.
+      url: ${{ github.event_name == 'pull_request' && steps.deploy.outputs.url || 'https://ansaganie.vercel.app' }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version-file: .dvmrc
+          cache: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - run: deno install --frozen
+      - run: deno task check
+
+      - name: Pick Vercel environment
+        id: target
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "env=preview" >> "$GITHUB_OUTPUT"
+            echo "flag=" >> "$GITHUB_OUTPUT"
+          else
+            echo "env=production" >> "$GITHUB_OUTPUT"
+            echo "flag=--prod" >> "$GITHUB_OUTPUT"
+          fi
+
+      - run: ${{ env.VERCEL }} pull --yes --environment=${{ steps.target.outputs.env }} --token=${{ secrets.VERCEL_TOKEN }}
+      - run: ${{ env.VERCEL }} build ${{ steps.target.outputs.flag }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      # generate:pdf inlines only the first CSS bundle, and the PDFs are committed, not built (ADR 0001).
+      - name: Check build output
+        run: |
+          css=$(find .vercel/output/static/_astro -name '*.css' | wc -l)
+          pdf=$(find .vercel/output/static/cv -name '*.pdf' | wc -l)
+          echo "CSS bundles: $css, PDFs: $pdf"
+          [ "$css" -eq 1 ] || { echo "::error::Expected 1 CSS bundle, found $css"; exit 1; }
+          [ "$pdf" -eq 3 ] || { echo "::error::Expected 3 PDFs under /cv/, found $pdf"; exit 1; }
+
+      - name: Deploy
+        id: deploy
+        run: |
+          url=$(${{ env.VERCEL }} deploy --prebuilt ${{ steps.target.outputs.flag }} --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Comment preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v9
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.url }}
+        with:
+          script: |
+            const marker = '<!-- vercel-preview -->';
+            const body = `${marker}\nPreview: ${process.env.PREVIEW_URL}\n\nCommit ${context.sha.slice(0, 7)}. Behind Vercel Authentication.`;
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number });
+            const existing = comments.find((c) => c.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
