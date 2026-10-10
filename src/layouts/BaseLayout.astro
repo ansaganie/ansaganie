@@ -24,7 +24,7 @@ const profile = getCandidateProfile(currentLocale);
 const canonical = getCandidateProfile(DEFAULT_LOCALE);
 const [addressLocality, addressCountry] = canonical.contact.location.split(', ');
 
-const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://ansaganie.github.io';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://ansaganie.vercel.app';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
 // Alternate hreflang links
