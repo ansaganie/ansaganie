@@ -1,53 +1,54 @@
 {
   "locale": "en",
-  "name": "Angsagan Islyamgaliyev",
+  "name": "Ansagan Islamgaliev",
   "title": "Senior Full-Stack .NET & React Engineer",
-  "elevatorPitch": "Specializing in modernizing legacy enterprise systems into high-performance ASP.NET Core & React applications.",
-  "summary": "Senior Full-Stack Software Engineer with 4+ years of commercial enterprise software development experience and 6+ years in high-reliability energy sector operations. Specialized in ASP.NET Core, .NET 8, React, and Microsoft Azure, modernizing mission-critical enterprise applications for Chevron and Tengizchevroil. Demonstrated success in eliminating performance bottlenecks: slashing critical screen load times from 30 minutes to 1.5 seconds, migrating legacy storage to offline IndexedDB PWAs, and accelerating CI/CD deployment pipelines by 6x.",
+  "elevatorPitch": "I turn legacy enterprise applications into fast, maintainable .NET and React systems, currently for Chevron and Tengizchevroil.",
+  "summary": "Senior full-stack engineer with 4+ years building enterprise software in C#, .NET 8, ASP.NET Core, React and Azure, currently for Chevron and Tengizchevroil. I modernize legacy applications: moving .NET Framework services to .NET 8, fixing slow screens, making web apps work offline for 500+ field staff, and speeding up release pipelines. Before software, I spent 6 years in oil & gas field operations.",
+  "updatedAt": "October 2026",
   "contact": {
     "email": "ansaganie@hotmail.com",
     "phone": "+77001002400",
     "telegram": "https://t.me/ansaganie",
     "linkedin": "https://linkedin.com/in/ansaganie",
     "github": "https://github.com/ansaganie",
-    "location": "Astana & Atyrau, Kazakhstan",
-    "availability": "Open to long-term contract engagements & remote roles"
+    "location": "Astana, Kazakhstan",
+    "availability": "Looking for a long-term remote role with an international team · UTC+5"
   },
   "metrics": [
     {
       "id": "page-load-optimization",
-      "headline": "30m ➔ 1.5s",
-      "label": "Operational Page Load Optimization",
-      "impact": "1200x Latency Reduction",
+      "headline": "Performance",
+      "label": "Field-team screens",
+      "impact": "Slow screens made fast",
       "project": "TA Pro & TO Notes (Chevron Turnaround)",
-      "details": "Slashed operational screen load latency from ~30 minutes to 1.5 seconds for turnaround field teams via .NET 8 / EF Core 8 query tuning and client-side IndexedDB caching.",
+      "details": "Tuned .NET 8 / EF Core 8 queries and added IndexedDB caching for turnaround field teams.",
       "technologies": [".NET 8", "EF Core 8", "IndexedDB", "Dexie.js", "React"]
     },
     {
       "id": "cicd-acceleration",
-      "headline": "90m ➔ 15m",
-      "label": "CI/CD Build & Deployment Velocity",
-      "impact": "6x Pipeline Velocity",
+      "headline": "Delivery",
+      "label": "Release pipelines",
+      "impact": "Faster, safer releases",
       "project": "TEA-RECS (Wombat / TCO)",
-      "details": "Optimized Azure DevOps CI/CD deployment pipelines and automated PR validation test suites, shrinking deployment windows from 90 minutes to ~15 minutes.",
+      "details": "Shortened Azure DevOps release pipelines and added automated PR validation and SonarQube scans.",
       "technologies": ["Azure DevOps", "Docker", "SonarQube", "CI/CD Pipelines"]
     },
     {
       "id": "erp-sync-acceleration",
-      "headline": "1–3h ➔ Minutes",
-      "label": "Primavera Enterprise Synchronization",
-      "impact": "Near Real-Time Data Sync",
+      "headline": "Integration",
+      "label": "Oracle Primavera sync",
+      "impact": "Message-based sync",
       "project": "Turnaround Digitalization (Chevron / TCO)",
-      "details": "Re-engineered enterprise integration with Oracle Primavera project management using Azure Service Bus, Logic Apps, and WebJobs, slashing synchronization delay from 1–3 hours to minutes.",
+      "details": "Rebuilt the Primavera integration on Azure Service Bus, Logic Apps and WebJobs.",
       "technologies": ["Azure Service Bus", "Logic Apps", "Azure WebJobs", "Oracle Primavera"]
     },
     {
       "id": "offline-pwa-storage",
-      "headline": "WebSQL ➔ Dexie",
-      "label": "Offline-First Storage Modernization",
-      "impact": "Zero Data Loss & Offline Resilience",
+      "headline": "Offline-first",
+      "label": "WebSQL → IndexedDB",
+      "impact": "500+ field staff",
       "project": "TA Pro Mobile & Web PWA",
-      "details": "Migrated mission-critical browser storage from deprecated WebSQL to IndexedDB using Dexie.js for 500+ turnaround field engineers, delivering robust offline data persistence.",
+      "details": "Moved the PWA's browser storage from deprecated WebSQL to IndexedDB (Dexie.js) so the app works without a connection.",
       "technologies": ["IndexedDB", "Dexie.js", "PWA", "TypeScript", "Service Workers"]
     }
   ],
@@ -61,7 +62,7 @@
   "experience": [
     {
       "id": "tco-senior-developer",
-      "roleTitle": "Senior Software Developer",
+      "roleTitle": "Senior Full-Stack Developer",
       "company": "Tengizchevroil / AtyrauTechInvest LLP",
       "department": "TCO Digital Department",
       "client": "Chevron Central Agile Team",
@@ -74,16 +75,15 @@
       "roleType": "fullstack",
       "summary": "Core engineer in Chevron's Central Agile Team driving Turnaround (TA) Progress and Turnover Notes digitalization across web, mobile PWAs, and BFF microservices.",
       "keyMetrics": [
-        "30m ➔ 1.5s page load latency reduction",
-        "1–3h ➔ minutes Primavera synchronization",
-        "100% data fidelity in WebSQL to IndexedDB migration"
+        "500+ field staff on the offline PWA",
+        ".NET Framework 4.8 → .NET 8 migration",
+        "Oracle Primavera integration on Azure Service Bus"
       ],
       "achievements": [
-        "Slashed critical operational screen load latency from ~30 minutes to 1.5 seconds for turnaround field teams via .NET 8 / EF Core 8 query tuning and client-side IndexedDB caching.",
-        "Engineered offline-capable Progressive Web Application (PWA) capabilities and migrated browser storage from deprecated WebSQL to IndexedDB using Dexie.js with zero data loss for 500+ users.",
+        "Fixed the slowest operational screens used by turnaround field teams by tuning .NET 8 / EF Core 8 queries and caching data client-side in IndexedDB.",
+        "Added offline support to the field PWA and moved its browser storage from deprecated WebSQL to IndexedDB (Dexie.js) for 500+ field staff.",
         "Modernized backend Web API services from ASP.NET Framework 4.8 / EF6 to .NET 8 / EF Core 8, implementing custom policy authorization via Azure App Registration and MSAL.",
-        "Architected enterprise system integrations with Oracle Primavera project management utilizing Azure Service Bus, Logic Apps, and WebJobs, cutting sync delay from 1–3 hours to minutes.",
-        "Contributed to Chevron internal TypeScript MSAL authentication libraries and distributed developer toolchains."
+        "Rebuilt the Oracle Primavera integration on Azure Service Bus, Logic Apps and WebJobs, replacing the old batch sync with messaging."
       ],
       "technologies": [".NET 8", "ASP.NET Core Web API", "C#", "React", "TypeScript", "IndexedDB", "Dexie.js", "Entity Framework Core 8", "Azure Service Bus", "Azure Logic Apps", "Azure WebJobs", "MSAL", "Tailwind CSS"],
       "defaultExpanded": true
@@ -100,18 +100,17 @@
         "end": "2024-01",
         "display": "Sep 2022 — Jan 2024"
       },
-      "roleType": "frontend",
+      "roleType": "fullstack",
       "summary": "Full-stack frontend and data visualization engineer developing enterprise applications TEA-RECS (Wombat), VISI (Visual Inspection of Shut-Ins), and Whitespace Dashboard (WSD).",
       "keyMetrics": [
-        "90m ➔ 15m CI/CD deployment acceleration",
         "Recognized by TCO for Integrated Business Planning (IBP)"
       ],
       "achievements": [
         "Engineered dynamic financial evaluation tools for Tengizchevroil Economics Acceleration via Rapid Evaluation Cycle Solution (TEA-RECS / Wombat), recognized as a key tool for Integrated Business Planning (IBP).",
         "Developed dual-axis virtualized smart data grids combining TanStack Table with React Window and React Context API for massive tabular datasets.",
         "Built customized interactive telemetry charts using Airbnb Visx and oil plant topology flowcharts in React Flow editor mode.",
-        "Accelerated .NET WebApp deployment pipelines on Azure DevOps, reducing release turnaround from ~90 minutes to ~15 minutes.",
-        "Refactored oilfield simulation data backup workflows, significantly lowering Azure Blob Storage expenditure.",
+        "Sped up .NET web app release pipelines on Azure DevOps and automated PR validation.",
+        "Refactored oilfield simulation data backup workflows, lowering Azure Blob Storage expenditure.",
         "Implemented CI pipelines with SonarQube SAST security and vulnerability scanning on development branches."
       ],
       "technologies": ["React", "TypeScript", ".NET 6", "C#", "Visx", "TanStack Table", "React Window", "React Flow", "Redux Toolkit", "Material UI", "Azure DevOps", "Docker", "SonarQube"],
@@ -123,16 +122,15 @@
       "company": "Aviata.kz",
       "location": "Almaty, Kazakhstan",
       "period": {
-        "start": "2022-02",
+        "start": "2022-01",
         "end": "2022-09",
-        "display": "Feb 2022 — Sep 2022"
+        "display": "Jan 2022 — Sep 2022"
       },
       "roleType": "frontend",
       "summary": "Frontend developer for Kazakhstan's leading travel and ticketing platform (Aviata / Chocotravel).",
       "achievements": [
         "Migrated customer-facing flight and train booking flows of chocotravel.com from a legacy PHP monolith to a Vue.js Single Page Application (SPA).",
-        "Built responsive mobile web-view components and design-system UI components with Vue 3, Pinia, and Tailwind CSS.",
-        "Participated in frontend architecture, performance profiling, and code modularization decisions."
+        "Built responsive mobile web-view components and design-system UI components with Vue 3, Pinia, and Tailwind CSS."
       ],
       "technologies": ["Vue.js", "TypeScript", "Pinia", "Vue Router", "Tailwind CSS", "Vue Test Utils", "REST APIs"],
       "defaultExpanded": false
@@ -151,8 +149,7 @@
       "summary": "Geological monitoring specialist managing geodynamic field observation networks and industrial telemetry verification.",
       "achievements": [
         "Coordinated geodynamic monitoring across a network of seismological stations and deep monitoring wells for gas and groundwater surveillance.",
-        "Assessed surface deformation risks and analyzed high-volume seismological data for field safety compliance.",
-        "Developed rigorous data analysis, risk mitigation, and industrial telemetry verification skills that now underpin robust software engineering practices."
+        "Assessed surface deformation risks and analyzed high-volume seismological data for field safety compliance."
       ],
       "technologies": ["Geodynamic Monitoring", "Telemetry Analysis", "Seismic Data Verification", "Risk Assessment"],
       "defaultExpanded": false
@@ -183,24 +180,24 @@
       "id": "project-turnaround",
       "title": "Turnaround Digitalization: TA Pro & TO Notes",
       "summary": "Enterprise progressive web applications and BFF microservices powering plant turnaround operations for Chevron and Tengizchevroil.",
-      "role": "Lead Software Engineer",
+      "role": "Senior Full-Stack Developer",
       "client": "Chevron / Tengizchevroil",
       "projectType": "enterprise",
       "featured": true,
-      "impact": "1200x query latency reduction, zero data loss offline persistence",
-      "metrics": ["30m ➔ 1.5s load time", "1–3h ➔ minutes ERP sync", "500+ field workers"],
+      "impact": "Offline-first PWA for 500+ field staff; Chevron SDP Challenge Coin",
+      "metrics": ["500+ field staff", ".NET 8 migration", "Offline-first PWA"],
       "technologies": [".NET 8", "ASP.NET Core", "React", "Dexie.js", "IndexedDB", "Azure Service Bus", "Logic Apps", "MSAL"]
     },
     {
       "id": "project-tea-recs",
       "title": "TEA-RECS & VISI (Turnaround & Economics Acceleration)",
       "summary": "Rapid economic evaluation platform and shut-in visual inspection tool modeling complex oil production plant topology and schedules.",
-      "role": "Full-Stack Developer",
+      "role": "Software Developer",
       "client": "Tengizchevroil",
       "projectType": "enterprise",
       "featured": true,
       "impact": "Recognized by TCO leadership as a key tool for Integrated Business Planning (IBP)",
-      "metrics": ["90m ➔ 15m CI/CD speedup", "Dual-axis virtualized data grid"],
+      "metrics": ["Dual-axis virtualized data grid"],
       "technologies": ["React", "TypeScript", "Visx", "TanStack Table", "React Flow", ".NET 6", "Azure DevOps", "Docker"]
     },
     {
@@ -218,7 +215,7 @@
       "id": "project-geo-exp",
       "title": "GeoExploration Platform",
       "summary": "High-performance Next.js 15 commercial corporate website with trilingual routing (ru/kk/en) and automated dual-target CI/CD deployments.",
-      "role": "Frontend Architect & Full-Stack Developer",
+      "role": "Sole developer",
       "projectType": "commercial",
       "featured": true,
       "impact": "Production trilingual Next.js standalone bundle deployed to Vercel with automated Plesk fallback",
@@ -241,36 +238,47 @@
   "certifications": [
     {
       "id": "cert-safe-6",
-      "title": "Certified SAFe® 6 Practitioner",
-      "issuer": "Scaled Agile, Inc.",
-      "issueDate": "2023-05",
-      "credentialId": "SAFE-883921",
-      "verificationUrl": "https://www.credly.com/",
+      "title": "SAFe 6 Practitioner",
+      "issuer": "Scaled Agile",
+      "issueDate": "2024-07",
+      "credentialId": "49406639-9646",
+      "verificationUrl": "https://community.scaledagile.com/apex/PrintAchievement?aid=a0t6T00000O8QH2QAN&aaid=a0rQo00000xibl3IAA",
       "iconName": "safe"
     },
     {
+      "id": "cert-hackerrank-react",
+      "title": "Frontend Developer (React)",
+      "issuer": "HackerRank",
+      "issueDate": "2023-11",
+      "verificationUrl": "https://www.hackerrank.com/certificates/1f868b72177c",
+      "iconName": "hackerrank"
+    },
+    {
+      "id": "cert-hackerrank-js-intermediate",
+      "title": "JavaScript (Intermediate)",
+      "issuer": "HackerRank",
+      "issueDate": "2023-12",
+      "credentialId": "dd99e082ab79",
+      "verificationUrl": "https://www.hackerrank.com/certificates/dd99e082ab79",
+      "iconName": "hackerrank"
+    },
+    {
       "id": "cert-html-academy-react",
-      "title": "Professional React Developer (Profession)",
+      "title": "React. Development of Complex Front-end Applications",
       "issuer": "HTML Academy",
-      "issueDate": "2022-05",
-      "verificationUrl": "https://htmlacademy.ru/",
+      "issueDate": "2021-09",
+      "credentialId": "1637434380",
+      "verificationUrl": "https://assets.htmlacademy.ru/certificates/intensive/217/1704573.pdf?1637434380",
       "iconName": "react"
     },
     {
       "id": "cert-html-academy-js-arch",
-      "title": "JavaScript: Architecture of Front-end Applications",
+      "title": "JavaScript. Architecture of Front-end Applications",
       "issuer": "HTML Academy",
-      "issueDate": "2021-12",
-      "verificationUrl": "https://htmlacademy.ru/",
+      "issueDate": "2021-07",
+      "credentialId": "1631417950",
+      "verificationUrl": "https://assets.htmlacademy.ru/certificates/intensive/211/1704573.pdf?1631417950",
       "iconName": "javascript"
-    },
-    {
-      "id": "cert-hackerrank-problem-solving",
-      "title": "Problem Solving (Advanced) & C# Certification",
-      "issuer": "HackerRank",
-      "issueDate": "2023-08",
-      "verificationUrl": "https://www.hackerrank.com/certificates/",
-      "iconName": "hackerrank"
     }
   ],
   "honors": [

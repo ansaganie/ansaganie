@@ -9,4 +9,4 @@ We prebuild static, ATS-compliant PDF CV files (`Ansagan_Islamgaliev_CV.pdf`, `A
 ## Consequences
 - Site visitors get instantaneous, zero-confirmation PDF downloads for job application submissions.
 - GitHub Pages serves static files directly with no headless browser or server runtime dependencies during deployment.
-- The prebuilt PDFs must be regenerated and committed whenever localized CV datasets in `src/data/` change.
+- The prebuilt PDFs (`Ansagan_Islamgaliev_CV.pdf`, `Ansagan_Islamgaliev_CV_RU.pdf`, `Ansagan_Islamgaliev_CV_KK.pdf`) must be regenerated and committed whenever localized CV datasets in `src/data/` change.

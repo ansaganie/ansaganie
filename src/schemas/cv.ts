@@ -98,6 +98,7 @@ export const candidateProfileSchema = z.object({
   title: z.string(),
   elevatorPitch: z.string(),
   summary: z.string(),
+  updatedAt: z.string().optional(),
   contact: contactInfoSchema,
   metrics: z.array(metricSchema),
   skills: z.object({

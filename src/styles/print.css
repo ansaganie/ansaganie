@@ -147,6 +147,7 @@
   .experience-entry,
   .role-card,
   .metric-card,
+  .highlight-card,
   .project-card,
   .education-entry,
   .honor-card,
@@ -203,8 +204,8 @@
     letter-spacing: 0.05em !important;
     border-bottom: 0.75pt solid #0f172a !important;
     padding-bottom: 1mm !important;
-    margin-top: 4mm !important;
-    margin-bottom: 2.5mm !important;
+    margin-top: 3mm !important;
+    margin-bottom: 2mm !important;
   }
 
   h3 {
@@ -247,7 +248,6 @@
   }
 
   a.print-url::after,
-  .certs-list a::after,
   .contact-info a:not([href^="tel:"]):not([href^="mailto:"])::after {
     content: " (" attr(href) ")";
     font-size: 7pt !important;
@@ -291,6 +291,7 @@
   }
 
   .metric-card,
+  .highlight-card,
   .project-card,
   .cert-badge {
     display: inline-block !important;
@@ -343,6 +344,7 @@
   .honors-list > li,
   .certs-list > li,
   .metric-card,
+  .highlight-card,
   .project-card,
   main section > div > div {
     background: transparent !important;

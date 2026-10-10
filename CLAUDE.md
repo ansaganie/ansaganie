@@ -1,0 +1,36 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+@AGENTS.md
+
+## Commands
+
+- `npm run dev`: dev server (port 4321)
+- `npm run build`: static build to `dist/`
+- `npm run check`: `astro-check` type-check. Together with `build`, this is the only verification gate. There are no tests or linter.
+- `npm run generate:pdf`: runs `build`, then uses headless Chrome/Edge to print `dist/{,ru/,kk/}cv/index.html` into `public/cv/*.pdf`. If the browser isn't found, set `CHROME_PATH`.
+
+## Architecture
+
+Static Astro 7 site: two pages (**Overview Page** `/`, **CV Page** `/cv`) × three **Locales** (`en` unprefixed, `ru`, `kk`). Use the vocabulary in `GLOSSARY.md`.
+
+- **Content flow**: `src/data/cv-{en,ru,kk}.json` → parsed by the Zod schema in `src/schemas/cv.ts` at import time in `src/utils/data.ts`. A schema mismatch fails the build. Edit content in all three JSON files together; `en` is the source and `ru`/`kk` follow it.
+- **Pages are thin per-locale wrappers**: each file in `src/pages/`, `src/pages/ru/`, `src/pages/kk/` hardcodes its `locale` and passes the profile to `OverviewContent` or `CvContent`. Adding a page means adding three files.
+- **UI strings** live in `UI_TRANSLATIONS` in `src/utils/i18n.ts`, not in the JSON data. `t()` falls back to `en`, then to the key itself, so a missing key fails silently.
+- **`BaseLayout.astro`** owns SEO meta, hreflang, JSON-LD, and the inline theme script (`.dark`/`.light` on `<html>`, stored in `localStorage`).
+- **Styling**: Tailwind 4 through `@tailwindcss/vite`, still reading the legacy `tailwind.config.mjs` via `@config` in `src/styles/global.css`. Design tokens are CSS variables there. Hand-written rules sit inside Tailwind cascade layers so utilities still override them. Keep new rules layered.
+- **`src/styles/print.css` is the PDF layout** (A4). Any change to it, to `CvContent`, or to the CV JSON needs `npm run generate:pdf` and the regenerated PDFs committed (ADR 0001). The script inlines only the first CSS bundle in `dist/_astro/`, so it breaks if the build ever emits more than one.
+- **PDF filenames are defined twice**: `getPdfCvFilename()` in `src/utils/i18n.ts` and `targets` in `scripts/generate-pdf.mjs`. Change both together.
+
+## Content rules
+
+- Copy follows the owner decisions D1–D11 in `docs/research/portfolio-ux-seo-audit.md`. They cover the public name spelling, no time or speed-up figures in claims, certifications copied from LinkedIn only, and the audience (foreign employers, remote roles).
+- `README.md` is the public GitHub profile README, not project documentation. Keep it aligned with the Overview content.
+
+## Planning
+
+- Work is tracked locally in `docs/wayfinder/MAP.md` and `docs/wayfinder/tickets/`, not in GitHub Issues, because `gh` is not authenticated on this machine. When you finish a ticket, update its status and the MAP's "Decisions so far".
+- `PROJECT.md` is the plan from the early design-research phase. For current state, use the MAP.
+- `scratch/`, `source/`, `.agents/` are gitignored local artifacts. Leave them out of the site.
+- Deployment (GitHub Pages workflow) is not set up yet: tickets 0007 and 0008.

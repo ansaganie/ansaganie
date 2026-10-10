@@ -22,3 +22,4 @@ scratch/
 .agents/
 source/
 .playwright-mcp
+.vscode/

@@ -3,8 +3,8 @@
 Part of [Wayfinder Map](../MAP.md)
 
 - **Type**: wayfinder:task (AFK)
-- **Status**: open
-- **Assignee**: unassigned
+- **Status**: completed
+- **Assignee**: agent:wayfinder
 - **Blocked by**: #0013
 
 ## Question
@@ -20,3 +20,11 @@ Apply the audit's [R-M3](../../research/portfolio-ux-seo-audit.md#medium-effort-
 Absolute URLs come from `Astro.site`, so this does not wait for hosting.
 
 Done when the Rich Results Test (code input) shows one Person and a valid ProfilePage for each locale.
+
+## Resolution
+
+Completed R-M3 (§3.2 steps 3–4) in `src/layouts/BaseLayout.astro`:
+- **ProfilePage Structure**: Added `mainEntity: { '@id': `${siteUrl}/#person` }` and `dateModified: '2026-10-10'`.
+- **Person Metadata**: Configured `canonical.name` ("Ansagan Islamgaliev"), 5 `alternateName` spellings, localized `jobTitle` from `profile.title`, `addressLocality` set to "Astana", phone kept, and `knowsAbout: profile.skills.primary`.
+- **Microdata Cleanup**: Removed `itemscope itemtype="https://schema.org/Person"` from `<body>`, ensuring a single canonical `Person` entity defined in JSON-LD.
+- **Verification**: TDD automated verification script verified zero leftover microdata, single Person schema, and valid ProfilePage across all 6 pages and 3 locales (`en`, `ru`, `kk`). `npm run check` (0 errors, 0 warnings) and `npm run build` pass cleanly.

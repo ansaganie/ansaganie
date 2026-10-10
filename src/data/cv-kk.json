@@ -1,53 +1,54 @@
 {
   "locale": "kk",
-  "name": "Аңсаған Ислямғалиев",
+  "name": "Аңсаған Исламғалиев",
   "title": "Жетекші Full-Stack инженер (.NET, React)",
-  "elevatorPitch": "Ескірген корпоративтік жүйелерді ASP.NET Core және React негізіндегі жоғары өнімді қосымшаларға жаңғыртуға маманданғанмын.",
-  "summary": "Корпоративтік бағдарламалық қамтамасыз ету саласында 4+ жыл және сенімділігі жоғары энергетика саласында 6+ жыл тәжірибесі бар жетекші Full-Stack инженер-әзірлеушісі. Chevron және Tengizchevroil үшін маңызды корпоративтік қосымшаларды жаңғырта отырып, ASP.NET Core, .NET 8, React және Microsoft Azure бағыттарына маманданғанмын. Өнімділік мәселелерін жоюда нақты нәтижелерім бар: маңызды беттердің жүктелу уақытын 30 минуттан 1.5 секундқа дейін қысқарту, ескірген дерекқорларды дербес IndexedDB PWA жүйелеріне көшіру және CI/CD пайплайндарын 6 есе жеделдету.",
+  "elevatorPitch": "Ескірген корпоративтік қосымшаларды жылдам, қолдауға ыңғайлы .NET және React жүйелеріне жаңғыртамын, қазіргі уақытта Chevron және Теңізшевройл үшін.",
+  "summary": "Chevron және Теңізшевройл үшін C#, .NET 8, ASP.NET Core, React және Azure технологияларымен корпоративтік бағдарламалық жасақтама жасауда 4+ жыл тәжірибесі бар аға full-stack әзірлеуші. Ескірген қосымшаларды жаңғыртамын: .NET Framework қызметтерін .NET 8 нұсқасына көшіру, баяу экрандарды оңтайландыру, 500+ далалық қызметкер үшін веб-қосымшалардың офлайн жұмысын қамтамасыз ету және релиз пайплайндарын жеделдету. IT-ге дейін мұнай-газ саласында 6 жыл өндірістік тәжірибем болды.",
+  "updatedAt": "Қазан 2026",
   "contact": {
     "email": "ansaganie@hotmail.com",
     "phone": "+77001002400",
     "telegram": "https://t.me/ansaganie",
     "linkedin": "https://linkedin.com/in/ansaganie",
     "github": "https://github.com/ansaganie",
-    "location": "Астана / Атырау, Қазақстан",
-    "availability": "Ұзақ мерзімді келісімшарттарға және қашықтан жұмыс істеуге ашықпын"
+    "location": "Астана, Қазақстан",
+    "availability": "Халықаралық командада ұзақ мерзімді қашықтан жұмыс іздеудемін · UTC+5"
   },
   "metrics": [
     {
       "id": "page-load-optimization",
-      "headline": "30мин ➔ 1.5с",
-      "label": "Маңызды беттердің жүктелуін оңтайландыру",
-      "impact": "1200 есе жеделдету",
+      "headline": "Өнімділік",
+      "label": "Далалық топтардың экрандары",
+      "impact": "Баяу экрандарды жеделдету",
       "project": "TA Pro & TO Notes (Chevron күрделі жөндеуі)",
-      "details": "EF Core 8 сұраныстарын оңтайландыру және клиенттік IndexedDB кэштеуі арқылы далалық жұмыс топтары үшін беттің жүктелу кідірісін ~30 минуттан 1.5 секундқа дейін қысқарттым.",
+      "details": "Күрделі жөндеу топтары үшін .NET 8 / EF Core 8 сұраныстарын оңтайландырып, IndexedDB кэштеуін енгіздім.",
       "technologies": [".NET 8", "EF Core 8", "IndexedDB", "Dexie.js", "React"]
     },
     {
       "id": "cicd-acceleration",
-      "headline": "90мин ➔ 15мин",
-      "label": "CI/CD құрастыру мен орналастыруды жеделдету",
-      "impact": "Пайплайнды 6 есе жеделдету",
+      "headline": "Жеткізу",
+      "label": "Релиз пайплайндары",
+      "impact": "Жылдам әрі сенімді релиздер",
       "project": "TEA-RECS (Wombat / ТШО)",
-      "details": "Azure DevOps жүйесіндегі CI/CD пайплайндарын оңтайландырып және PR тексеру сынақтарын автоматтандырып, орналастыру уақытын 90 минуттан ~15 минутқа дейін азайттым.",
+      "details": "Azure DevOps жүйесіндегі релиз пайплайндарын қысқартып, PR автоматты тексеруін және SonarQube сканерлеуін енгіздім.",
       "technologies": ["Azure DevOps", "Docker", "SonarQube", "CI/CD Pipelines"]
     },
     {
       "id": "erp-sync-acceleration",
-      "headline": "1–3сағ ➔ минуттар",
-      "label": "Primavera ERP жүйесімен корпоративтік интеграция",
-      "impact": "Нақты уақытқа жуық синхрондау",
+      "headline": "Интеграция",
+      "label": "Oracle Primavera үндестіруі",
+      "impact": "Хабарламаларға негізделген синхрондау",
       "project": "Күрделі жөндеуді цифрландыру (Chevron / ТШО)",
-      "details": "Azure Service Bus, Logic Apps және WebJobs арқылы Oracle Primavera жүйесімен интеграцияны қайта құрып, деректерді үндестіру кідірісін 1–3 сағаттан бірнеше минутқа дейін қысқарттым.",
+      "details": "Primavera интеграциясын Azure Service Bus, Logic Apps және WebJobs негізінде қайта құрдым.",
       "technologies": ["Azure Service Bus", "Logic Apps", "Azure WebJobs", "Oracle Primavera"]
     },
     {
       "id": "offline-pwa-storage",
-      "headline": "WebSQL ➔ Dexie",
-      "label": "Дербес жергілікті жадты жаңғырту",
-      "impact": "Офлайн режимде деректерді толық сақтау",
+      "headline": "Дербестік",
+      "label": "WebSQL → IndexedDB",
+      "impact": "500+ далалық қызметкер",
       "project": "TA Pro Mobile & Web PWA",
-      "details": "500-ден астам далалық мамандар үшін браузер жадын ескірген WebSQL-ден IndexedDB-ге (Dexie.js) ауыстырып, офлайн режимде деректердің мінсіз сақталуын қамтамасыз еттім.",
+      "details": "Қосымшаның желісіз жұмыс істеуі үшін PWA браузер жадын ескірген WebSQL-ден IndexedDB-ге (Dexie.js) көшірдім.",
       "technologies": ["IndexedDB", "Dexie.js", "PWA", "TypeScript", "Service Workers"]
     }
   ],
@@ -61,7 +62,7 @@
   "experience": [
     {
       "id": "tco-senior-developer",
-      "roleTitle": "Жетекші бағдарламалық қамтамасыз ету әзірлеушісі",
+      "roleTitle": "Аға Full-Stack әзірлеуші",
       "company": "Теңізшевройл / «АтырауТехИнвест» ЖШС",
       "department": "ТШО Сандық департаменті",
       "client": "Chevron Орталық Agile тобы",
@@ -74,16 +75,15 @@
       "roleType": "fullstack",
       "summary": "Chevron-ның Орталық Agile тобында веб, мобильді PWA және BFF микросервистері негізінде күрделі жөндеуді (TA Pro және TO Notes) цифрландыруды жүргізетін негізгі инженер.",
       "keyMetrics": [
-        "Беттің жүктелу кідірісін 30 минуттан 1.5 секундқа дейін азайту",
-        "Primavera синхрондауын 1–3 сағаттан минуттарға дейін қысқарту",
-        "WebSQL-ден IndexedDB-ге көшу кезінде деректердің 100% сақталуы"
+        "Офлайн PWA-дағы 500+ далалық қызметкер",
+        ".NET Framework 4.8-ден .NET 8-ге көшу",
+        "Azure Service Bus арқылы Oracle Primavera интеграциясы"
       ],
       "achievements": [
-        "EF Core 8 сұраныстарын оңтайландыру және IndexedDB кэштеуі арқылы күрделі жөндеу бригадалары үшін өндірістік экрандардың жүктелу уақытын ~30 минуттан 1.5 секундқа дейін төмендеттім.",
-        "500-ден астам пайдаланушы үшін ескірген WebSQL-ден IndexedDB-ге (Dexie.js) деректердің жоғалуынсыз дербес жұмыс істейтін үдемелі веб-қосымша (PWA) функционалын әзірледім.",
+        "Күрделі жөндеу топтары пайдаланатын ең баяу жұмыс экрандарын .NET 8 / EF Core 8 сұраныстарын оңтайландыру және деректерді IndexedDB-де клиенттік кэштеу арқылы түзеттім.",
+        "Далалық PWA қосымшасына офлайн режимін қосып, 500+ далалық қызметкер үшін браузер жадын ескірген WebSQL-ден IndexedDB-ге (Dexie.js) ауыстырдым.",
         "Серверлік Web API қызметтерін ASP.NET Framework 4.8 / EF6 нұсқасынан .NET 8 / EF Core 8 нұсқасына көшіріп, Azure App Registration және MSAL арқылы саясатқа негізделген авторлануды енгіздім.",
-        "Azure Service Bus, Logic Apps және WebJobs қолдану арқылы Oracle Primavera жобаларды басқару жүйесімен интеграция жасап, үндестіру кідірісін 1–3 сағаттан бірнеше минутқа дейін азайттым.",
-        "Chevron ішкі TypeScript MSAL сәйкестендіру кітапханалары мен әзірлеуші құралдарын дамытуға үлес қостым."
+        "Ескі пакеттік синхрондауды хабарламалар алмасуына ауыстырып, Azure Service Bus, Logic Apps және WebJobs арқылы Oracle Primavera интеграциясын қайта құрдым."
       ],
       "technologies": [".NET 8", "ASP.NET Core Web API", "C#", "React", "TypeScript", "IndexedDB", "Dexie.js", "Entity Framework Core 8", "Azure Service Bus", "Azure Logic Apps", "Azure WebJobs", "MSAL", "Tailwind CSS"],
       "defaultExpanded": true
@@ -100,10 +100,9 @@
         "end": "2024-01",
         "display": "Қыркүйек 2022 — Қаңтар 2024"
       },
-      "roleType": "frontend",
+      "roleType": "fullstack",
       "summary": "Корпоративтік TEA-RECS (Wombat), VISI (тоқтатылған ұңғымаларды визуалды бақылау) және Whitespace Dashboard (WSD) жобаларында Full-stack frontend және деректерді визуализациялау маманы.",
       "keyMetrics": [
-        "CI/CD орналастыруды 90-нан 15 минутқа дейін жеделдету",
         "Интеграцияланған бизнесті жоспарлау (IBP) құралы ретінде ТШО марапатына ие болу"
       ],
       "achievements": [
@@ -111,7 +110,7 @@
         "Ауқымды кестелік деректер үшін TanStack Table және React Window негізінде React Context API күй үлестірімі бар жоғары өнімді екі осьті виртуалданған кестелерді жасадым.",
         "Airbnb Visx негізінде интерактивті телеметрия диаграммаларын және өңдеу режимі бар React Flow негізінде мұнай өңдеу зауытының технологиялық сұлбаларын салдым.",
         "Azure DevOps жүйесіндегі .NET WebApp орналастыру құбырларын оңтайландырып, релиз ұзақтығын ~90 минуттан ~15 минутқа дейін қысқарттым.",
-        "Кен орнын моделдеу деректерінің резервтік көшірмелерін оңтайландырып, Azure Blob Storage шығындарын айтарлықтай төмендеттім.",
+        "Кен орнын моделдеу деректерінің резервтік көшірмелерін оңтайландырып, Azure Blob Storage шығындарын төмендеттім.",
         "Әзірлеу тармағында PR тексеру үшін SonarQube SAST қауіпсіздік және осалдықтарды талдау құралдарын енгіздім."
       ],
       "technologies": ["React", "TypeScript", ".NET 6", "C#", "Visx", "TanStack Table", "React Window", "React Flow", "Redux Toolkit", "Material UI", "Azure DevOps", "Docker", "SonarQube"],
@@ -123,16 +122,15 @@
       "company": "Aviata.kz",
       "location": "Алматы, Қазақстан",
       "period": {
-        "start": "2022-02",
+        "start": "2022-01",
         "end": "2022-09",
-        "display": "Ақпан 2022 — Қыркүйек 2022"
+        "display": "Қаңтар 2022 — Қыркүйек 2022"
       },
       "roleType": "frontend",
       "summary": "Қазақстандағы жетекші билет сату сервисінде (Aviata / Chocotravel) Frontend әзірлеушісі.",
       "achievements": [
         "Chocotravel.com сайтының клиенттік ұшақ және пойыз билеттерін брондау сценарийлерін ескірген PHP монолитінен Vue.js негізіндегі Single Page Application (SPA) құрылымына кезең-кезеңімен көшірдім.",
-        "Vue 3, Pinia және Tailwind CSS көмегімен мобильді web-view компоненттері мен дизайн-жүйе элементтерін әзірледім.",
-        "Архитектуралық шешімдер қабылдауға, өнімділікті талдауға және кодты модульдік түрге келтіруге белсенді қатыстым."
+        "Vue 3, Pinia және Tailwind CSS көмегімен мобильді web-view компоненттері мен дизайн-жүйе элементтерін әзірледім."
       ],
       "technologies": ["Vue.js", "TypeScript", "Pinia", "Vue Router", "Tailwind CSS", "Vue Test Utils", "REST APIs"],
       "defaultExpanded": false
@@ -151,8 +149,7 @@
       "summary": "Геодинамикалық бақылау маманы, сейсмологиялық станциялар желісін және өндірістік телеметрия деректерін басқарушы.",
       "achievements": [
         "Сейсмологиялық станциялар мен жер асты сулары мен техногендік газды бақылау ұңғымалары желісінде геодинамикалық мониторингті үйлестірдім.",
-        "Кен орны бедерінің деформациялану қаупін бағалап, өндірістік қауіпсіздік талаптарына сәйкес үлкен көлемдегі сейсмологиялық мәліметтерге талдау жүргіздім.",
-        "Сенімді бағдарламалық жүйелерді жобалауда маңызды рөл атқаратын жүйелік талдау, тәуекелдерді басқару және телеметрияны тексеру бойынша мықты дағдыларды қалыптастырдым."
+        "Кен орны бедерінің деформациялану қаупін бағалап, өндірістік қауіпсіздік талаптарына сәйкес үлкен көлемдегі сейсмологиялық мәліметтерге талдау жүргіздім."
       ],
       "technologies": ["Геодинамикалық мониторинг", "Телеметриялық талдау", "Сейсмикалық деректерді тексеру", "Тәуекелдерді бағалау"],
       "defaultExpanded": false
@@ -183,24 +180,24 @@
       "id": "project-turnaround",
       "title": "Күрделі жөндеуді цифрландыру: TA Pro және TO Notes",
       "summary": "Chevron және Теңізшевройл зауыттарының күрделі жөндеу жұмыстарын басқаруға арналған үдемелі веб-қосымшалар (PWA) мен BFF микросервистер кешені.",
-      "role": "Жетекші инженер-әзірлеуші",
+      "role": "Аға Full-Stack әзірлеуші",
       "client": "Chevron / Теңізшевройл",
       "projectType": "enterprise",
       "featured": true,
-      "impact": "Сұраныстар жылдамдығын 1200 есе арттыру, офлайн режимде деректерді толық сақтау",
-      "metrics": ["Жүктелу 30мин-тан 1.5с-қа дейін", "ERP интеграциясы 1–3сағ-тан минуттарға дейін", "500+ далалық маман"],
+      "impact": "500+ далалық қызметкерге арналған офлайн-PWA; Chevron SDP Challenge Coin медалі",
+      "metrics": ["500+ далалық қызметкер", ".NET 8-ге көшу", "Офлайн-PWA"],
       "technologies": [".NET 8", "ASP.NET Core", "React", "Dexie.js", "IndexedDB", "Azure Service Bus", "Logic Apps", "MSAL"]
     },
     {
       "id": "project-tea-recs",
       "title": "TEA-RECS және VISI (Экономикалық бағалау және визуалды бақылау)",
       "summary": "Мұнай зауытының күрделі технологиялық жүйелері мен кестелерін моделдейтін экономикалық бағалау платформасы және тоқтатылған ұңғымаларды тексеру құралы.",
-      "role": "Full-Stack әзірлеуші",
+      "role": "Бағдарламалық қамтамасыз ету әзірлеушісі",
       "client": "Теңізшевройл",
       "projectType": "enterprise",
       "featured": true,
       "impact": "Интеграцияланған бизнесті жоспарлаудың (IBP) негізгі құралы ретінде ТШО марапатына ие болды",
-      "metrics": ["CI/CD уақытын 90-нан 15 минутқа дейін қысқарту", "Екі осьті виртуалданған кестелер"],
+      "metrics": ["Екі осьті виртуалданған кестелер"],
       "technologies": ["React", "TypeScript", "Visx", "TanStack Table", "React Flow", ".NET 6", "Azure DevOps", "Docker"]
     },
     {
@@ -218,7 +215,7 @@
       "id": "project-geo-exp",
       "title": "GeoExploration Платформасы",
       "summary": "Үш тілді бағыттауышы (ru/kk/en) бар және Vercel мен Plesk жүйелеріне автоматты орналастырылатын жоғары өнімді Next.js 15 корпоративтік веб-сайты.",
-      "role": "Frontend-архитектор және Full-Stack әзірлеуші",
+      "role": "Жалғыз әзірлеуші",
       "projectType": "commercial",
       "featured": true,
       "impact": "Қосалқы Plesk сервері қарастырылған Next.js 15 standalone өндірістік пакеті",
@@ -241,36 +238,47 @@
   "certifications": [
     {
       "id": "cert-safe-6",
-      "title": "Сертификатталған SAFe® 6 Practitioner маманы",
-      "issuer": "Scaled Agile, Inc.",
-      "issueDate": "2023-05",
-      "credentialId": "SAFE-883921",
-      "verificationUrl": "https://www.credly.com/",
+      "title": "SAFe 6 Practitioner",
+      "issuer": "Scaled Agile",
+      "issueDate": "2024-07",
+      "credentialId": "49406639-9646",
+      "verificationUrl": "https://community.scaledagile.com/apex/PrintAchievement?aid=a0t6T00000O8QH2QAN&aaid=a0rQo00000xibl3IAA",
       "iconName": "safe"
     },
     {
+      "id": "cert-hackerrank-react",
+      "title": "Frontend Developer (React)",
+      "issuer": "HackerRank",
+      "issueDate": "2023-11",
+      "verificationUrl": "https://www.hackerrank.com/certificates/1f868b72177c",
+      "iconName": "hackerrank"
+    },
+    {
+      "id": "cert-hackerrank-js-intermediate",
+      "title": "JavaScript (Intermediate)",
+      "issuer": "HackerRank",
+      "issueDate": "2023-12",
+      "credentialId": "dd99e082ab79",
+      "verificationUrl": "https://www.hackerrank.com/certificates/dd99e082ab79",
+      "iconName": "hackerrank"
+    },
+    {
       "id": "cert-html-academy-react",
-      "title": "«React-әзірлеушісі» кәсіби біліктілігі",
+      "title": "React. Күрделі клиенттік қосымшаларды әзірлеу",
       "issuer": "HTML Academy",
-      "issueDate": "2022-05",
-      "verificationUrl": "https://htmlacademy.ru/",
+      "issueDate": "2021-09",
+      "credentialId": "1637434380",
+      "verificationUrl": "https://assets.htmlacademy.ru/certificates/intensive/217/1704573.pdf?1637434380",
       "iconName": "react"
     },
     {
       "id": "cert-html-academy-js-arch",
       "title": "JavaScript. Клиенттік қосымшалардың архитектурасы",
       "issuer": "HTML Academy",
-      "issueDate": "2021-12",
-      "verificationUrl": "https://htmlacademy.ru/",
+      "issueDate": "2021-07",
+      "credentialId": "1631417950",
+      "verificationUrl": "https://assets.htmlacademy.ru/certificates/intensive/211/1704573.pdf?1631417950",
       "iconName": "javascript"
-    },
-    {
-      "id": "cert-hackerrank-problem-solving",
-      "title": "Problem Solving (Advanced) және C# сертификаттауы",
-      "issuer": "HackerRank",
-      "issueDate": "2023-08",
-      "verificationUrl": "https://www.hackerrank.com/certificates/",
-      "iconName": "hackerrank"
     }
   ],
   "honors": [
