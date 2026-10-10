@@ -1,6 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "astro",
+  "installCommand": "deno install --frozen",
+  "buildCommand": "deno task build",
   "git": {
     "deploymentEnabled": false
   }

@@ -5,11 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro-check",
-    "generate:pdf": "node scripts/generate-pdf.mjs"
+    "generate:pdf": "deno run -A scripts/generate-pdf.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

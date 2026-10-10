@@ -32,7 +32,7 @@ function findChrome() {
 
 function generatePdfs() {
   console.log('==> Step 1: Building static site with Astro...');
-  execSync('npm run build', { stdio: 'inherit' });
+  execSync('deno task build', { stdio: 'inherit' });
 
   const chromePath = findChrome();
   console.log(`==> Step 2: Found browser at: ${chromePath}`);

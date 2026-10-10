@@ -6,10 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- `npm run dev`: dev server (port 4321)
-- `npm run build`: static build to `dist/`
-- `npm run check`: `astro-check` type-check. Together with `build`, this is the only verification gate. There are no tests or linter.
-- `npm run generate:pdf`: runs `build`, then uses headless Chrome/Edge to print `dist/{,ru/,kk/}cv/index.html` into `public/cv/*.pdf`. If the browser isn't found, set `CHROME_PATH`.
+The toolchain is Deno, not Node (ADR 0003), pinned in `.dvmrc`. `package.json` is still the dependency manifest and script list; `deno.lock` is the lockfile. Don't use `npm`/`npx` or add a `package-lock.json`.
+
+- `deno install`: installs `node_modules` from `package.json` (CI uses `--frozen`)
+- `deno task dev`: dev server (port 4321)
+- `deno task build`: static build to `dist/`
+- `deno task check`: `astro-check` type-check. Together with `build`, this is the only verification gate. There are no tests or linter.
+- `deno task generate:pdf`: runs `build`, then uses headless Chrome/Edge to print `dist/{,ru/,kk/}cv/index.html` into `public/cv/*.pdf`. If the browser isn't found, set `CHROME_PATH`.
 
 ## Architecture
 

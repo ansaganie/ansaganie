@@ -9,7 +9,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - **Domain**: Personal portfolio, live curriculum vitae, and developer identity.
 - **Skills to consult**: `research`, `prototype`, `domain-modeling`, `modern-web-guidance`.
 - **Execution is in scope**: the destination is a deployed site, so `task` tickets build things rather than only decide them.
-- **Framework & Tech**: Astro (static-first, no JS runtime overhead, built-in i18n routing, Tailwind CSS).
+- **Framework & Tech**: Astro (static-first, no JS runtime overhead, built-in i18n routing, Tailwind CSS), run with Deno instead of Node ([ADR 0003](../adr/0003-deno-toolchain.md)).
 - **Target Locales**: English (`/`), Russian (`/ru`), Kazakh (`/kk`).
 - **Profile Repo Integration**: Keep the repo root [README.md](../../README.md) as the GitHub profile README. Website code goes in `src/` and assets in `public/`.
 - **Hosting Strategy**: Vercel at `https://ansaganie.vercel.app`. GitHub Actions in this repo deploy to production on merge to `main` and make protected previews on PRs. See [Hosting topology](tickets/0008-hosting-topology.md) and [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md).
@@ -34,6 +34,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md): Completed R-M3 (§3.2 steps 3–4) in `BaseLayout.astro`. `ProfilePage` now links `mainEntity` to `#person` and includes `dateModified`. `Person` includes canonical name, 5 alternate names, localized title, Astana locality, phone, and `knowsAbout` skills. Removed legacy `itemscope` microdata from `<body>` so there is only one Person entity in structured data.
 - [Overview visual pass](tickets/0016-overview-visual-pass.md): Overview reordered to Hero -> Projects -> Highlights -> Tech stack with `id="projects"` and Header nav link; pulsing dots and template badges/chips removed; competencies compressed to one line per group; typography upgraded to 14px body, 12px tags, and primary-weight section headings; verified no horizontal scroll at 320/375/1440px and print budget preserved (1 page Overview, 2 pages CV).
 - [Hosting topology](tickets/0008-hosting-topology.md): Vercel only, at `ansaganie.vercel.app`, with no `base` and no GitHub Pages. GitHub Actions run all deploys: production on merge to `main` or manual dispatch, protected previews on PRs. Vercel's Git auto-deploy is off. [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md).
+- [Deno toolchain](../adr/0003-deno-toolchain.md) (ADR 0003): Deno replaces Node for install, check, build, dev, `generate:pdf` and the Vercel CLI in CI. `package.json` stays the manifest, `deno.lock` is the lockfile, and `.dvmrc` pins the version.
 
 ## Tickets
 
