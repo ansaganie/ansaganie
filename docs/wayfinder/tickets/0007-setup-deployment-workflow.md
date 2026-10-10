@@ -46,6 +46,7 @@ Done:
 
 - [x] Owner step 3: the repo secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` are set (owner-confirmed).
 - [x] Pre-push review: the pinned actions (`checkout@v7`, `setup-deno@v2` with `deno-version-file`/`cache`, `github-script@v9`) and Deno 2.9.7 for Linux all exist. `deno.lock` has the linux-x64 native bindings, and a clean copy passes `deno install --frozen`. Running `npm:vercel@63` leaves the lockfile untouched, so the second frozen install inside `vercel build` passes too. Two fixes: a manual run now deploys only from `main`, not from any branch, and the production environment URL is `https://ansaganie.vercel.app`, because Standard Protection keeps the production deployment URL that `vercel deploy` prints private.
+- [x] First PR run ([38034478935](https://github.com/ansaganie/ansaganie/actions/runs/38034478935)): everything through the output check passed in about 20s, but `vercel deploy --prebuilt` under Deno hung for more than 15 minutes, and Vercel listed no deployments. The workflow now runs the Vercel CLI on Node 24 (`actions/setup-node`, `npx --yes vercel@63`). The project still installs and builds with Deno, and the job has a 15-minute timeout. ADR 0003 has an update recording this.
 
 Remaining (HITL, owner):
 

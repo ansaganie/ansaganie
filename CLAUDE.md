@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-The toolchain is Deno, not Node (ADR 0003), pinned in `.dvmrc`. `package.json` is still the dependency manifest and script list; `deno.lock` is the lockfile. Don't use `npm`/`npx` or add a `package-lock.json`.
+The toolchain is Deno, not Node (ADR 0003), pinned in `.dvmrc`. `package.json` is still the dependency manifest and script list; `deno.lock` is the lockfile. Don't use `npm`/`npx` or add a `package-lock.json`. The one exception is the Vercel CLI in the deploy workflow, which runs on Node via `npx` because `vercel deploy` hangs under Deno (ADR 0003).
 
 - `deno install`: installs `node_modules` from `package.json` (CI uses `--frozen`)
 - `deno task dev`: dev server (port 4321)
