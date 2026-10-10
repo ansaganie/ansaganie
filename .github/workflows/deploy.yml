@@ -1,5 +1,5 @@
 # Every deploy goes through GitHub Actions (ADR 0002); Vercel's Git auto-deploy is off in vercel.json.
-# PRs get a preview behind Vercel Authentication; a push to main or a manual run deploys production.
+# PRs get a preview behind Vercel Authentication; a push to main or a manual run on main deploys production.
 name: Deploy
 
 on:
@@ -22,15 +22,18 @@ env:
 
 jobs:
   deploy:
-    # Fork PRs get no secrets, so they can't deploy.
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    # Fork PRs get no secrets, so they can't deploy. A manual run on any branch but main would ship that branch to production.
+    if: >-
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
+      || (github.event_name != 'pull_request' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
     environment:
       name: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
-      url: ${{ steps.deploy.outputs.url }}
+      # Standard Protection keeps production deployment URLs private; only the production domain is public.
+      url: ${{ github.event_name == 'pull_request' && steps.deploy.outputs.url || 'https://ansaganie.vercel.app' }}
     steps:
       - uses: actions/checkout@v7
 

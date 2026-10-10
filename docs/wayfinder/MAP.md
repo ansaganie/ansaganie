@@ -44,7 +44,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Scaffold Astro project](tickets/0004-scaffold-astro-project.md) (`wayfinder:task`, AFK)
 - [x] [Implement pages and PDF](tickets/0005-implement-pages-and-pdf.md) (`wayfinder:task`, AFK)
 - [x] [Update GitHub profile README](tickets/0006-update-github-profile-readme.md) (`wayfinder:task`, AFK)
-- [ ] [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md) (`wayfinder:task`, HITL account steps + AFK workflow). **Claimed**: workflow built, waiting on owner secrets and a test PR
+- [ ] [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md) (`wayfinder:task`, HITL account steps + AFK workflow). **Claimed**: workflow built and secrets set, waiting on a test PR and the first merge to `main`
 - [x] [Hosting topology](tickets/0008-hosting-topology.md) (`wayfinder:grilling`, HITL)
 - [x] [Confirm published personal data](tickets/0009-confirm-published-personal-data.md) (`wayfinder:grilling`, HITL)
 - [x] [Make a clean `npm ci` pass](tickets/0010-fix-clean-install.md) (`wayfinder:task`, AFK)

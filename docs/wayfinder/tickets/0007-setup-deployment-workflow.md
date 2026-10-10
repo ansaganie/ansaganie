@@ -44,8 +44,10 @@ Done:
 - [x] Verified locally: `npm run check` (0 errors) and `npm run build` pass, and canonical URLs are `https://ansaganie.vercel.app/...`. A local `vercel pull --environment=preview` and `vercel build` produce Astro output that passes the workflow's output check.
 - [x] Switched the toolchain to Deno ([ADR 0003](../../adr/0003-deno-toolchain.md)). The workflow uses `denoland/setup-deno` (version from `.dvmrc`) and runs the Vercel CLI as `deno run -A npm:vercel@63`, and `vercel.json` sets the Deno install and build commands. Re-verified with Node off `PATH`: check, build, dev, `generate:pdf`, and the CLI's `vercel pull` + `vercel build` with the output check passing. The regenerated PDFs belong in the same commit, because afdf779 had changed `CvContent` and `print.css` without regenerating them.
 
+- [x] Owner step 3: the repo secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` are set (owner-confirmed).
+- [x] Pre-push review: the pinned actions (`checkout@v7`, `setup-deno@v2` with `deno-version-file`/`cache`, `github-script@v9`) and Deno 2.9.7 for Linux all exist. `deno.lock` has the linux-x64 native bindings, and a clean copy passes `deno install --frozen`. Running `npm:vercel@63` leaves the lockfile untouched, so the second frozen install inside `vercel build` passes too. Two fixes: a manual run now deploys only from `main`, not from any branch, and the production environment URL is `https://ansaganie.vercel.app`, because Standard Protection keeps the production deployment URL that `vercel deploy` prints private.
+
 Remaining (HITL, owner):
 
-- [ ] Create a Vercel access token (scope `ansaganie-projects`) and add the repo secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` (values above).
 - [ ] Push the branch and open a PR. Check that the workflow posts a protected preview URL.
 - [ ] Merge to `main`. Check that `https://ansaganie.vercel.app` serves production publicly and that the README links resolve.
