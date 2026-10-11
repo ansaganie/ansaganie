@@ -2,7 +2,7 @@
 
 **Senior Full-Stack Developer** at Tengizchevroil / Chevron · Astana, Kazakhstan
 
-I turn legacy enterprise applications into fast, maintainable .NET and React systems, currently for Chevron and Tengizchevroil.
+I design and build fast, maintainable, and scalable full-stack web applications across .NET, React, and TypeScript.
 
 [![Live CV](https://img.shields.io/badge/Live_CV-EN-2563eb?style=for-the-badge)](https://ansaganie.dev/cv/)
 [![Live CV RU](https://img.shields.io/badge/Live_CV-RU-2563eb?style=for-the-badge)](https://ansaganie.dev/ru/cv/)
@@ -44,5 +44,3 @@ Website: <https://ansaganie.dev> (English, Russian, Kazakh; downloadable PDF CV)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/ansaganie)
 [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/ansaganie)
 [![Email](https://img.shields.io/badge/Email-0078D4?logo=microsoftoutlook&logoColor=white)](mailto:ansaganie@hotmail.com)
-
-Looking for a long-term remote role with an international team · UTC+5.

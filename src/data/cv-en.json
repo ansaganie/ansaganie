@@ -2,7 +2,7 @@
   "locale": "en",
   "name": "Ansagan Islamgaliev",
   "title": "Senior Full-Stack .NET & React Engineer",
-  "elevatorPitch": "I turn legacy enterprise applications into fast, maintainable .NET and React systems, currently for Chevron and Tengizchevroil.",
+  "elevatorPitch": "I design and build fast, maintainable, and scalable full-stack web applications across .NET, React, and TypeScript.",
   "summary": "Senior full-stack engineer with 4+ years building enterprise software in C#, .NET 8, ASP.NET Core, React and Azure, currently for Chevron and Tengizchevroil. I modernize legacy applications: moving .NET Framework services to .NET 8, fixing slow screens, making web apps work offline for 500+ field staff, and speeding up release pipelines. Before software, I spent 6 years in oil & gas field operations.",
   "updatedAt": "October 2026",
   "contact": {
@@ -11,8 +11,7 @@
     "telegram": "https://t.me/ansaganie",
     "linkedin": "https://linkedin.com/in/ansaganie",
     "github": "https://github.com/ansaganie",
-    "location": "Astana, Kazakhstan",
-    "availability": "Looking for a long-term remote role with an international team · UTC+5"
+    "location": "Astana, Kazakhstan"
   },
   "metrics": [
     {

@@ -39,6 +39,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [SEO launch basics](tickets/0012-seo-launch-basics.md): every URL ends in a slash (`trailingSlash` in Astro and Vercel), and nav, switcher, canonical, hreflang and the sitemap come from one `astro:i18n`-based helper. Added `@astrojs/sitemap` with i18n, `robots.txt`, a trilingual noindex 404, favicon SVG/ICO/touch icon, and a 1200×630 English `og:image` with `summary_large_image` and `og:locale:alternate`, rendered by `deno task generate:images`. On branch `feat/0012-seo-launch-basics`; production check after merge.
 - [Custom domain ansaganie.dev](../adr/0004-custom-domain-ansaganie-dev.md) (ADR 0004): registered `ansaganie.dev` at Cloudflare Registrar, assigned to Vercel with DNS-only CNAME records pointing to Vercel edge, and updated all canonical origins across the project (`astro.config.mjs`, `BaseLayout.astro`, `robots.txt`, `og-image.png`, `deploy.yml`, and README badges) to `https://ansaganie.dev`. `www.ansaganie.dev` and `ansaganie.vercel.app` redirect (308) to apex.
 - [Search engine registration](tickets/0017-search-engine-registration.md): verified site ownership and submitted sitemap to Google Search Console and Bing Webmaster Tools; deployed IndexNow key and automated post-deploy URL submission to api.indexnow.org; aligned off-site profile URLs on LinkedIn and GitHub to https://ansaganie.dev.
+- [New content grilling](tickets/0018-content-grilling.md): resolved all postponed audit items (D5) via HITL grilling. R-H1 (case-study pages) and R-H3 (public writing) ruled out of scope to preserve strictly 2 pages; R-M1 (expandable card fields) and R-H2 (photo & narrative block) rejected to keep scannability and ATS alignment. Completely eliminated availability status badge and metadata; updated elevator pitch to a general web-only skills introduction across EN, RU, and KK without company names.
 
 ## Tickets
 
@@ -59,7 +60,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md) (`wayfinder:task`, AFK)
 - [x] [Overview visual pass](tickets/0016-overview-visual-pass.md) (`wayfinder:task`, AFK)
 - [x] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL)
-- [ ] [New content grilling](tickets/0018-content-grilling.md) (`wayfinder:grilling`, HITL). Deferred (audit D5)
+- [x] [New content grilling](tickets/0018-content-grilling.md) (`wayfinder:grilling`, HITL)
 
 ## Not yet specified
 
@@ -70,3 +71,5 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - Dynamic backend / CMS server infrastructure (the site is static-first only).
 - Public blogging platform or commenting systems (scope is limited to the 2-page Live CV and Overview).
 - Buying and attaching a custom domain: completed in [ADR 0004](../adr/0004-custom-domain-ansaganie-dev.md) (`ansaganie.dev`).
+- Dedicated case-study subpages (R-H1): preserves the strictly 2-page Live CV architecture (Overview & CV) and avoids enterprise NDA / translation overhead.
+- Authoring new external technical blog posts / articles (R-H3): outside website repository scope.
