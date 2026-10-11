@@ -2,7 +2,7 @@
 
 ## Destination
 
-A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (Overview & CV) for Ansagan Islamgaliev, hosted on Vercel at `ansaganie.vercel.app`, deployed by GitHub Actions, with nothing blocking a custom domain later. It has a modern, compact, classic ATS-compliant semantic design, SEO metadata, a downloadable PDF CV, and an updated GitHub profile [README.md](../../README.md).
+A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (Overview & CV) for Ansagan Islamgaliev, hosted on Vercel at `ansaganie.dev`, deployed by GitHub Actions. It has a modern, compact, classic ATS-compliant semantic design, SEO metadata, a downloadable PDF CV, and an updated GitHub profile [README.md](../../README.md).
 
 ## Notes
 
@@ -12,7 +12,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - **Framework & Tech**: Astro (static-first, no JS runtime overhead, built-in i18n routing, Tailwind CSS), run with Deno instead of Node ([ADR 0003](../adr/0003-deno-toolchain.md)).
 - **Target Locales**: English (`/`), Russian (`/ru`), Kazakh (`/kk`).
 - **Profile Repo Integration**: Keep the repo root [README.md](../../README.md) as the GitHub profile README. Website code goes in `src/` and assets in `public/`.
-- **Hosting Strategy**: Vercel at `https://ansaganie.vercel.app`. GitHub Actions in this repo deploy to production on merge to `main` and make protected previews on PRs. See [Hosting topology](tickets/0008-hosting-topology.md) and [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md).
+- **Hosting Strategy**: Vercel with custom domain `https://ansaganie.dev` (registered at Cloudflare, DNS-only). GitHub Actions in this repo deploy to production on merge to `main` and make protected previews on PRs. See [Hosting topology](tickets/0008-hosting-topology.md), [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md), and [ADR 0004](../adr/0004-custom-domain-ansaganie-dev.md).
 - **Tracker**: the map is kept in local markdown because `gh` is not authenticated on this machine, even though `docs/agents/issue-tracker.md` names GitHub Issues.
 - **Pre-flight review**: [Deployment readiness review](../research/deployment-readiness-review.md) (2026-10-04) produced 27 recommendations: 4 × P0, 10 × P1, 13 × P2. The P0 items and most of the P1 items are tickets below.
 
@@ -37,6 +37,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [Deno toolchain](../adr/0003-deno-toolchain.md) (ADR 0003): Deno replaces Node for install, check, build, dev and `generate:pdf`. `package.json` stays the manifest, `deno.lock` is the lockfile, and `.dvmrc` pins the version. The Vercel CLI runs on Node 24 in CI, because `vercel deploy` hung under Deno.
 - [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md): live at `https://ansaganie.vercel.app` since 2026-10-10 (PR #2). `.github/workflows/deploy.yml` checks and builds with Deno, deploys with the Vercel CLI, posts a preview comment on PRs and deploys production on push to `main`. A manual run deploys only from `main`, and the job times out after 15 minutes. Vercel assigned the project's first deployment, a PR build, to production. All six pages, the README links and the PDFs passed a Playwright check on production.
 - [SEO launch basics](tickets/0012-seo-launch-basics.md): every URL ends in a slash (`trailingSlash` in Astro and Vercel), and nav, switcher, canonical, hreflang and the sitemap come from one `astro:i18n`-based helper. Added `@astrojs/sitemap` with i18n, `robots.txt`, a trilingual noindex 404, favicon SVG/ICO/touch icon, and a 1200×630 English `og:image` with `summary_large_image` and `og:locale:alternate`, rendered by `deno task generate:images`. On branch `feat/0012-seo-launch-basics`; production check after merge.
+- [Custom domain ansaganie.dev](../adr/0004-custom-domain-ansaganie-dev.md) (ADR 0004): registered `ansaganie.dev` at Cloudflare Registrar, assigned to Vercel with DNS-only CNAME records pointing to Vercel edge, and updated all canonical origins across the project (`astro.config.mjs`, `BaseLayout.astro`, `robots.txt`, `og-image.png`, `deploy.yml`, and README badges) to `https://ansaganie.dev`. `www.ansaganie.dev` and `ansaganie.vercel.app` redirect (308) to apex.
 
 ## Tickets
 
@@ -67,4 +68,4 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 
 - Dynamic backend / CMS server infrastructure (the site is static-first only).
 - Public blogging platform or commenting systems (scope is limited to the 2-page Live CV and Overview).
-- Buying and attaching a custom domain: launch is on `ansaganie.vercel.app`. A domain can go on the Vercel project in a later effort, using [Custom domain research](tickets/0001-custom-domain-research.md); see [Hosting topology](tickets/0008-hosting-topology.md).
+- Buying and attaching a custom domain: completed in [ADR 0004](../adr/0004-custom-domain-ansaganie-dev.md) (`ansaganie.dev`).

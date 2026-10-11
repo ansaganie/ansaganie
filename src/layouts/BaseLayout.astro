@@ -27,7 +27,7 @@ const profile = getCandidateProfile(currentLocale);
 const canonical = getCandidateProfile(DEFAULT_LOCALE);
 const [addressLocality, addressCountry] = canonical.contact.location.split(', ');
 
-const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://ansaganie.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://ansaganie.dev';
 
 // Canonical, hreflang and og:url come from one helper, so they match exactly.
 const canonicalUrl = getLocalizedUrl(Astro.url.pathname, currentLocale);

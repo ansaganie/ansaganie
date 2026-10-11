@@ -9,7 +9,7 @@ import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { findChrome } from './chrome.mjs';
 
-const SITE_HOST = 'ansaganie.vercel.app';
+const SITE_HOST = 'ansaganie.dev';
 
 const escapeHtml = (value) =>
   value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');

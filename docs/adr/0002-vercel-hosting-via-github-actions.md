@@ -11,7 +11,7 @@ The site's code stays in `ansaganie/ansaganie` (the Profile README repo), so Git
 
 ## Consequences
 
-- `site` in `astro.config.mjs`, canonical/hreflang URLs, the sitemap and the README badges all use `https://ansaganie.vercel.app`. GitHub Pages stays off for this repo.
-- `ansaganie.github.io` stays free. A custom domain can be attached to the Vercel project later without moving `virtual-keyboard` (which is served at `ansaganie.github.io/virtual-keyboard/`). Doing that changes the canonical origin, so it's best done before or soon after indexing.
+- `site` in `astro.config.mjs`, canonical/hreflang URLs, the sitemap and the README badges originally used `https://ansaganie.vercel.app` (updated to `https://ansaganie.dev` in [ADR 0004](0004-custom-domain-ansaganie-dev.md)). GitHub Pages stays off for this repo.
+- `ansaganie.github.io` stays free. Custom domain `ansaganie.dev` attached to Vercel (see [ADR 0004](0004-custom-domain-ansaganie-dev.md)).
 - The Hobby plan allows non-commercial personal use only, which fits a personal CV.
 - Deploys need `VERCEL_TOKEN`, `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` as repo secrets. The Vercel GitHub app isn't needed.

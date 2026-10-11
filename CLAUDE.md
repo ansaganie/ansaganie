@@ -38,4 +38,4 @@ Static Astro 7 site: two pages (**Overview Page** `/`, **CV Page** `/cv`) × thr
 - Work is tracked locally in `docs/wayfinder/MAP.md` and `docs/wayfinder/tickets/`, not in GitHub Issues, because `gh` is not authenticated on this machine. When you finish a ticket, update its status and the MAP's "Decisions so far".
 - `PROJECT.md` is the plan from the early design-research phase. For current state, use the MAP.
 - `scratch/`, `source/`, `.agents/` are gitignored local artifacts. Leave them out of the site.
-- Hosting is Vercel at `https://ansaganie.vercel.app`, deployed only by GitHub Actions (ADR 0002). The workflow isn't set up yet: ticket 0007.
+- Hosting is Vercel at `https://ansaganie.dev`, deployed only by GitHub Actions (ADR 0002, ADR 0004).

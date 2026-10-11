@@ -36,7 +36,7 @@ jobs:
     environment:
       name: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
       # Standard Protection keeps production deployment URLs private; only the production domain is public.
-      url: ${{ github.event_name == 'pull_request' && steps.deploy.outputs.url || 'https://ansaganie.vercel.app' }}
+      url: ${{ github.event_name == 'pull_request' && steps.deploy.outputs.url || 'https://ansaganie.dev' }}
     steps:
       - uses: actions/checkout@v7
 
