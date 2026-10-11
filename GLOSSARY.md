@@ -29,7 +29,7 @@ A named piece of work (enterprise, commercial or open source) shown on the **Ove
 _Avoid_: Case study (reserved for a future long-form write-up), mission-critical system
 
 **Availability**:
-The single statement of the kind of role the candidate is looking for, shown identically wherever it appears.
+Formerly the statement of candidate role preference; omitted from the site and profile per owner decision.
 _Avoid_: Status, open-to-work badge
 
 **Credential Link**:

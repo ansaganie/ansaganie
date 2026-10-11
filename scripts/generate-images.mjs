@@ -1,7 +1,7 @@
 // Renders the share card and favicon rasters with headless Chrome:
 //   scripts/og-image.html + src/data/cv-en.json -> public/og-image.png (1200×630)
 //   public/favicon.svg -> public/apple-touch-icon.png (180×180), public/favicon.ico (16 + 32)
-// Rerun after changing the name, title, availability or primary skills in cv-en.json, or the favicon.
+// Rerun after changing the name, title or primary skills in cv-en.json, or the favicon.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -69,8 +69,7 @@ function generateImages() {
       .replace('{{name}}', escapeHtml(profile.name))
       .replace('{{title}}', escapeHtml(profile.title))
       .replace('{{stack}}', profile.skills.primary.map((skill) => `<span>${escapeHtml(skill)}</span>`).join(''))
-      .replace('{{host}}', SITE_HOST)
-      .replace('{{availability}}', escapeHtml(profile.contact.availability));
+      .replace('{{host}}', SITE_HOST);
     const ogHtmlFile = path.join(tempDir, 'og-image.html');
     fs.writeFileSync(ogHtmlFile, ogHtml, 'utf8');
     screenshot(chromePath, ogHtmlFile, path.join(publicDir, 'og-image.png'), 1200, 630);

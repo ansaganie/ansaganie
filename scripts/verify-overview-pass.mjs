@@ -85,11 +85,8 @@ test('Projects section has id="projects"', () => {
   assert(hasProjectsId, 'Projects section missing id="projects" attribute');
 });
 
-// 5. Template Styling Removal: Pulse dot in Hero availability badge
-test('Hero availability badge does not contain pulse dot', () => {
-  const availabilityBadgeRegex = /profile\.contact\.availability[\s\S]*?<\/div>/;
-  const match = overviewContent.match(availabilityBadgeRegex);
-  // Also check if any animate-pulse exists in OverviewContent.astro
+// 5. Template Styling Removal: Pulse dot in Hero
+test('Hero does not contain pulse dot', () => {
   assert(!overviewContent.includes('animate-pulse'), 'OverviewContent still contains animate-pulse');
 });
 

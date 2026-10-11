@@ -89,7 +89,7 @@ export const contactInfoSchema = z.object({
   linkedin: z.string().url(),
   github: z.string().url(),
   location: z.string(),
-  availability: z.string(),
+  availability: z.string().optional(),
 });
 
 export const candidateProfileSchema = z.object({
