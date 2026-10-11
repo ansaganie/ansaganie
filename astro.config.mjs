@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ansaganie.vercel.app',
+  site: 'https://ansaganie.dev',
   // Every page is a directory (`/cv/index.html`), so its URL ends in a slash.
   // Matches `trailingSlash: true` in vercel.json, which redirects the slashless form.
   trailingSlash: 'always',

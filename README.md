@@ -4,11 +4,11 @@
 
 I turn legacy enterprise applications into fast, maintainable .NET and React systems, currently for Chevron and Tengizchevroil.
 
-[![Live CV](https://img.shields.io/badge/Live_CV-EN-2563eb?style=for-the-badge)](https://ansaganie.vercel.app/cv/)
-[![Live CV RU](https://img.shields.io/badge/Live_CV-RU-2563eb?style=for-the-badge)](https://ansaganie.vercel.app/ru/cv/)
-[![Live CV KK](https://img.shields.io/badge/Live_CV-KK-2563eb?style=for-the-badge)](https://ansaganie.vercel.app/kk/cv/)
+[![Live CV](https://img.shields.io/badge/Live_CV-EN-2563eb?style=for-the-badge)](https://ansaganie.dev/cv/)
+[![Live CV RU](https://img.shields.io/badge/Live_CV-RU-2563eb?style=for-the-badge)](https://ansaganie.dev/ru/cv/)
+[![Live CV KK](https://img.shields.io/badge/Live_CV-KK-2563eb?style=for-the-badge)](https://ansaganie.dev/kk/cv/)
 
-Website: <https://ansaganie.vercel.app> (English, Russian, Kazakh; downloadable PDF CV)
+Website: <https://ansaganie.dev> (English, Russian, Kazakh; downloadable PDF CV)
 
 ## What I do
 
