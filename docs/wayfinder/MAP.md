@@ -38,6 +38,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [Set up deployment workflow](tickets/0007-setup-deployment-workflow.md): live at `https://ansaganie.vercel.app` since 2026-10-10 (PR #2). `.github/workflows/deploy.yml` checks and builds with Deno, deploys with the Vercel CLI, posts a preview comment on PRs and deploys production on push to `main`. A manual run deploys only from `main`, and the job times out after 15 minutes. Vercel assigned the project's first deployment, a PR build, to production. All six pages, the README links and the PDFs passed a Playwright check on production.
 - [SEO launch basics](tickets/0012-seo-launch-basics.md): every URL ends in a slash (`trailingSlash` in Astro and Vercel), and nav, switcher, canonical, hreflang and the sitemap come from one `astro:i18n`-based helper. Added `@astrojs/sitemap` with i18n, `robots.txt`, a trilingual noindex 404, favicon SVG/ICO/touch icon, and a 1200×630 English `og:image` with `summary_large_image` and `og:locale:alternate`, rendered by `deno task generate:images`. On branch `feat/0012-seo-launch-basics`; production check after merge.
 - [Custom domain ansaganie.dev](../adr/0004-custom-domain-ansaganie-dev.md) (ADR 0004): registered `ansaganie.dev` at Cloudflare Registrar, assigned to Vercel with DNS-only CNAME records pointing to Vercel edge, and updated all canonical origins across the project (`astro.config.mjs`, `BaseLayout.astro`, `robots.txt`, `og-image.png`, `deploy.yml`, and README badges) to `https://ansaganie.dev`. `www.ansaganie.dev` and `ansaganie.vercel.app` redirect (308) to apex.
+- [Search engine registration](tickets/0017-search-engine-registration.md): verified site ownership and submitted sitemap to Google Search Console and Bing Webmaster Tools; deployed IndexNow key and automated post-deploy URL submission to api.indexnow.org; aligned off-site profile URLs on LinkedIn and GitHub to https://ansaganie.dev.
 
 ## Tickets
 
@@ -57,7 +58,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Build the PDF CV](tickets/0014-build-pdf-cv.md) (`wayfinder:task`, AFK)
 - [x] [JSON-LD rebuild](tickets/0015-json-ld-rebuild.md) (`wayfinder:task`, AFK)
 - [x] [Overview visual pass](tickets/0016-overview-visual-pass.md) (`wayfinder:task`, AFK)
-- [ ] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL). **Frontier** (once the SEO launch basics branch is live on production)
+- [x] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL)
 - [ ] [New content grilling](tickets/0018-content-grilling.md) (`wayfinder:grilling`, HITL). Deferred (audit D5)
 
 ## Not yet specified
