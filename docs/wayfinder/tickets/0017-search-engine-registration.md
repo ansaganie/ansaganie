@@ -4,7 +4,7 @@ Part of [Wayfinder Map](../MAP.md)
 
 - **Type**: wayfinder:task (HITL)
 - **Status**: open
-- **Assignee**: unassigned
+- **Assignee**: agent:wayfinder
 - **Blocked by**: none (#0007 and #0012 are closed; start once #0012 is merged and live, so the sitemap exists)
 
 ## Question

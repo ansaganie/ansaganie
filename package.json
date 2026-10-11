@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "astro-check",
     "generate:pdf": "deno run -A scripts/generate-pdf.mjs",
-    "generate:images": "deno run -A scripts/generate-images.mjs"
+    "generate:images": "deno run -A scripts/generate-images.mjs",
+    "submit:indexnow": "deno run -A scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

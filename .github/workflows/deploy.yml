@@ -81,6 +81,10 @@ jobs:
           url=$(${{ env.VERCEL }} deploy --prebuilt ${{ steps.target.outputs.flag }} --token=${{ secrets.VERCEL_TOKEN }})
           echo "url=$url" >> "$GITHUB_OUTPUT"
 
+      - name: Submit URLs to IndexNow
+        if: steps.target.outputs.env == 'production'
+        run: deno task submit:indexnow
+
       - name: Comment preview URL
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v9
