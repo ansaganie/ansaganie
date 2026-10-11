@@ -42,6 +42,8 @@ const OG_LOCALES: Record<Locale, string> = { en: 'en_US', ru: 'ru_RU', kk: 'kk_K
 const ogImageUrl = new URL('/og-image.png', siteUrl).toString();
 const ogImageAlt = `${canonical.name} — ${canonical.title}`;
 
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -118,6 +120,7 @@ const jsonLd = {
     <meta name="author" content={canonical.name} />
     {notFound && <meta name="robots" content="noindex" />}
     {!notFound && <link rel="canonical" href={canonicalUrl} />}
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
 
     <!-- Multilingual Hreflang alternates -->
     {!notFound && alternateUrls.map((item) => <link rel="alternate" hreflang={item.locale} href={item.href} />)}
