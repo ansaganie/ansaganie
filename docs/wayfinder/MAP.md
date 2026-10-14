@@ -9,7 +9,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - **Domain**: Personal portfolio, live curriculum vitae, and developer identity.
 - **Skills to consult**: `research`, `prototype`, `domain-modeling`, `modern-web-guidance`.
 - **Execution is in scope**: the destination is a deployed site, so `task` tickets build things rather than only decide them.
-- **Framework & Tech**: Astro (static-first, no JS runtime overhead, built-in i18n routing, Tailwind CSS), run with Deno instead of Node ([ADR 0003](../adr/0003-deno-toolchain.md)).
+- **Framework & Tech**: Astro (static-first, no JS runtime overhead, built-in i18n routing, Tailwind CSS), run with Bun instead of Node/Deno ([ADR 0005](../adr/0005-bun-toolchain-and-vercel-cli.md)).
 - **Target Locales**: English (`/`), Russian (`/ru`), Kazakh (`/kk`).
 - **Profile Repo Integration**: Keep the repo root [README.md](../../README.md) as the GitHub profile README. Website code goes in `src/` and assets in `public/`.
 - **Hosting Strategy**: Vercel with custom domain `https://ansaganie.dev` (registered at Cloudflare, DNS-only). GitHub Actions in this repo deploy to production on merge to `main` and make protected previews on PRs. See [Hosting topology](tickets/0008-hosting-topology.md), [ADR 0002](../adr/0002-vercel-hosting-via-github-actions.md), and [ADR 0004](../adr/0004-custom-domain-ansaganie-dev.md).
@@ -40,6 +40,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [Custom domain ansaganie.dev](../adr/0004-custom-domain-ansaganie-dev.md) (ADR 0004): registered `ansaganie.dev` at Cloudflare Registrar, assigned to Vercel with DNS-only CNAME records pointing to Vercel edge, and updated all canonical origins across the project (`astro.config.mjs`, `BaseLayout.astro`, `robots.txt`, `og-image.png`, `deploy.yml`, and README badges) to `https://ansaganie.dev`. `www.ansaganie.dev` and `ansaganie.vercel.app` redirect (308) to apex.
 - [Search engine registration](tickets/0017-search-engine-registration.md): verified site ownership and submitted sitemap to Google Search Console and Bing Webmaster Tools; deployed IndexNow key and automated post-deploy URL submission to api.indexnow.org; aligned off-site profile URLs on LinkedIn and GitHub to https://ansaganie.dev.
 - [New content grilling](tickets/0018-content-grilling.md): resolved all postponed audit items (D5) via HITL grilling. R-H1 (case-study pages) and R-H3 (public writing) ruled out of scope to preserve strictly 2 pages; R-M1 (expandable card fields) and R-H2 (photo & narrative block) rejected to keep scannability and ATS alignment. Completely eliminated availability status badge and metadata; updated elevator pitch to a general web-only skills introduction across EN, RU, and KK without company names.
+- [Migrate runtime and Vercel CLI to Bun](tickets/0019-migrate-runtime-to-bun.md): Bun replaces Deno and Node across local development, static builds, verification, script runners, and Vercel CLI deployment in CI. Pinned via `.bun-version` (1.4.2) and `bun.lock`. [ADR 0005](../adr/0005-bun-toolchain-and-vercel-cli.md) supersedes ADR 0003.
 
 ## Tickets
 
@@ -61,6 +62,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Overview visual pass](tickets/0016-overview-visual-pass.md) (`wayfinder:task`, AFK)
 - [x] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL)
 - [x] [New content grilling](tickets/0018-content-grilling.md) (`wayfinder:grilling`, HITL)
+- [x] [Migrate runtime to Bun](tickets/0019-migrate-runtime-to-bun.md) (`wayfinder:task`, AFK)
 
 ## Not yet specified
 

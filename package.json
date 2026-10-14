@@ -3,14 +3,15 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "bun@1.4.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro-check",
-    "generate:pdf": "deno run -A scripts/generate-pdf.mjs",
-    "generate:images": "deno run -A scripts/generate-images.mjs",
-    "submit:indexnow": "deno run -A scripts/submit-indexnow.mjs"
+    "generate:pdf": "bun scripts/generate-pdf.mjs",
+    "generate:images": "bun scripts/generate-images.mjs",
+    "submit:indexnow": "bun scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
