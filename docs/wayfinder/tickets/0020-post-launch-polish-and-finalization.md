@@ -30,6 +30,6 @@ All remaining polish items implemented and verified:
 - Cleaned devDependencies in `package.json` by removing `@emnapi/runtime`, bumped TypeScript declaration to `^5.9.3`, and updated `bun.lock`.
 - Updated `/cv` page descriptions across EN, RU, and KK in `src/pages/` to align with owner decisions (no client claims, no time claims, concise ATS focus).
 - Updated `LICENSE` with clear separation of MIT for site code and All Rights Reserved for personal CV content.
-- Preserved existing research benchmark `docs/research/service-company-landing-seo.md`.
+- Preserved existing research benchmark `docs/research/personal-website-seo.md`.
 - Verified static build passes cleanly (`bun run build` completed 7 pages and sitemap in ~2s).
 - Marked Wayfinder Map as completed.
