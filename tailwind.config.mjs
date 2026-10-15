@@ -60,7 +60,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'Source Sans 3', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-        serif: ['Source Serif 4', 'Georgia', 'serif'],
+        serif: ['Georgia', 'serif'],
       },
     },
   },

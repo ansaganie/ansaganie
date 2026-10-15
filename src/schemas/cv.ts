@@ -44,8 +44,8 @@ export const projectSchema = z.object({
   metrics: z.array(z.string()).optional(),
   technologies: z.array(z.string()),
   architectureDiagram: z.string().optional(),
-  githubUrl: z.string().url().optional(),
-  liveUrl: z.string().url().optional(),
+  githubUrl: z.url().optional(),
+  liveUrl: z.url().optional(),
 });
 
 export const certificationSchema = z.object({
@@ -54,7 +54,7 @@ export const certificationSchema = z.object({
   issuer: z.string(),
   issueDate: z.string(),
   credentialId: z.string().optional(),
-  verificationUrl: z.string().url(),
+  verificationUrl: z.url(),
   iconName: z.string(),
 });
 
@@ -83,11 +83,11 @@ export const languageSkillSchema = z.object({
 });
 
 export const contactInfoSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   phone: z.string(),
-  telegram: z.string().url(),
-  linkedin: z.string().url(),
-  github: z.string().url(),
+  telegram: z.url(),
+  linkedin: z.url(),
+  github: z.url(),
   location: z.string(),
   availability: z.string().optional(),
 });

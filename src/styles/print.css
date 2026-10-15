@@ -15,7 +15,7 @@
   @bottom-left { content: normal; }
   @bottom-right { content: normal; }
   @bottom-center {
-    content: "Page " counter(page) " of " counter(pages);
+    content: counter(page) " / " counter(pages);
     font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", monospace;
     font-size: 7pt;
     color: #64748b;
