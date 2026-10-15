@@ -6,7 +6,7 @@ import { findChrome } from './chrome.mjs';
 
 function generatePdfs() {
   console.log('==> Step 1: Building static site with Astro...');
-  execSync('deno task build', { stdio: 'inherit' });
+  execSync('bun run build', { stdio: 'inherit' });
 
   const chromePath = findChrome();
   console.log(`==> Step 2: Found browser at: ${chromePath}`);

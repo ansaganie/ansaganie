@@ -6,14 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-The toolchain is Deno, not Node (ADR 0003), pinned in `.dvmrc`. `package.json` is still the dependency manifest and script list; `deno.lock` is the lockfile. Don't use `npm`/`npx` or add a `package-lock.json`. The one exception is the Vercel CLI in the deploy workflow, which runs on Node via `npx` because `vercel deploy` hangs under Deno (ADR 0003).
+The toolchain is Bun (ADR 0005, superseding ADR 0003), pinned in `.bun-version`. `package.json` is the dependency manifest and script list; `bun.lock` is the lockfile. Don't use `npm`/`npx`/`deno` or add a `package-lock.json`. The Vercel CLI in the deploy workflow runs directly under Bun via `bun x --bun vercel@63`.
 
-- `deno install`: installs `node_modules` from `package.json` (CI uses `--frozen`)
-- `deno task dev`: dev server (port 4321)
-- `deno task build`: static build to `dist/`
-- `deno task check`: `astro-check` type-check. Together with `build`, this is the only verification gate. There are no tests or linter.
-- `deno task generate:pdf`: runs `build`, then uses headless Chrome/Edge to print `dist/{,ru/,kk/}cv/index.html` into `public/cv/*.pdf`. If the browser isn't found, set `CHROME_PATH`.
-- `deno task generate:images`: uses the same browser to render `public/og-image.png` (from `scripts/og-image.html` and `cv-en.json`), `public/apple-touch-icon.png` and `public/favicon.ico` (from `public/favicon.svg`). Rerun it and commit the output after changing the EN name, title, availability or primary skills, or the favicon.
+- `bun install`: installs `node_modules` from `package.json` (CI uses `--frozen-lockfile`)
+- `bun run dev`: dev server (port 4321)
+- `bun run build`: static build to `dist/`
+- `bun run check`: `astro-check` type-check. Together with `build`, this is the only verification gate. There are no tests or linter.
+- `bun run generate:pdf`: runs `build`, then uses headless Chrome/Edge to print `dist/{,ru/,kk/}cv/index.html` into `public/cv/*.pdf`. If the browser isn't found, set `CHROME_PATH`.
+- `bun run generate:images`: uses the same browser to render `public/og-image.png` (from `scripts/og-image.html` and `cv-en.json`), `public/apple-touch-icon.png` and `public/favicon.ico` (from `public/favicon.svg`). Rerun it and commit the output after changing the EN name, title, availability or primary skills, or the favicon.
 
 ## Architecture
 
@@ -25,7 +25,7 @@ Static Astro 7 site: two pages (**Overview Page** `/`, **CV Page** `/cv`) × thr
 - **URLs end in a slash** (`trailingSlash: 'always'`, matched by `trailingSlash: true` in `vercel.json`). Build internal links with `getLocalizedPath()` and absolute ones with `getLocalizedUrl()` in `src/utils/i18n.ts`; both wrap `astro:i18n`, so nav, switcher, canonical, hreflang and sitemap stay identical.
 - **`BaseLayout.astro`** owns SEO meta, hreflang, JSON-LD, and the inline theme script (`.dark`/`.light` on `<html>`, stored in `localStorage`).
 - **Styling**: Tailwind 4 through `@tailwindcss/vite`, still reading the legacy `tailwind.config.mjs` via `@config` in `src/styles/global.css`. Design tokens are CSS variables there. Hand-written rules sit inside Tailwind cascade layers so utilities still override them. Keep new rules layered.
-- **`src/styles/print.css` is the PDF layout** (A4). Any change to it, to `CvContent`, or to the CV JSON needs `npm run generate:pdf` and the regenerated PDFs committed (ADR 0001). The script inlines only the first CSS bundle in `dist/_astro/`, so it breaks if the build ever emits more than one.
+- **`src/styles/print.css` is the PDF layout** (A4). Any change to it, to `CvContent`, or to the CV JSON needs `bun run generate:pdf` and the regenerated PDFs committed (ADR 0001). The script inlines only the first CSS bundle in `dist/_astro/`, so it breaks if the build ever emits more than one.
 - **PDF filenames are defined twice**: `getPdfCvFilename()` in `src/utils/i18n.ts` and `targets` in `scripts/generate-pdf.mjs`. Change both together.
 
 ## Content rules

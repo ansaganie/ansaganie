@@ -18,8 +18,8 @@ concurrency:
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  # The Vercel CLI runs on Node: under Deno, `vercel deploy` hung without creating a deployment (ADR 0003).
-  VERCEL: npx --yes vercel@63
+  # The Vercel CLI runs on Bun directly (ADR 0005 supersedes ADR 0003).
+  VERCEL: bun x --bun vercel@63
 
 jobs:
   deploy:
@@ -40,17 +40,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: denoland/setup-deno@v2
+      - uses: oven-sh/setup-bun@v2
         with:
-          deno-version-file: .dvmrc
-          cache: true
+          bun-version-file: .bun-version
 
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 24
-
-      - run: deno install --frozen
-      - run: deno task check
+      - run: bun install --frozen-lockfile
+      - run: bun run check
 
       - name: Pick Vercel environment
         id: target
@@ -83,7 +78,7 @@ jobs:
 
       - name: Submit URLs to IndexNow
         if: steps.target.outputs.env == 'production'
-        run: deno task submit:indexnow
+        run: bun run submit:indexnow
 
       - name: Comment preview URL
         if: github.event_name == 'pull_request'

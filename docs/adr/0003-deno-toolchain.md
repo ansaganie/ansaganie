@@ -1,5 +1,7 @@
 # Deno Toolchain Instead of Node.js
 
+> **Status: Superseded by [ADR 0005](0005-bun-toolchain-and-vercel-cli.md)**
+
 The owner chose Deno over Node.js to run the site locally and in the deploy pipeline. Deno 2 reads `package.json` directly: `deno install` fills `node_modules`, and `deno task` runs the `package.json` scripts with `node_modules/.bin` tools resolved, so Astro, Tailwind 4 and astro-check need no source changes. `package.json` stays the dependency manifest and script list, `deno.lock` replaces `package-lock.json`, and `.dvmrc` pins one Deno version for local use and for `denoland/setup-deno` in CI. In the GitHub Actions deploy (ADR 0002), `vercel.json` sets `installCommand: deno install --frozen` and `buildCommand: deno task build`, and the Vercel CLI runs on Node as `npx vercel@63` (see the 2026-10-10 update below). Deno builds the site, and Node runs only the Vercel CLI.
 
 Verified on 2026-10-10 with Deno 2.9.7 (Windows ARM64) and Node removed from `PATH`: `check`, `build`, `dev`, `generate:pdf` and the CLI's `vercel pull` + `vercel build` all ran. The built HTML and CSS matched the earlier Node build apart from the Astro version in the generator meta tag.
