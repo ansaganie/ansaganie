@@ -10,7 +10,7 @@ const profile = getCandidateProfile(locale);
 <BaseLayout
   locale={locale}
   title={`${profile.name} — Curriculum Vitae & Career Timeline`}
-  description="CV of Ansagan Islamgaliev, senior .NET and React engineer: 4+ years building enterprise software for Chevron and Tengizchevroil. PDF available."
+  description={`Curriculum Vitae and career timeline of ${profile.name}, ${profile.title}. ATS-compliant PDF available.`}
 >
   <CvContent profile={profile} locale={locale} />
 </BaseLayout>
