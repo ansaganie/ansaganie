@@ -15,7 +15,7 @@ const pdfHref = getPdfCvPath(locale);
 
 <div class="space-y-10 max-w-4xl mx-auto">
   <!-- ATS & Screen Candidate Header -->
-  <header class="candidate-header border-b border-border-hairline pb-6 space-y-3">
+  <header class="candidate-header border-b border-border-hairline pb-3 space-y-3">
     <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
       <div>
         <h1 class="candidate-name text-3xl sm:text-4xl font-extrabold tracking-tight text-content-primary" itemprop="name">
@@ -40,24 +40,27 @@ const pdfHref = getPdfCvPath(locale);
     </div>
 
     <!-- Contact Info (Linearized for ATS Scrapers) -->
-    <address class="contact-info text-xs text-content-tertiary not-italic flex flex-wrap items-center gap-x-3 gap-y-1">
-      <span itemprop="address">{profile.contact.location}</span>
-      <span class="text-border-default" aria-hidden="true">|</span>
-      <span>
-        {t('contact.phone')} <a href={`tel:${profile.contact.phone}`} itemprop="telephone" class="text-content-secondary hover:text-brand">{profile.contact.phone}</a>
-      </span>
-      <span class="text-border-default" aria-hidden="true">|</span>
-      <span>
-        {t('contact.email')} <a href={`mailto:${profile.contact.email}`} itemprop="email" class="text-content-secondary hover:text-brand">{profile.contact.email}</a>
-      </span>
-      <span class="text-border-default" aria-hidden="true">|</span>
-      <span>
-        LinkedIn: <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" class="text-content-secondary hover:text-brand">linkedin.com/in/ansaganie</a>
-      </span>
-      <span class="text-border-default" aria-hidden="true">|</span>
-      <span>
-        GitHub: <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" class="text-content-secondary hover:text-brand">github.com/ansaganie</a>
-      </span>
+    <address class="contact-info text-xs text-content-tertiary not-italic flex flex-col gap-y-1">
+      <div class="flex flex-wrap items-center">
+        <span itemprop="address">{profile.contact.location}</span>
+        {" "}<span class="contact-separator text-border-default mx-2.5 select-none" aria-hidden="true">|</span>{" "}
+        <span class="whitespace-nowrap">
+          {t('contact.phone')} <a href={`tel:${profile.contact.phone}`} itemprop="telephone" class="text-content-secondary hover:text-brand">{profile.contact.phone}</a>
+        </span>
+        {" "}<span class="contact-separator text-border-default mx-2.5 select-none" aria-hidden="true">|</span>{" "}
+        <span class="whitespace-nowrap">
+          {t('contact.email')} <a href={`mailto:${profile.contact.email}`} itemprop="email" class="text-content-secondary hover:text-brand">{profile.contact.email}</a>
+        </span>
+        {" "}<span class="contact-separator text-border-default mx-2.5 select-none" aria-hidden="true">|</span>{" "}
+        <span class="whitespace-nowrap">
+          LinkedIn: <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" class="text-content-secondary hover:text-brand">linkedin.com/in/ansaganie</a>
+        </span>
+      </div>
+      <div class="contact-row-github w-full">
+        <span class="whitespace-nowrap">
+          GitHub: <a href={profile.contact.github} target="_blank" rel="noopener noreferrer" class="text-content-secondary hover:text-brand">github.com/ansaganie</a>
+        </span>
+      </div>
     </address>
   </header>
 
