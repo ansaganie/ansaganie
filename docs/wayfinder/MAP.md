@@ -4,6 +4,8 @@
 
 A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (Overview & CV) for Ansagan Islamgaliev, hosted on Vercel at `ansaganie.dev`, deployed by GitHub Actions. It has a modern, compact, classic ATS-compliant semantic design, SEO metadata, a downloadable PDF CV, and an updated GitHub profile [README.md](../../README.md).
 
+**Status**: Completed. Destination fully reached; all 20 tickets resolved, verified, and active in production.
+
 ## Notes
 
 - **Domain**: Personal portfolio, live curriculum vitae, and developer identity.
@@ -41,6 +43,7 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [Search engine registration](tickets/0017-search-engine-registration.md): verified site ownership and submitted sitemap to Google Search Console and Bing Webmaster Tools; deployed IndexNow key and automated post-deploy URL submission to api.indexnow.org; aligned off-site profile URLs on LinkedIn and GitHub to https://ansaganie.dev.
 - [New content grilling](tickets/0018-content-grilling.md): resolved all postponed audit items (D5) via HITL grilling. R-H1 (case-study pages) and R-H3 (public writing) ruled out of scope to preserve strictly 2 pages; R-M1 (expandable card fields) and R-H2 (photo & narrative block) rejected to keep scannability and ATS alignment. Completely eliminated availability status badge and metadata; updated elevator pitch to a general web-only skills introduction across EN, RU, and KK without company names.
 - [Migrate runtime and Vercel CLI to Bun](tickets/0019-migrate-runtime-to-bun.md): Bun replaces Deno and Node across local development, static builds, verification, script runners, and Vercel CLI deployment in CI. Pinned via `.bun-version` (1.4.2) and `bun.lock`. [ADR 0005](../adr/0005-bun-toolchain-and-vercel-cli.md) supersedes ADR 0003.
+- [Post-launch polish and Wayfinder map finalization](tickets/0020-post-launch-polish-and-finalization.md): resolved all remaining P2 recommendations. Zod 4 schemas upgraded to z.url()/z.email() (0 hints), print footer converted to language-neutral counter format, Google Fonts trimmed of unused Source Serif 4 and subset params, @emnapi/runtime removed, CV page descriptions aligned, and code vs personal CV content licensing clarified.
 
 ## Tickets
 
@@ -63,10 +66,11 @@ A production-deployed, multilingual (`/`, `/ru`, `/kk`) 2-page Live CV website (
 - [x] [Search engine registration](tickets/0017-search-engine-registration.md) (`wayfinder:task`, HITL)
 - [x] [New content grilling](tickets/0018-content-grilling.md) (`wayfinder:grilling`, HITL)
 - [x] [Migrate runtime to Bun](tickets/0019-migrate-runtime-to-bun.md) (`wayfinder:task`, AFK)
+- [x] [Post-launch polish and Wayfinder map finalization](tickets/0020-post-launch-polish-and-finalization.md) (`wayfinder:task`, AFK)
 
 ## Not yet specified
 
-- **Post-launch polish (review P2 items)**: a localized print footer, Zod/TypeScript hint cleanup, trimming and self-hosting fonts, split code/content licensing, and the unexplained `@emnapi/runtime` dependency. These get tickets once the site is live and we know which still matter.
+None. The frontier has reached the destination; all open questions, design choices, infrastructure setups, and polish recommendations have been resolved.
 
 ## Out of scope
 
