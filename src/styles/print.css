@@ -170,6 +170,12 @@
   }
 
   /* 5. Typography & Section Scale Calibration */
+  header.candidate-header {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
   h1.candidate-name,
   header.candidate-header h1 {
     font-size: 18pt !important;
@@ -192,9 +198,19 @@
     font-size: 8pt !important;
     color: #475569 !important;
     border-bottom: 0.5pt solid #cbd5e1 !important;
-    padding-bottom: 2.5mm !important;
-    margin-bottom: 4mm !important;
+    padding-bottom: 1.5mm !important;
+    margin-bottom: 2mm !important;
     display: block !important;
+  }
+
+  address.contact-info .contact-separator {
+    display: inline !important;
+    margin: 0 0.4rem !important;
+  }
+
+  address.contact-info .contact-row-github {
+    display: block !important;
+    margin-top: 0.5mm !important;
   }
 
   h2 {
@@ -247,8 +263,7 @@
     text-decoration: none !important;
   }
 
-  a.print-url::after,
-  .contact-info a:not([href^="tel:"]):not([href^="mailto:"])::after {
+  a.print-url::after {
     content: " (" attr(href) ")";
     font-size: 7pt !important;
     color: #64748b !important;
@@ -256,8 +271,7 @@
     word-break: break-all !important;
   }
 
-  .contact-info a[href^="tel:"]::after,
-  .contact-info a[href^="mailto:"]::after,
+  .contact-info a::after,
   a[href^="tel:"]::after,
   a[href^="mailto:"]::after,
   a[href^="#"]::after,
